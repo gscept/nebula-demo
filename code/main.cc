@@ -14,6 +14,8 @@
 #include "gamestatemanager.h"
 #include "profiling/profiling.h"
 #include "scripting/python/pythonserver.h"
+#include "dynui/console/imguiconsole.h"
+#include "dynui/console/imguiconsolehandler.h"
 
 #ifdef NEBULA_EDITOR_ENABLED
 #include "editorfeature/editorfeatureunit.h"
@@ -47,10 +49,21 @@ private:
         this->demoFeatureUnit = Demo::DemoGameFeatureUnit::Create();
         this->gameServer->AttachGameFeature(this->demoFeatureUnit);
 
-#ifdef NEBULA_EDITOR_ENABLED
         this->scriptserver = Scripting::PythonServer::Create();
         this->scriptserver->Open();
 
+        this->console = Dynui::ImguiConsole::Create();
+        this->consoleHandler = Dynui::ImguiConsoleHandler::Create();
+        this->console->Setup();
+        this->consoleHandler->Setup();
+
+        this->graphicsFeature->AddRenderUICallback([this](){
+            ImGui::Begin("Console");
+            this->console->RenderContent();
+            ImGui::End();
+        });
+
+#ifdef NEBULA_EDITOR_ENABLED
         this->editorFeatureUnit = EditorFeature::EditorFeatureUnit::Create();
         this->gameServer->AttachGameFeature(this->editorFeatureUnit);
 #endif
@@ -71,6 +84,8 @@ private:
         this->graphicsFeature = nullptr;
         this->demoFeatureUnit->Release();
         this->demoFeatureUnit = nullptr;
+        this->scriptserver->Release();
+        this->scriptserver = nullptr;
 
 #ifdef NEBULA_EDITOR_ENABLED
         this->editorFeatureUnit->Release();
@@ -82,9 +97,11 @@ private:
     Ptr<GraphicsFeature::GraphicsFeatureUnit> graphicsFeature;
     Ptr<PhysicsFeature::PhysicsFeatureUnit> physicsFeature;
     Ptr<Demo::DemoGameFeatureUnit> demoFeatureUnit;
+    Ptr<Scripting::ScriptServer> scriptserver;
+    Ptr<Dynui::ImguiConsole> console;
+	Ptr<Dynui::ImguiConsoleHandler> consoleHandler;
 
 #ifdef NEBULA_EDITOR_ENABLED
-    Ptr<Scripting::ScriptServer> scriptserver;
     Ptr<EditorFeature::EditorFeatureUnit> editorFeatureUnit;
 #endif
 };

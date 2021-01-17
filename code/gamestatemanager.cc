@@ -23,7 +23,6 @@
 #include "resources/resourceserver.h"
 #include "terrain/terraincontext.h"
 
-
 #ifdef __WIN32__
 #include <shellapi.h>
 #elif __LINUX__
