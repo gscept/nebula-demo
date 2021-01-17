@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Nebula>
+    <Surface template="Static">
+        <Param name="AlbedoMap" value="tex:dev/iron_rusty_albedo" />
+        <Param name="ParameterMap" value="tex:dev/iron_rusty_material" />
+        <Param name="NormalMap" value="tex:dev/iron_rusty_normal" />
+        <Param name="MatAlbedoIntensity" value="1.000000,1.000000,1.000000,1.000000" />
+        <Param name="MatSpecularIntensity" value="1.000000,1.000000,1.000000,1.000000" />
+        <Param name="MatMetalnessIntensity" value="1.000000" />
+        <Param name="MatRoughnessIntensity" value="1.000000" />
+    </Surface>
+</Nebula>

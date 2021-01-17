@@ -1,0 +1,8 @@
+{
+    "blueprint": "StaticGroundPlane",
+    "properties": {
+        "WorldTransform": [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ],
+        "ModelResource": "mdl:dev/ground.n3",
+        "PhysicsResource": "phys:dev/groundplane.actor"
+    }
+}

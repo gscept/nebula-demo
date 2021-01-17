@@ -1,0 +1,44 @@
+{
+    "blueprints": {
+        "Player": {
+            "desc": "First person player",
+            "properties": [
+                "WorldTransform",
+                "Camera"
+            ]
+        },
+        "StaticEnvironment": {
+            "desc": "Static environment object",
+            "properties": [
+                "Static",
+                "WorldTransform",
+                "ModelResource"
+            ]
+        },
+        "StaticGroundPlane": {
+            "desc": "Static ground plane",
+            "properties": [
+                "Static",
+                "WorldTransform",
+                "ModelResource",
+                "PhysicsResource"
+            ]
+        },
+        "PhysicsEntity": {
+            "desc": "Rigidbody object",
+            "properties": [
+                "WorldTransform",
+                "ModelResource",
+                "PhysicsResource"
+            ]
+        },
+        "MovingEntity": {
+            "desc": "An entity that wanders around randomly",
+            "properties": [
+                "WorldTransform",
+                "ModelResource",
+                "Movement"
+            ]
+        }
+    }
+}

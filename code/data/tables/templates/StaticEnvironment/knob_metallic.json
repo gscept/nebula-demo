@@ -1,0 +1,6 @@
+{
+    "blueprint": "StaticEnvironment",
+    "properties": {
+        "ModelResource": "mdl:dev/knob_metallic.n3"
+    }
+}

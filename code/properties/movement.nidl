@@ -1,0 +1,34 @@
+{
+    "namespace": "Demo",
+    "includes": [
+        "math/vec3.h"
+    ],
+    "enums": {
+        "Foo": {
+            "DOOD":  0,
+            "ALF":  1,
+            "GNYRF": 2
+        }
+    },
+    "properties": {
+        "Movement": {
+            "direction": "vec3",
+            "speed": {
+                "_type_": "float",
+                "_default_": 1.0
+            },
+            "wanderRadius": { // Radius of constraining circle
+                "_type_": "float",
+                "_default_": 0.35
+            },
+            "wanderDistance": { // Distance the wander circle is projected in front of the entity
+                "_type_": "float",
+                "_default_": 2.0
+            },
+            "wanderJitter": { // maximum amount of random displacement that can be added each second.
+                "_type_": "float",
+                "_default_": 0.80
+            }
+        }
+    }
+}

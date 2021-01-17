@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Nebula>
+    <Surface template="Static">
+        <Param name="AlbedoMap" value="tex:dev/plastic_scuffed_albedo" />
+        <Param name="ParameterMap" value="tex:dev/plastic_scuffed_param" />
+        <Param name="NormalMap" value="tex:dev/plastic_scuffed_normal" />
+        <Param name="MatAlbedoIntensity" value="1.000000,1.000000,1.000000,1.000000" />
+        <Param name="MatMetalnessIntensity" value="1.000000" />
+        <Param name="MatRoughnessIntensity" value="1.000000" />
+    </Surface>
+</Nebula>

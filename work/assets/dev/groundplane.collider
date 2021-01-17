@@ -1,0 +1,9 @@
+{
+    type: "Mesh",
+    data_type: "MeshCollider",
+    data: {
+    primGroup: 0,
+      type: "Triangles",
+      file: "msh:dev/ground.nvx2"
+  }
+}

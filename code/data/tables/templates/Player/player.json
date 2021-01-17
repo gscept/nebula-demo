@@ -1,0 +1,15 @@
+{
+    "blueprint": "Player",
+    "properties": {
+        "WorldTransform": [1,0,0,0,0,1,0,0,0,0,1,0,0,5,0,1],
+        "PlayerInput": {
+            "hasFocus": true
+        },
+        "Camera": {
+            "fieldOfView": 90.0,
+            "projectionMode": "PERSPECTIVE",
+            "zNear": 0.01,
+            "zFar": 1000.0
+        }
+    }
+}
