@@ -23,6 +23,9 @@
 #include "resources/resourceserver.h"
 #include "terrain/terraincontext.h"
 
+#include "materials/materialserver.h"
+#include "graphicsfeature/managers/graphicsmanager.h"
+
 #ifdef __WIN32__
 #include <shellapi.h>
 #elif __LINUX__
@@ -82,24 +85,9 @@ GameStateManager::~GameStateManager()
 void
 GameStateManager::OnActivate()
 {
-    { // ## Temp: Preload all resources ##
-        auto Preload = [](Resources::ResourceName const& modelName)
-        {
-            auto entity = Graphics::CreateEntity();
-            Graphics::RegisterEntity<Models::ModelContext>(entity);
-            Models::ModelContext::Setup(entity, modelName, "TemporaryPreload", [entity]()
-            {});
-        };
-
-        Preload("mdl:dev/ground.n3");
-        Preload("mdl:dev/knob_metallic.n3");
-        Preload("mdl:dev/knob_plastic_scuffed.n3");
-        Preload("mdl:dev/knob_reflective.n3");
-    } // #################################
-
     {
         Game::EntityCreateInfo info;
-        info.immediate = true;
+        info.immediate = false;
         info.templateId = Game::GetTemplateId("StaticGroundPlane/dev_ground_plane"_atm);
         Game::CreateEntity(info);
     }
