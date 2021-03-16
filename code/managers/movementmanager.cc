@@ -4,7 +4,6 @@
 //------------------------------------------------------------------------------
 #include "application/stdneb.h"
 #include "movementmanager.h"
-#include "basegamefeature/managers/entitymanager.h"
 #include "properties/movement.h"
 #include "properties/input.h"
 #include "graphics/graphicsentity.h"
@@ -13,6 +12,7 @@
 #include "timing/timer.h"
 #include "util/random.h"
 #include "basegamefeature/managers/timemanager.h"
+#include "game/api.h"
 
 namespace Demo
 {
@@ -42,7 +42,7 @@ MovementManager::Create()
     processorInfo.async = false;
     processorInfo.filter = filter;
     processorInfo.name = "MovementManager"_atm;
-    processorInfo.OnBeginFrame = [](Game::Dataset data)
+    processorInfo.OnBeginFrame = [](Game::World*, Game::Dataset data)
     {
         Game::TimeSource const* const time = Game::TimeManager::GetTimeSource(TIMESOURCE_GAMEPLAY);
         for (int v = 0; v < data.numViews; v++)

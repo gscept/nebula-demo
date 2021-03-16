@@ -10,7 +10,6 @@
 #include "imgui.h"
 #include "dynui/im3d/im3dcontext.h"
 #include "graphicsfeature/graphicsfeatureunit.h"
-#include "basegamefeature/managers/entitymanager.h"
 #include "input/mouse.h"
 #include "renderutil/mouserayutil.h"
 #include "game/api.h"
@@ -32,7 +31,7 @@ PlayerManager::Create()
     Game::ManagerAPI api;
     api.OnActivate = &PlayerManager::OnActivate;
     api.OnBeginFrame = &PlayerManager::OnBeginFrame;
-    api.OnFrame = &PlayerManager::OnFrame;
+    api.OnCleanup = &PlayerManager::OnCleanup;
     return api;
 }
 
@@ -60,15 +59,17 @@ PlayerManager::OnActivate()
     SizeT width = displayMode.GetWidth();
     SizeT height = displayMode.GetHeight();
 
+    Game::World* world = Game::GetWorld(WORLD_DEFAULT);
+
     Game::EntityCreateInfo playerCreateInfo;
     playerCreateInfo.templateId = Game::GetTemplateId("Player/player"_atm);
     playerCreateInfo.immediate = true;
-    Singleton->playerEntity = Game::CreateEntity(playerCreateInfo);
+    Singleton->playerEntity = Game::CreateEntity(world, playerCreateInfo);
 
-    GraphicsFeature::Camera camera = Game::GetProperty<GraphicsFeature::Camera>(Singleton->playerEntity, Game::GetPropertyId("Camera"_atm));
+    GraphicsFeature::Camera camera = Game::GetProperty<GraphicsFeature::Camera>(world, Singleton->playerEntity, Game::GetPropertyId("Camera"_atm));
     camera.aspectRatio = (float)width / (float)height;
     camera.viewHandle = GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultViewHandle();
-    Game::SetProperty<GraphicsFeature::Camera>(Singleton->playerEntity, Game::GetPropertyId("Camera"_atm), camera);
+    Game::SetProperty<GraphicsFeature::Camera>(world, Singleton->playerEntity, Game::GetPropertyId("Camera"_atm), camera);
 
     Singleton->freeCamUtil.Setup({0, 2, -3}, {0,0,-1});
 
@@ -112,17 +113,20 @@ PlayerManager::OnBeginFrame()
         Singleton->freeCamUtil.Update();
     }
 
+    Game::World* world = Game::GetWorld(WORLD_DEFAULT);
+
     //Math::mat4 worldTransform = Game::GetProperty(Singleton->playerEntity, Game::GetPropertyId("WorldTransform"_atm));
-    Game::SetProperty<Math::mat4>(Singleton->playerEntity, Game::GetPropertyId("WorldTransform"_atm), Math::inverse(Singleton->freeCamUtil.GetTransform()));
+    if (Game::IsValid(world, Singleton->playerEntity))
+        Game::SetProperty<Math::mat4>(world, Singleton->playerEntity, Game::GetPropertyId("WorldTransform"_atm), Math::inverse(Singleton->freeCamUtil.GetTransform()));
 }
 
 //------------------------------------------------------------------------------
 /**
 */
 void
-PlayerManager::OnFrame()
+PlayerManager::OnCleanup(Game::World*)
 {
-    
+    Singleton->playerEntity = Game::Entity::Invalid();
 }
 
 //------------------------------------------------------------------------------

@@ -1,9 +1,9 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-	@class	Demo::PlayerManager
+    @class	Demo::PlayerManager
 
-	(C) 2020 Individual contributors, see AUTHORS file
+    (C) 2020 Individual contributors, see AUTHORS file
 */
 //------------------------------------------------------------------------------
 #include "core/refcounted.h"
@@ -18,30 +18,30 @@ namespace Demo
 
 class PlayerManager
 {
-	__DeclareSingleton(PlayerManager);
+    __DeclareSingleton(PlayerManager);
 public:
-	/// Create the singleton
-	static Game::ManagerAPI Create();
+    /// Create the singleton
+    static Game::ManagerAPI Create();
 
-	/// Destroy the singleton
-	static void Destroy();
+    /// Destroy the singleton
+    static void Destroy();
 
 private:
-	/// constructor
-	PlayerManager();
-	/// destructor
-	~PlayerManager();
+    /// constructor
+    PlayerManager();
+    /// destructor
+    ~PlayerManager();
 
-	/// called when attached to game server.
-	static void OnActivate();
+    /// called when attached to game server.
+    static void OnActivate();
     /// called once before every rendered frame
     static void OnBeginFrame();
-	/// called once every frame
-	static void OnFrame();
+    /// called before the world is cleaned up
+    static void OnCleanup(Game::World*);
 
-	Game::Entity playerEntity;
+    Game::Entity playerEntity;
 
-	RenderUtil::FreeCameraUtil freeCamUtil;
+    RenderUtil::FreeCameraUtil freeCamUtil;
 };
 
 } // namespace Demo

@@ -8,7 +8,6 @@
 #include "graphics/graphicsentity.h"
 #include "visibility/visibilitycontext.h"
 #include "graphicsfeature/graphicsfeatureunit.h"
-#include "basegamefeature/managers/entitymanager.h"
 #include "basegamefeature/properties/transform.h"
 #include "input/inputserver.h"
 #include "input/keyboard.h"
@@ -22,9 +21,13 @@
 #include "decals/decalcontext.h"
 #include "resources/resourceserver.h"
 #include "terrain/terraincontext.h"
+#include "coregraphics/legacy/nvx2streamreader.h"
+#include "coregraphics/primitivegroup.h"
 
 #include "materials/materialserver.h"
 #include "graphicsfeature/managers/graphicsmanager.h"
+#include "game/gameserver.h"
+#include "game/api.h"
 
 #ifdef __WIN32__
 #include <shellapi.h>
@@ -85,51 +88,59 @@ GameStateManager::~GameStateManager()
 void
 GameStateManager::OnActivate()
 {
+    auto dood = Graphics::CreateEntity();
+    Graphics::RegisterEntity<Models::ModelContext, Visibility::ObservableContext>(dood);
+    Models::ModelContext::Setup(dood, "mdl:system/placeholder.n3", "ExampleScene", [dood]()
     {
-        Game::EntityCreateInfo info;
-        info.immediate = false;
-        info.templateId = Game::GetTemplateId("StaticGroundPlane/dev_ground_plane"_atm);
-        Game::CreateEntity(info);
-    }
-    {
-        Game::EntityCreateInfo info;
-        info.immediate = true;
-        info.templateId = Game::GetTemplateId("StaticEnvironment/knob_metallic"_atm);
-        Game::Entity entity = Game::CreateEntity(info);
-        Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 5 }));
-    }
-    {
-        Game::EntityCreateInfo info;
-        info.immediate = true;
-        info.templateId = Game::GetTemplateId("StaticEnvironment/knob_plastic"_atm);
-        Game::Entity entity = Game::CreateEntity(info);
-        Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 7 }));
-    }
-    {
-        Game::EntityCreateInfo info;
-        info.immediate = true;
-        info.templateId = Game::GetTemplateId("StaticEnvironment/knob_reflective"_atm);
-        Game::Entity entity = Game::CreateEntity(info);
-        Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 9 }));
-    }
+        Visibility::ObservableContext::Setup(dood, Visibility::VisibilityEntityType::Model);
+    });
+    Models::ModelContext::SetTransform(dood, Math::translation(Math::vec3(0, 0, 5)));
 
-    for (int i = 0; i < 5; i++)
-    {
-        Game::EntityCreateInfo info;
-        info.immediate = true;
-        info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
-        Game::Entity entity = Game::CreateEntity(info);
-        Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::rotationyawpitchroll(0.01f, 0.01f, 0.01f) * Math::translation({ 2, 5.0f + ((float)i * 1.0f), 0 }));
-    }
-
-    for (size_t i = 0; i < 5; i++)
-    {
-        Game::EntityCreateInfo info;
-        info.immediate = true;
-        info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
-        Game::Entity entity = Game::CreateEntity(info);
-        Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::translation({ 0, 0.5f, 0 }));
-    }
+    //{
+    //    Game::EntityCreateInfo info;
+    //    info.immediate = false;
+    //    info.templateId = Game::GetTemplateId("StaticGroundPlane/dev_ground_plane"_atm);
+    //    Game::CreateEntity(info);
+    //}
+    //{
+    //    Game::EntityCreateInfo info;
+    //    info.immediate = true;
+    //    info.templateId = Game::GetTemplateId("StaticEnvironment/knob_metallic"_atm);
+    //    Game::Entity entity = Game::CreateEntity(info);
+    //    Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 5 }));
+    //}
+    //{
+    //    Game::EntityCreateInfo info;
+    //    info.immediate = true;
+    //    info.templateId = Game::GetTemplateId("StaticEnvironment/knob_plastic"_atm);
+    //    Game::Entity entity = Game::CreateEntity(info);
+    //    Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 7 }));
+    //}
+    //{
+    //    Game::EntityCreateInfo info;
+    //    info.immediate = true;
+    //    info.templateId = Game::GetTemplateId("StaticEnvironment/knob_reflective"_atm);
+    //    Game::Entity entity = Game::CreateEntity(info);
+    //    Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 9 }));
+    //}
+    //
+    //for (int i = 0; i < 5; i++)
+    //{
+    //    Game::EntityCreateInfo info;
+    //    info.immediate = true;
+    //    info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
+    //    Game::Entity entity = Game::CreateEntity(info);
+    //    Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::rotationyawpitchroll(0.01f, 0.01f, 0.01f) * Math::translation({ 2, 5.0f + ((float)i * 1.01f), 0 }));
+    //}
+    //
+    //for (size_t i = 0; i < 5; i++)
+    //{
+    //    Game::EntityCreateInfo info;
+    //    info.immediate = true;
+    //    info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
+    //    Game::Entity entity = Game::CreateEntity(info);
+    //    Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::translation({ 0, 0.5f, 0 }));
+    //}
 
     GraphicsFeature::GraphicsFeatureUnit::Instance()->AddRenderUICallback([]()
     {
@@ -147,6 +158,28 @@ GameStateManager::OnBeginFrame()
     {
         Core::SysFunc::Exit(0);
     }
+
+    //static Game::Entity entities[4024];
+    //static int frameIndex = 0;
+    //if (frameIndex % 4 == 0)
+    //{
+    //    for (size_t i = 0; i < 4024; i++)
+    //    {
+    //        Game::EntityCreateInfo info;
+    //        info.immediate = true;
+    //        info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
+    //        entities[i] = Game::CreateEntity(info);
+    //        Game::SetProperty(entities[i], Game::GetPropertyId("WorldTransform"_atm), Math::translation({ 0, 0.5f, 0 }));
+    //    }
+    //}
+    //else if (frameIndex % 2 == 0)
+    //{
+    //    for (size_t i = 0; i < 4024; i++)
+    //    {
+    //        Game::DeleteEntity(entities[i]);
+    //    }
+    //}
+    //frameIndex++;
 }
 
 //------------------------------------------------------------------------------

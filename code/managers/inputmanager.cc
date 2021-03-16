@@ -7,7 +7,6 @@
 #include "input/inputserver.h"
 #include "input/mouse.h"
 #include "input/keyboard.h"
-#include "basegamefeature/managers/entitymanager.h"
 #include "properties/input.h"
 
 namespace Demo

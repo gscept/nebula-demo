@@ -4,3 +4,5 @@ imports:
          git: https://github.com/gscept/nebula.git
       nebula-toolkit:
          git: https://github.com/gscept/nebula-toolkit.git
+      fips-utils:
+        git: https://github.com/fips-libs/fips-utils
