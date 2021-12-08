@@ -33,6 +33,6 @@ fips_dir(.)
             movement.nidl
         )
 
-fips_deps(foundation application render resource dynui scripting editor)
+fips_deps(foundation application graphicsfeature physicsfeature render resource dynui scripting editor)
 nebula_end_app()
 target_include_directories(nebula-demo PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
