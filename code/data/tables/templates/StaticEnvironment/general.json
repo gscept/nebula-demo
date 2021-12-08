@@ -1,0 +1,6 @@
+{
+    "blueprint": "StaticEnvironment",
+    "properties": {
+        "ModelResource": "mdl:system/placeholder.n3"
+    }
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Nebula version="4">
+    <Model name="city/skyscraperF" bboxcenter="0.000000,2.040000,0.000000,1.000000" bboxextents="0.620000,2.040000,0.620000,0.000000">
+        <ShapeNodes>
+            <ShapeNode name="Mesh skyscraperF:0" type="static" path="root/Mesh skyscraperF:0" useLOD="false" primitive="0" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/skyscraperF.nvx2" bboxcenter="0.000000,2.040000,0.000000,1.000000" bboxextents="0.620000,2.040000,0.620000,0.000000" />
+            <ShapeNode name="Mesh skyscraperF:1" type="static" path="root/Mesh skyscraperF:1" useLOD="false" primitive="1" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/skyscraperF.nvx2" bboxcenter="0.000000,2.040000,0.000000,1.000000" bboxextents="0.620000,2.040000,0.620000,0.000000" />
+            <ShapeNode name="Mesh skyscraperF:2" type="static" path="root/Mesh skyscraperF:2" useLOD="false" primitive="2" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/skyscraperF.nvx2" bboxcenter="0.000000,2.040000,0.000000,1.000000" bboxextents="0.620000,2.040000,0.620000,0.000000" />
+            <ShapeNode name="Mesh skyscraperF:3" type="static" path="root/Mesh skyscraperF:3" useLOD="false" primitive="3" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/skyscraperF.nvx2" bboxcenter="0.000000,2.040000,0.000000,1.000000" bboxextents="0.620000,2.040000,0.620000,0.000000" />
+        </ShapeNodes>
+    </Model>
+</Nebula>

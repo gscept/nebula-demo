@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Nebula version="4">
+    <Model name="craft/craft_speederA" bboxcenter="0.000000,0.400000,0.000000,1.000000" bboxextents="1.000000,0.400000,1.050000,0.000000">
+        <ShapeNodes>
+            <ShapeNode name="Mesh craft_speederA:0" type="static" path="root/Mesh craft_speederA:0" useLOD="false" primitive="0" position="2.000000,0.000000,1.500000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:craft/craft_speederA.nvx2" bboxcenter="0.000000,0.400000,0.000000,1.000000" bboxextents="1.000000,0.400000,1.050000,0.000000" />
+            <ShapeNode name="Mesh craft_speederA:1" type="static" path="root/Mesh craft_speederA:1" useLOD="false" primitive="1" position="2.000000,0.000000,1.500000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:craft/craft_speederA.nvx2" bboxcenter="0.000000,0.400000,0.000000,1.000000" bboxextents="1.000000,0.400000,1.050000,0.000000" />
+            <ShapeNode name="Mesh craft_speederA:2" type="static" path="root/Mesh craft_speederA:2" useLOD="false" primitive="2" position="2.000000,0.000000,1.500000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:craft/craft_speederA.nvx2" bboxcenter="0.000000,0.400000,0.000000,1.000000" bboxextents="1.000000,0.400000,1.050000,0.000000" />
+            <ShapeNode name="Mesh craft_speederA:3" type="static" path="root/Mesh craft_speederA:3" useLOD="false" primitive="3" position="2.000000,0.000000,1.500000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:craft/craft_speederA.nvx2" bboxcenter="0.000000,0.400000,0.000000,1.000000" bboxextents="1.000000,0.400000,1.050000,0.000000" />
+        </ShapeNodes>
+    </Model>
+</Nebula>

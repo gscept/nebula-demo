@@ -133,14 +133,86 @@ GameStateManager::OnActivate()
     //    Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::rotationyawpitchroll(0.01f, 0.01f, 0.01f) * Math::translation({ 2, 5.0f + ((float)i * 1.01f), 0 }));
     //}
     //
-    //for (size_t i = 0; i < 5; i++)
-    //{
-    //    Game::EntityCreateInfo info;
-    //    info.immediate = true;
-    //    info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
-    //    Game::Entity entity = Game::CreateEntity(info);
-    //    Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::translation({ 0, 0.5f, 0 }));
-    //}
+
+    Graphics::GraphicsEntityId terrain = Graphics::CreateEntity();
+    Terrain::TerrainContext::RegisterEntity(terrain);
+
+    Terrain::TerrainContext::SetupTerrain(terrain,
+        "tex:terrain/dirt_aerial_02_disp_8k_PNG_BC4_1.dds",
+        "tex:system/black.dds",
+        "tex:terrain/dirt_aerial_02_diff_2k.dds");
+
+    Terrain::BiomeSetupSettings biomeSettings =
+    {
+        0.5f, 900.0f, 64.0f
+    };
+    Terrain::TerrainContext::CreateBiome(biomeSettings,
+        {
+            "tex:terrain/brown_mud_leaves_01_diff_2k_PNG_BC7_1.dds",
+            "tex:terrain/brown_mud_leaves_01_nor_2k_PNG_BC5_1.dds",
+            "tex:terrain/brown_mud_leaves_01_material_2k_PNG_BC7_1.dds"
+        },
+        {
+            "tex:terrain/dirt_aerial_02_diff_2k_PNG_BC7_1.dds",
+            "tex:terrain/dirt_aerial_02_nor_2k_PNG_BC5_1.dds",
+            "tex:terrain/dirt_aerial_02_material_2k_PNG_BC7_1.dds"
+        },
+        {
+            "tex:terrain/snow_02_albedo_2k_PNG_BC7_1.dds",
+            "tex:terrain/snow_02_nor_2k_PNG_BC5_1.dds",
+            "tex:terrain/snow_02_material_2k_PNG_BC7_1.dds"
+        },
+        {
+            "tex:terrain/rock_ground_02_albedo_2k_PNG_BC7_1.dds",
+            "tex:terrain/rock_ground_02_nor_2k_PNG_BC5_1.dds",
+            "tex:terrain/rock_ground_02_material_2k_PNG_BC7_1.dds"
+        },
+        "tex:system/white.dds"
+    );
+
+    float xOffset = -200;
+    float zOffset = -200;
+    float yOffset = 510;
+
+    for (size_t i = 0; i < 600; i++)
+    {
+        Game::EntityCreateInfo info;
+        info.immediate = true;
+        info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
+        Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
+        Game::SetProperty(Game::GetWorld(WORLD_DEFAULT), entity, Game::GetPropertyId("WorldTransform"_atm), Math::translation({ 0, yOffset + 0.5f, 0 }));
+    }
+
+    {
+        auto files = IO::IoServer::Instance()->ListFiles("mdl:city", "*", true);
+        
+        int numFiles = files.size();
+        int numWidth = 32;
+
+        auto gameWorld = Game::GetWorld(WORLD_DEFAULT);
+        Game::EntityCreateInfo info;
+        info.immediate = true;
+        info.templateId = Game::GetTemplateId("StaticEnvironment/general"_atm);
+
+        for (int x = 0; x < numWidth; x++)
+        {
+            for (int y = 0; y < numWidth; y++)
+            {
+                uint fileIndex = Util::FastRandom() % (numFiles + 3);
+                if (fileIndex >= numFiles)
+                    continue;
+
+                float rotation = (Util::FastRandom() % 4) * (N_PI / 2.0f);
+                Game::Entity entity = Game::CreateEntity(gameWorld, info);
+                Game::SetProperty<Math::mat4>(gameWorld, entity, Game::WorldTransform::ID(),
+                    Math::scaling(10.0f) *
+                    Math::rotationy(rotation) * 
+                    Math::translation({ xOffset + (float)x * 13.0f, yOffset, zOffset + (float)y * 13.0f })
+                );
+                Game::SetProperty<Util::StringAtom>(gameWorld, entity, GraphicsFeature::ModelResource::ID(), files[fileIndex]);
+            }
+        }
+    }
 
     GraphicsFeature::GraphicsFeatureUnit::Instance()->AddRenderUICallback([]()
     {

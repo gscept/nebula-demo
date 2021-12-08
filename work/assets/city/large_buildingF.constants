@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Nebula version="4">
+    <Model name="city/large_buildingF" bboxcenter="0.000000,0.750000,0.002500,1.000000" bboxextents="1.020000,0.750000,0.422500,0.000000">
+        <ShapeNodes>
+            <ShapeNode name="Mesh large_buildingF:0" type="static" path="root/Mesh large_buildingF:0" useLOD="false" primitive="0" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/large_buildingF.nvx2" bboxcenter="0.000000,0.750000,0.002500,1.000000" bboxextents="1.020000,0.750000,0.422500,0.000000" />
+            <ShapeNode name="Mesh large_buildingF:1" type="static" path="root/Mesh large_buildingF:1" useLOD="false" primitive="1" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/large_buildingF.nvx2" bboxcenter="0.000000,0.750000,0.002500,1.000000" bboxextents="1.020000,0.750000,0.422500,0.000000" />
+            <ShapeNode name="Mesh large_buildingF:2" type="static" path="root/Mesh large_buildingF:2" useLOD="false" primitive="2" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/large_buildingF.nvx2" bboxcenter="0.000000,0.750000,0.002500,1.000000" bboxextents="1.020000,0.750000,0.422500,0.000000" />
+            <ShapeNode name="Mesh large_buildingF:3" type="static" path="root/Mesh large_buildingF:3" useLOD="false" primitive="3" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/large_buildingF.nvx2" bboxcenter="0.000000,0.750000,0.002500,1.000000" bboxextents="1.020000,0.750000,0.422500,0.000000" />
+            <ShapeNode name="Mesh large_buildingF:4" type="static" path="root/Mesh large_buildingF:4" useLOD="false" primitive="4" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/large_buildingF.nvx2" bboxcenter="0.000000,0.750000,0.002500,1.000000" bboxextents="1.020000,0.750000,0.422500,0.000000" />
+        </ShapeNodes>
+    </Model>
+</Nebula>

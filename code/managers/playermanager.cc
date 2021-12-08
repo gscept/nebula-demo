@@ -71,7 +71,7 @@ PlayerManager::OnActivate()
     camera.viewHandle = GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultViewHandle();
     Game::SetProperty<GraphicsFeature::Camera>(world, Singleton->playerEntity, Game::GetPropertyId("Camera"_atm), camera);
 
-    Singleton->freeCamUtil.Setup({0, 2, -3}, {0,0,-1});
+    Singleton->freeCamUtil.Setup({0, 550, -3}, {0,0,-1});
 
     GraphicsFeature::GraphicsFeatureUnit::Instance()->AddRenderUICallback([]()
     {

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Nebula version="4">
+    <Model name="city/skyscraperE" bboxcenter="0.000000,1.575000,0.000000,1.000000" bboxextents="0.620000,1.575000,0.620000,0.000000">
+        <ShapeNodes>
+            <ShapeNode name="Mesh skyscraperE:0" type="static" path="root/Mesh skyscraperE:0" useLOD="false" primitive="0" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/skyscraperE.nvx2" bboxcenter="0.000000,1.575000,0.000000,1.000000" bboxextents="0.620000,1.575000,0.620000,0.000000" />
+            <ShapeNode name="Mesh skyscraperE:1" type="static" path="root/Mesh skyscraperE:1" useLOD="false" primitive="1" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/skyscraperE.nvx2" bboxcenter="0.000000,1.575000,0.000000,1.000000" bboxextents="0.620000,1.575000,0.620000,0.000000" />
+            <ShapeNode name="Mesh skyscraperE:2" type="static" path="root/Mesh skyscraperE:2" useLOD="false" primitive="2" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/skyscraperE.nvx2" bboxcenter="0.000000,1.575000,0.000000,1.000000" bboxextents="0.620000,1.575000,0.620000,0.000000" />
+            <ShapeNode name="Mesh skyscraperE:3" type="static" path="root/Mesh skyscraperE:3" useLOD="false" primitive="3" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/skyscraperE.nvx2" bboxcenter="0.000000,1.575000,0.000000,1.000000" bboxextents="0.620000,1.575000,0.620000,0.000000" />
+            <ShapeNode name="Mesh skyscraperE:4" type="static" path="root/Mesh skyscraperE:4" useLOD="false" primitive="4" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/skyscraperE.nvx2" bboxcenter="0.000000,1.575000,0.000000,1.000000" bboxextents="0.620000,1.575000,0.620000,0.000000" />
+            <ShapeNode name="Mesh skyscraperE:5" type="static" path="root/Mesh skyscraperE:5" useLOD="false" primitive="5" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/skyscraperE.nvx2" bboxcenter="0.000000,1.575000,0.000000,1.000000" bboxextents="0.620000,1.575000,0.620000,0.000000" />
+        </ShapeNodes>
+    </Model>
+</Nebula>
