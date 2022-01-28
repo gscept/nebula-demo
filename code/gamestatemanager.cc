@@ -24,7 +24,6 @@
 #include "coregraphics/legacy/nvx2streamreader.h"
 #include "coregraphics/primitivegroup.h"
 
-#include "materials/materialserver.h"
 #include "graphicsfeature/managers/graphicsmanager.h"
 #include "game/gameserver.h"
 #include "game/api.h"
@@ -88,6 +87,10 @@ GameStateManager::~GameStateManager()
 void
 GameStateManager::OnActivate()
 {
+    float xOffset = -200;
+    float zOffset = -200;
+    float yOffset = 0;
+
     auto dood = Graphics::CreateEntity();
     Graphics::RegisterEntity<Models::ModelContext, Visibility::ObservableContext>(dood);
     Models::ModelContext::Setup(dood, "mdl:system/placeholder.n3", "ExampleScene", [dood]()
@@ -96,12 +99,14 @@ GameStateManager::OnActivate()
     });
     Models::ModelContext::SetTransform(dood, Math::translation(Math::vec3(0, 0, 5)));
 
-    //{
-    //    Game::EntityCreateInfo info;
-    //    info.immediate = false;
-    //    info.templateId = Game::GetTemplateId("StaticGroundPlane/dev_ground_plane"_atm);
-    //    Game::CreateEntity(info);
-    //}
+    {
+        Game::EntityCreateInfo info;
+        info.immediate = true;
+        info.templateId = Game::GetTemplateId("StaticGroundPlane/dev_ground_plane"_atm);
+        Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
+        Game::SetProperty(Game::GetWorld(WORLD_DEFAULT), entity, Game::GetPropertyId("WorldTransform"_atm), Math::translation({ 2, yOffset, 0 }));
+
+    }
     //{
     //    Game::EntityCreateInfo info;
     //    info.immediate = true;
@@ -124,55 +129,51 @@ GameStateManager::OnActivate()
     //    Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 9 }));
     //}
     //
-    //for (int i = 0; i < 5; i++)
-    //{
-    //    Game::EntityCreateInfo info;
-    //    info.immediate = true;
-    //    info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
-    //    Game::Entity entity = Game::CreateEntity(info);
-    //    Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::rotationyawpitchroll(0.01f, 0.01f, 0.01f) * Math::translation({ 2, 5.0f + ((float)i * 1.01f), 0 }));
-    //}
+    for (int i = 0; i < 5; i++)
+    {
+        Game::EntityCreateInfo info;
+        info.immediate = true;
+        info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
+        Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
+        Game::SetProperty(Game::GetWorld(WORLD_DEFAULT), entity, Game::GetPropertyId("WorldTransform"_atm), Math::rotationyawpitchroll(0.01f, 0.01f, 0.01f) * Math::translation({ 2, yOffset + 5.0f + ((float)i * 1.01f), 0 }));
+    }
     //
 
-    Graphics::GraphicsEntityId terrain = Graphics::CreateEntity();
-    Terrain::TerrainContext::RegisterEntity(terrain);
-
-    Terrain::TerrainContext::SetupTerrain(terrain,
-        "tex:terrain/dirt_aerial_02_disp_8k_PNG_BC4_1.dds",
-        "tex:system/black.dds",
-        "tex:terrain/dirt_aerial_02_diff_2k.dds");
-
-    Terrain::BiomeSetupSettings biomeSettings =
-    {
-        0.5f, 900.0f, 64.0f
-    };
-    Terrain::TerrainContext::CreateBiome(biomeSettings,
-        {
-            "tex:terrain/brown_mud_leaves_01_diff_2k_PNG_BC7_1.dds",
-            "tex:terrain/brown_mud_leaves_01_nor_2k_PNG_BC5_1.dds",
-            "tex:terrain/brown_mud_leaves_01_material_2k_PNG_BC7_1.dds"
-        },
-        {
-            "tex:terrain/dirt_aerial_02_diff_2k_PNG_BC7_1.dds",
-            "tex:terrain/dirt_aerial_02_nor_2k_PNG_BC5_1.dds",
-            "tex:terrain/dirt_aerial_02_material_2k_PNG_BC7_1.dds"
-        },
-        {
-            "tex:terrain/snow_02_albedo_2k_PNG_BC7_1.dds",
-            "tex:terrain/snow_02_nor_2k_PNG_BC5_1.dds",
-            "tex:terrain/snow_02_material_2k_PNG_BC7_1.dds"
-        },
-        {
-            "tex:terrain/rock_ground_02_albedo_2k_PNG_BC7_1.dds",
-            "tex:terrain/rock_ground_02_nor_2k_PNG_BC5_1.dds",
-            "tex:terrain/rock_ground_02_material_2k_PNG_BC7_1.dds"
-        },
-        "tex:system/white.dds"
-    );
-
-    float xOffset = -200;
-    float zOffset = -200;
-    float yOffset = 510;
+    //Graphics::GraphicsEntityId terrain = Graphics::CreateEntity();
+    //Terrain::TerrainContext::RegisterEntity(terrain);
+    //
+    //Terrain::TerrainContext::SetupTerrain(terrain,
+    //    "tex:terrain/dirt_aerial_02_disp_8k_PNG_BC4_1.dds",
+    //    "tex:system/black.dds",
+    //    "tex:terrain/dirt_aerial_02_diff_2k.dds");
+    //
+    //Terrain::BiomeSetupSettings biomeSettings =
+    //{
+    //    0.5f, 900.0f, 64.0f
+    //};
+    //Terrain::TerrainContext::CreateBiome(biomeSettings,
+    //    {
+    //        "tex:terrain/brown_mud_leaves_01_diff_2k_PNG_BC7_1.dds",
+    //        "tex:terrain/brown_mud_leaves_01_nor_2k_PNG_BC5_1.dds",
+    //        "tex:terrain/brown_mud_leaves_01_material_2k_PNG_BC7_1.dds"
+    //    },
+    //    {
+    //        "tex:terrain/dirt_aerial_02_diff_2k_PNG_BC7_1.dds",
+    //        "tex:terrain/dirt_aerial_02_nor_2k_PNG_BC5_1.dds",
+    //        "tex:terrain/dirt_aerial_02_material_2k_PNG_BC7_1.dds"
+    //    },
+    //    {
+    //        "tex:terrain/snow_02_albedo_2k_PNG_BC7_1.dds",
+    //        "tex:terrain/snow_02_nor_2k_PNG_BC5_1.dds",
+    //        "tex:terrain/snow_02_material_2k_PNG_BC7_1.dds"
+    //    },
+    //    {
+    //        "tex:terrain/rock_ground_02_albedo_2k_PNG_BC7_1.dds",
+    //        "tex:terrain/rock_ground_02_nor_2k_PNG_BC5_1.dds",
+    //        "tex:terrain/rock_ground_02_material_2k_PNG_BC7_1.dds"
+    //    },
+    //    "tex:system/white.dds"
+    //);
 
     for (size_t i = 0; i < 600; i++)
     {
@@ -220,6 +221,8 @@ GameStateManager::OnActivate()
     });
 }
 
+Util::Queue<Game::Entity> entities;
+
 //------------------------------------------------------------------------------
 /**
 */
@@ -231,27 +234,30 @@ GameStateManager::OnBeginFrame()
         Core::SysFunc::Exit(0);
     }
 
-    //static Game::Entity entities[4024];
-    //static int frameIndex = 0;
-    //if (frameIndex % 4 == 0)
-    //{
-    //    for (size_t i = 0; i < 4024; i++)
-    //    {
-    //        Game::EntityCreateInfo info;
-    //        info.immediate = true;
-    //        info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
-    //        entities[i] = Game::CreateEntity(info);
-    //        Game::SetProperty(entities[i], Game::GetPropertyId("WorldTransform"_atm), Math::translation({ 0, 0.5f, 0 }));
-    //    }
-    //}
-    //else if (frameIndex % 2 == 0)
-    //{
-    //    for (size_t i = 0; i < 4024; i++)
-    //    {
-    //        Game::DeleteEntity(entities[i]);
-    //    }
-    //}
-    //frameIndex++;
+    if (Input::InputServer::Instance()->GetDefaultMouse()->ButtonPressed(Input::MouseButton::Code::LeftButton))
+    {
+        Math::mat4 camTransform = GraphicsFeature::CameraManager::GetLocalTransform(GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultViewHandle());
+        Math::mat4 invView = Math::inverse(camTransform);
+        for (int i = 0; i < 20; i++)
+        {
+            Game::EntityCreateInfo info;
+            info.immediate = true;
+            info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
+            Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
+            entities.Enqueue(entity);
+            Game::SetProperty<Math::mat4>(Game::GetWorld(WORLD_DEFAULT), entity, Game::WorldTransform::ID(), Math::translation((invView.position - (invView.z_axis * 3.0f)).vec));
+        }
+    }
+
+    static int frameIndex = 0;
+    if (frameIndex % 10 == 0)
+    {
+        while (entities.Size() > 500)
+        {
+            Game::DeleteEntity(Game::GetWorld(WORLD_DEFAULT), entities.Dequeue());
+        }
+    }
+    frameIndex++;
 }
 
 //------------------------------------------------------------------------------

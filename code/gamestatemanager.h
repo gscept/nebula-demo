@@ -9,8 +9,6 @@
 #include "core/refcounted.h"
 #include "core/singleton.h"
 #include "game/manager.h"
-#include "coregraphics/mesh.h"
-#include "coregraphics/memorymeshpool.h"
 #include "renderutil/mouserayutil.h"
 #include "input/keyboard.h"
 #include "input/mouse.h"
