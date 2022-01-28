@@ -10,7 +10,7 @@
             "GNYRF": 2
         }
     },
-    "properties": {
+    "components": {
         "Movement": {
             "direction": "vec3",
             "speed": {

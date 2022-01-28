@@ -1,6 +1,6 @@
 {
     "namespace": "Demo",
-    "properties": {
+    "components": {
         "PlayerInput": {
             "hasFocus": {
                 "_type_": "bool",

@@ -84,8 +84,8 @@ HandlePlayerInput()
 {
     //Game::FilterSet playerfilter(
     //    {
-    //        Game::GetPropertyId("Owner"_atm),
-    //        Game::GetPropertyId("PlayerInput"_atm)
+    //        Game::GetComponentId("Owner"_atm),
+    //        Game::GetComponentId("PlayerInput"_atm)
     //    }
     //);
     //

@@ -66,10 +66,10 @@ PlayerManager::OnActivate()
     playerCreateInfo.immediate = true;
     Singleton->playerEntity = Game::CreateEntity(world, playerCreateInfo);
 
-    GraphicsFeature::Camera camera = Game::GetProperty<GraphicsFeature::Camera>(world, Singleton->playerEntity, Game::GetPropertyId("Camera"_atm));
+    GraphicsFeature::Camera camera = Game::GetComponent<GraphicsFeature::Camera>(world, Singleton->playerEntity, Game::GetComponentId("Camera"_atm));
     camera.aspectRatio = (float)width / (float)height;
     camera.viewHandle = GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultViewHandle();
-    Game::SetProperty<GraphicsFeature::Camera>(world, Singleton->playerEntity, Game::GetPropertyId("Camera"_atm), camera);
+    Game::SetComponent<GraphicsFeature::Camera>(world, Singleton->playerEntity, Game::GetComponentId("Camera"_atm), camera);
 
     Singleton->freeCamUtil.Setup({0, 550, -3}, {0,0,-1});
 
@@ -115,9 +115,9 @@ PlayerManager::OnBeginFrame()
 
     Game::World* world = Game::GetWorld(WORLD_DEFAULT);
 
-    //Math::mat4 worldTransform = Game::GetProperty(Singleton->playerEntity, Game::GetPropertyId("WorldTransform"_atm));
+    //Math::mat4 worldTransform = Game::GetComponent(Singleton->playerEntity, Game::GetComponentId("WorldTransform"_atm));
     if (Game::IsValid(world, Singleton->playerEntity))
-        Game::SetProperty<Math::mat4>(world, Singleton->playerEntity, Game::GetPropertyId("WorldTransform"_atm), Math::inverse(Singleton->freeCamUtil.GetTransform()));
+        Game::SetComponent<Math::mat4>(world, Singleton->playerEntity, Game::GetComponentId("WorldTransform"_atm), Math::inverse(Singleton->freeCamUtil.GetTransform()));
 }
 
 //------------------------------------------------------------------------------

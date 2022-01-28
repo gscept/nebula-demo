@@ -104,7 +104,7 @@ GameStateManager::OnActivate()
         info.immediate = true;
         info.templateId = Game::GetTemplateId("StaticGroundPlane/dev_ground_plane"_atm);
         Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
-        Game::SetProperty(Game::GetWorld(WORLD_DEFAULT), entity, Game::GetPropertyId("WorldTransform"_atm), Math::translation({ 2, yOffset, 0 }));
+        Game::SetComponent(Game::GetWorld(WORLD_DEFAULT), entity, Game::GetComponentId("WorldTransform"_atm), Math::translation({ 2, yOffset, 0 }));
 
     }
     //{
@@ -112,21 +112,21 @@ GameStateManager::OnActivate()
     //    info.immediate = true;
     //    info.templateId = Game::GetTemplateId("StaticEnvironment/knob_metallic"_atm);
     //    Game::Entity entity = Game::CreateEntity(info);
-    //    Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 5 }));
+    //    Game::SetComponent(entity, Game::GetComponentId("WorldTransform"_atm), Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 5 }));
     //}
     //{
     //    Game::EntityCreateInfo info;
     //    info.immediate = true;
     //    info.templateId = Game::GetTemplateId("StaticEnvironment/knob_plastic"_atm);
     //    Game::Entity entity = Game::CreateEntity(info);
-    //    Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 7 }));
+    //    Game::SetComponent(entity, Game::GetComponentId("WorldTransform"_atm), Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 7 }));
     //}
     //{
     //    Game::EntityCreateInfo info;
     //    info.immediate = true;
     //    info.templateId = Game::GetTemplateId("StaticEnvironment/knob_reflective"_atm);
     //    Game::Entity entity = Game::CreateEntity(info);
-    //    Game::SetProperty(entity, Game::GetPropertyId("WorldTransform"_atm), Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 9 }));
+    //    Game::SetComponent(entity, Game::GetComponentId("WorldTransform"_atm), Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 9 }));
     //}
     //
     for (int i = 0; i < 5; i++)
@@ -135,7 +135,7 @@ GameStateManager::OnActivate()
         info.immediate = true;
         info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
         Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
-        Game::SetProperty(Game::GetWorld(WORLD_DEFAULT), entity, Game::GetPropertyId("WorldTransform"_atm), Math::rotationyawpitchroll(0.01f, 0.01f, 0.01f) * Math::translation({ 2, yOffset + 5.0f + ((float)i * 1.01f), 0 }));
+        Game::SetComponent(Game::GetWorld(WORLD_DEFAULT), entity, Game::GetComponentId("WorldTransform"_atm), Math::rotationyawpitchroll(0.01f, 0.01f, 0.01f) * Math::translation({ 2, yOffset + 5.0f + ((float)i * 1.01f), 0 }));
     }
     //
 
@@ -181,7 +181,7 @@ GameStateManager::OnActivate()
         info.immediate = true;
         info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
         Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
-        Game::SetProperty(Game::GetWorld(WORLD_DEFAULT), entity, Game::GetPropertyId("WorldTransform"_atm), Math::translation({ 0, yOffset + 0.5f, 0 }));
+        Game::SetComponent(Game::GetWorld(WORLD_DEFAULT), entity, Game::GetComponentId("WorldTransform"_atm), Math::translation({ 0, yOffset + 0.5f, 0 }));
     }
 
     {
@@ -205,12 +205,12 @@ GameStateManager::OnActivate()
 
                 float rotation = (Util::FastRandom() % 4) * (N_PI / 2.0f);
                 Game::Entity entity = Game::CreateEntity(gameWorld, info);
-                Game::SetProperty<Math::mat4>(gameWorld, entity, Game::WorldTransform::ID(),
+                Game::SetComponent<Math::mat4>(gameWorld, entity, Game::WorldTransform::ID(),
                     Math::scaling(10.0f) *
                     Math::rotationy(rotation) * 
                     Math::translation({ xOffset + (float)x * 13.0f, yOffset, zOffset + (float)y * 13.0f })
                 );
-                Game::SetProperty<Util::StringAtom>(gameWorld, entity, GraphicsFeature::ModelResource::ID(), files[fileIndex]);
+                Game::SetComponent<Util::StringAtom>(gameWorld, entity, GraphicsFeature::ModelResource::ID(), files[fileIndex]);
             }
         }
     }
@@ -245,7 +245,7 @@ GameStateManager::OnBeginFrame()
             info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
             Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
             entities.Enqueue(entity);
-            Game::SetProperty<Math::mat4>(Game::GetWorld(WORLD_DEFAULT), entity, Game::WorldTransform::ID(), Math::translation((invView.position - (invView.z_axis * 3.0f)).vec));
+            Game::SetComponent<Math::mat4>(Game::GetWorld(WORLD_DEFAULT), entity, Game::WorldTransform::ID(), Math::translation((invView.position - (invView.z_axis * 3.0f)).vec));
         }
     }
 

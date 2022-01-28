@@ -1,6 +1,6 @@
 {
     "blueprint": "StaticEnvironment",
-    "properties": {
+    "components": {
         "ModelResource": "mdl:dev/knob_reflective.n3"
     }
 }

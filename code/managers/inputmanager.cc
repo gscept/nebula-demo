@@ -58,7 +58,7 @@ ProcessPlayerInput()
 
     //Game::FilterSet filter(
     //    {
-    //        Game::GetPropertyId("PlayerInput"_atm)
+    //        Game::GetComponentId("PlayerInput"_atm)
     //    },
     //    {
     //        // no excludes
