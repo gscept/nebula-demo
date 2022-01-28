@@ -8,7 +8,7 @@
 #include "graphics/graphicsentity.h"
 #include "visibility/visibilitycontext.h"
 #include "graphicsfeature/graphicsfeatureunit.h"
-#include "basegamefeature/properties/transform.h"
+#include "basegamefeature/components/transform.h"
 #include "input/inputserver.h"
 #include "input/keyboard.h"
 #include "dynui/im3d/im3dcontext.h"

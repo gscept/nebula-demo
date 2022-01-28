@@ -13,7 +13,7 @@
 #include "util/random.h"
 #include "basegamefeature/managers/timemanager.h"
 #include "game/api.h"
-#include "basegamefeature/properties/transform.h"
+#include "basegamefeature/components/transform.h"
 
 namespace Demo
 {
