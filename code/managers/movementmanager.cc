@@ -30,7 +30,7 @@ MovementManager::Create()
     Singleton = n_new(MovementManager);
 
     Game::TimeSource const* const time = Game::TimeManager::GetTimeSource(TIMESOURCE_GAMEPLAY);
-    std::function WanderMovementUpdate = [time](Game::WorldTransform& t, Movement& move) -> void
+    std::function WanderMovementUpdate = [time](Game::World* world, Game::WorldTransform& t, Movement& move) -> void
     {
         //Add a small random vector to the targets position.
         float const x = move.wanderJitter * (Util::RandomFloatNTP() * move.wanderRadius);
@@ -39,7 +39,11 @@ MovementManager::Create()
         move.direction = Math::normalize((move.direction + Math::normalize((wanderCircle + (Math::normalize(move.direction * move.wanderDistance))))));
         t.value.position += (move.direction * move.speed * time->frameTime).vec;
     };
-    Game::RegisterUpdateFunction(Game::GetWorld(WORLD_DEFAULT), "MovementManager.WanderUpdateMovement"_atm, WanderMovementUpdate);
+
+    Game::ProcessorBuilder("MovementManager.WanderUpdateMovement")
+        .Func(WanderMovementUpdate)
+        .On("OnBeginFrame")
+        .Build();
 
     Game::ManagerAPI api;
     api.OnActivate = &MovementManager::OnActivate;
