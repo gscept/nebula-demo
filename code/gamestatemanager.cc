@@ -46,7 +46,7 @@ Game::ManagerAPI
 GameStateManager::Create()
 {
     n_assert(!GameStateManager::HasInstance());
-    Singleton = n_new(GameStateManager);
+    Singleton = new GameStateManager;
 
     Game::ManagerAPI api;
     api.OnActivate = &GameStateManager::OnActivate;
@@ -62,7 +62,7 @@ void
 GameStateManager::Destroy()
 {
     n_assert(GameStateManager::HasInstance());
-    n_delete(Singleton);
+    delete Singleton;
 }
 
 //------------------------------------------------------------------------------
@@ -187,7 +187,7 @@ GameStateManager::OnActivate()
     {
         auto files = IO::IoServer::Instance()->ListFiles("mdl:city", "*", true);
         
-        int numFiles = files.size();
+        int numFiles = (int)files.size();
         int numWidth = 32;
 
         auto gameWorld = Game::GetWorld(WORLD_DEFAULT);

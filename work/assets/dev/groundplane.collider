@@ -1,9 +1,0 @@
-{
-    type: "Cube",
-    data_type: "BoxCollider",
-    data: {
-        box: {
-            extents: [1000.0,0.5,1000.0]
-        }
-    }
-}

@@ -1,9 +1,16 @@
 {
     "feedback": 0,
     "shapes" : [
-        {   "collider" : "phys:dev/groundplane.collider",
+        {   
+            "collider" : {
+                name: "Box",
+                type: "Cube",
+                data_type: "BoxCollider",
+                data: { extents: [1000.0,0.5,1000.0] }
+            },
             "material" : "default",
-            "transform" : { mat4: [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1] }
+            "transform" : 
+                { mat4: [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1] }
         }
      ]
 }

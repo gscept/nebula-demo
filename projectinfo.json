@@ -3,21 +3,17 @@
       [
          {
          "Name":           "ProjectName",
-         "Value":          "nebula-demo"
-         },     
+         "Value":          "Nebula Demos"
+         }
       ],
       "IntermediateDir":   "proj:intermediate",
       "DestDir":           "proj:export",
       "AssetSources" :
       [
          {
-         "Name":           "System",
-         "Value":          "toolkit:work"
-         },
-         {
          "Name":           "Project",
          "Value":          "proj:work"
-         },
+         }
       ],
       "TextureDestDir":    "DestDir:textures",
       "TextureAttrTable":  "IntermediateDir:TextureAttrs",
@@ -26,40 +22,32 @@
       "AudioSources":
       [
          {
-         "Name":           "System",
-         "Value":          "toolkit:work/audio"
-         },
-         {
          "Name":           "Project",
          "Value":          "proj:work/audio"
-         },
+         }
       ],
       "ShaderLanguage":    "SPIRV",
       "ShaderDest":        "DestDir:shaders",
       "ShaderSources" :
       [
          {
-            "Name":        "System",
-            "Value":       "toolkit:work/shaders/vk"
-         },
-         {
             "Name":        "Project",
-            "Value":       "proj:work/shaders/vk" 
+            "Value":       "proj:work/shaders/vk"
          }
 
       ],
       "FrameShaderSources": 
       [
          {
-            "Name":        "System",
-            "Value":       "toolkit:work/frame/win32"
+            "Name":        "Project",
+            "Value":       "proj:work/frame/win32"
          }
       ],
       "MaterialSources":
       [
          {
-            "Name":        "System",
-            "Value":       "toolkit:work/materials"
+            "Name":        "Project",
+            "Value":       "proj:work/materials"
          }
-      ],   
+      ],
 }

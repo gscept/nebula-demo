@@ -26,7 +26,7 @@ Game::ManagerAPI
 PlayerManager::Create()
 {
     n_assert(!PlayerManager::HasInstance());
-    Singleton = n_new(PlayerManager);
+    Singleton = new PlayerManager;
 
     Game::ManagerAPI api;
     api.OnActivate = &PlayerManager::OnActivate;
@@ -42,7 +42,7 @@ void
 PlayerManager::Destroy()
 {
     n_assert(PlayerManager::HasInstance());
-    n_delete(Singleton);
+    delete Singleton;
 }
 
 //------------------------------------------------------------------------------

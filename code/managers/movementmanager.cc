@@ -27,7 +27,7 @@ Game::ManagerAPI
 MovementManager::Create()
 {
     n_assert(!MovementManager::HasInstance());
-    Singleton = n_new(MovementManager);
+    Singleton = new MovementManager;
 
     Game::TimeSource const* const time = Game::TimeManager::GetTimeSource(TIMESOURCE_GAMEPLAY);
     std::function WanderMovementUpdate = [time](Game::World* world, Game::WorldTransform& t, Movement& move) -> void
@@ -59,7 +59,7 @@ void
 MovementManager::Destroy()
 {
     n_assert(MovementManager::HasInstance());
-    n_delete(Singleton);
+    delete Singleton;
 }
 
 //------------------------------------------------------------------------------

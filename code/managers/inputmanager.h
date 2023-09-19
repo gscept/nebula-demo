@@ -31,8 +31,6 @@ private:
 
 	/// called when attached to game server.
 	static void OnActivate();
-    /// called once before every rendered frame
-	static void OnBeginFrame();
 };
 
 } // namespace Demo

@@ -2,5 +2,3 @@
 imports:
       nebula:
          git: https://github.com/gscept/nebula.git
-      nebula-toolkit:
-         git: https://github.com/gscept/nebula-toolkit.git
