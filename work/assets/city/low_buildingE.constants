@@ -2,8 +2,8 @@
 <Nebula version="4">
     <Model name="city/low_buildingE" bboxcenter="0.000000,1.000000,0.000000,1.000000" bboxextents="0.250000,1.000000,0.250000,0.000000">
         <ShapeNodes>
-            <ShapeNode name="Mesh low_buildingE:0" type="static" path="root/Mesh low_buildingE:0" useLOD="false" primitive="0" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/low_buildingE.nvx2" bboxcenter="0.000000,1.000000,0.000000,1.000000" bboxextents="0.250000,1.000000,0.250000,0.000000" />
-            <ShapeNode name="Mesh low_buildingE:1" type="static" path="root/Mesh low_buildingE:1" useLOD="false" primitive="1" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" mesh="msh:city/low_buildingE.nvx2" bboxcenter="0.000000,1.000000,0.000000,1.000000" bboxextents="0.250000,1.000000,0.250000,0.000000" />
+            <ShapeNode name="low_buildingE:0" path="root/low_buildingE:0" useLOD="false" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" bboxcenter="0.000000,1.000000,0.000000,1.000000" bboxextents="0.250000,1.000000,0.250000,0.000000" mesh="msh:city/low_buildingE.nvx" mid="0" primitive="0" />
+            <ShapeNode name="low_buildingE:1" path="root/low_buildingE:1" useLOD="false" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" bboxcenter="0.000000,1.000000,0.000000,1.000000" bboxextents="0.250000,1.000000,0.250000,0.000000" mesh="msh:city/low_buildingE.nvx" mid="0" primitive="1" />
         </ShapeNodes>
     </Model>
 </Nebula>

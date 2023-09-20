@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Nebula version="1">
-    <Options exportFlags="0" exportMode="0" scale="1.000000" />
+    <Options exportFlags="0" scale="1.000000" />
     <States>
         <ModelNode name="root/Mesh craft_speederA:0" material="sur:craft/craft_speederA_glb/metal" />
         <ModelNode name="root/Mesh craft_speederA:1" material="sur:craft/craft_speederA_glb/metalRed" />
         <ModelNode name="root/Mesh craft_speederA:2" material="sur:craft/craft_speederA_glb/dark" />
         <ModelNode name="root/Mesh craft_speederA:3" material="sur:craft/craft_speederA_glb/metalDark" />
+        <ModelNode name="root/craft_speederA:0" material="sur:craft/craft_speederA/metal.sur" />
+        <ModelNode name="root/craft_speederA:1" material="sur:craft/craft_speederA/metalRed.sur" />
+        <ModelNode name="root/craft_speederA:2" material="sur:craft/craft_speederA/dark.sur" />
+        <ModelNode name="root/craft_speederA:3" material="sur:craft/craft_speederA/metalDark.sur" />
     </States>
 </Nebula>

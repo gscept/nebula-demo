@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Nebula version="1">
-    <Options exportFlags="0" exportMode="0" scale="1.000000" />
+    <Options exportFlags="0" scale="1.000000" />
     <States>
         <ModelNode name="root/Mesh skyscraperD:0" material="sur:city/skyscraperD_glb/border" />
         <ModelNode name="root/Mesh skyscraperD:1" material="sur:city/skyscraperD_glb/trim" />
@@ -8,5 +8,11 @@
         <ModelNode name="root/Mesh skyscraperD:3" material="sur:city/skyscraperD_glb/window" />
         <ModelNode name="root/Mesh skyscraperD:4" material="sur:city/skyscraperD_glb/_defaultMat" />
         <ModelNode name="root/Mesh skyscraperD:5" material="sur:city/skyscraperD_glb/roof" />
+        <ModelNode name="root/skyscraperD:0" material="sur:city/skyscraperD/border.sur" />
+        <ModelNode name="root/skyscraperD:1" material="sur:city/skyscraperD/trim.sur" />
+        <ModelNode name="root/skyscraperD:2" material="sur:city/skyscraperD/door.sur" />
+        <ModelNode name="root/skyscraperD:3" material="sur:city/skyscraperD/window.sur" />
+        <ModelNode name="root/skyscraperD:4" material="sur:city/skyscraperD/_defaultMat.sur" />
+        <ModelNode name="root/skyscraperD:5" material="sur:city/skyscraperD/roof.sur" />
     </States>
 </Nebula>

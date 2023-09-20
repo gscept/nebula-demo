@@ -1,6 +1,6 @@
 {
     "blueprint": "MovingEntity",
     "components": {
-        "ModelResource": "mdl:system/placeholder.n3"
+        "ModelResource": "mdl:craft/craft_speederA.n3"
     }
 }

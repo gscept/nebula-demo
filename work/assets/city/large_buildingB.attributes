@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Nebula version="1">
-    <Options exportFlags="0" exportMode="0" scale="1.000000" />
+    <Options exportFlags="0" scale="1.000000" />
     <States>
         <ModelNode name="root/Mesh large_buildingB:0" material="sur:city/large_buildingB_glb/border" />
         <ModelNode name="root/Mesh large_buildingB:1" material="sur:city/large_buildingB_glb/door" />
         <ModelNode name="root/Mesh large_buildingB:2" material="sur:city/large_buildingB_glb/window" />
         <ModelNode name="root/Mesh large_buildingB:3" material="sur:city/large_buildingB_glb/roof" />
         <ModelNode name="root/Mesh large_buildingB:4" material="sur:city/large_buildingB_glb/_defaultMat" />
+        <ModelNode name="root/large_buildingB:0" material="sur:city/large_buildingB/border.sur" />
+        <ModelNode name="root/large_buildingB:1" material="sur:city/large_buildingB/door.sur" />
+        <ModelNode name="root/large_buildingB:2" material="sur:city/large_buildingB/window.sur" />
+        <ModelNode name="root/large_buildingB:3" material="sur:city/large_buildingB/roof.sur" />
+        <ModelNode name="root/large_buildingB:4" material="sur:city/large_buildingB/_defaultMat.sur" />
     </States>
 </Nebula>

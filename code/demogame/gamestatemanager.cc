@@ -9,6 +9,7 @@
 #include "visibility/visibilitycontext.h"
 #include "graphicsfeature/graphicsfeatureunit.h"
 #include "basegamefeature/components/transform.h"
+#include "physicsfeature/components/physics.h"
 #include "input/inputserver.h"
 #include "input/keyboard.h"
 #include "dynui/im3d/im3dcontext.h"
@@ -129,14 +130,18 @@ GameStateManager::OnActivate()
     //    Game::SetComponent(entity, Game::GetComponentId("WorldTransform"_atm), Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 9 }));
     //}
     //
-    for (int i = 0; i < 5; i++)
+    auto gameWorld = Game::GetWorld(WORLD_DEFAULT);
+    for (int i = 0; i < 500; i++)
     {
         Game::EntityCreateInfo info;
         info.immediate = true;
         info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
         Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
-        Game::SetComponent(Game::GetWorld(WORLD_DEFAULT), entity, Game::GetComponentId("WorldTransform"_atm), Math::rotationyawpitchroll(0.01f, 0.01f, 0.01f) * Math::translation({ 2, yOffset + 5.0f + ((float)i * 1.01f), 0 }));
+        Game::SetComponent(gameWorld, entity, Game::GetComponentId("WorldTransform"_atm), Math::rotationyawpitchroll(0.01f, 0.01f, 0.01f) * Math::translation({ (Math::rand() - 0.5f) * 20.0f, yOffset + 5.0f + ((float)i * 1.01f), (Math::rand() - 0.5f) * 20.0f}));
+        Game::SetComponent<Util::StringAtom>(gameWorld, entity, GraphicsFeature::ModelResource::ID(), "mdl:craft/craft_speederA.n3");
+        Game::SetComponent<Util::StringAtom>(gameWorld, entity, PhysicsFeature::PhysicsResource::ID(), "phys:craft/craft_speederA.actor");
     }
+   
     //
 
     //Graphics::GraphicsEntityId terrain = Graphics::CreateEntity();
@@ -174,16 +179,17 @@ GameStateManager::OnActivate()
     //    },
     //    "tex:system/white.dds"
     //);
-
-    for (size_t i = 0; i < 600; i++)
+    
+    for (size_t i = 0; i < 1200; i++)
     {
         Game::EntityCreateInfo info;
         info.immediate = true;
         info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
         Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
-        Game::SetComponent(Game::GetWorld(WORLD_DEFAULT), entity, Game::GetComponentId("WorldTransform"_atm), Math::translation({ 0, yOffset + 0.5f, 0 }));
+        Game::SetComponent(Game::GetWorld(WORLD_DEFAULT), entity, Game::GetComponentId("WorldTransform"_atm), Math::translation({ (Math::rand() - 0.5f) * 30.0f, yOffset + 0.5f, (Math::rand() - 0.5f) * 30.0f }));
+        Game::SetComponent<Util::StringAtom>(gameWorld, entity, GraphicsFeature::ModelResource::ID(), "mdl:craft/craft_speederA.n3");
     }
-
+    
     {
         auto files = IO::IoServer::Instance()->ListFiles("mdl:city", "*", true);
         
@@ -211,6 +217,7 @@ GameStateManager::OnActivate()
                     Math::translation({ xOffset + (float)x * 13.0f, yOffset, zOffset + (float)y * 13.0f })
                 );
                 Game::SetComponent<Util::StringAtom>(gameWorld, entity, GraphicsFeature::ModelResource::ID(), files[fileIndex]);
+                Game::SetComponent<Util::StringAtom>(gameWorld, entity, PhysicsFeature::PhysicsResource::ID(), "mdl:");
             }
         }
     }

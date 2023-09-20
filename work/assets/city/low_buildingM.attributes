@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Nebula version="1">
-    <Options exportFlags="0" exportMode="0" scale="1.000000" />
+    <Options exportFlags="0" scale="1.000000" />
     <States>
         <ModelNode name="root/Mesh low_buildingM:0" material="sur:city/low_buildingM_glb/_defaultMat" />
         <ModelNode name="root/Mesh low_buildingM:1" material="sur:city/low_buildingM_glb/border" />
+        <ModelNode name="root/low_buildingM:0" material="sur:city/low_buildingM/_defaultMat.sur" />
+        <ModelNode name="root/low_buildingM:1" material="sur:city/low_buildingM/border.sur" />
     </States>
 </Nebula>

@@ -12,7 +12,8 @@
             "components": [
                 "Static",
                 "WorldTransform",
-                "ModelResource"
+                "ModelResource",
+                "PhysicsResource"
             ]
         },
         "StaticGroundPlane": {
