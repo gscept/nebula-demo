@@ -15,6 +15,8 @@
 #include "game/api.h"
 #include "basegamefeature/components/transform.h"
 
+#include "physicsfeature/components/physics.h"
+
 namespace Demo
 {
 
@@ -30,7 +32,7 @@ MovementManager::Create()
     Singleton = new MovementManager;
 
     Game::TimeSource const* const time = Game::TimeManager::GetTimeSource(TIMESOURCE_GAMEPLAY);
-    std::function WanderMovementUpdate = [time](Game::World* world, Game::WorldTransform& t, Movement& move) -> void
+    std::function WanderMovementUpdate = [time](Game::World* world, Game::WorldTransform& t, Movement& move, PhysicsFeature::PhysicsType&f) -> void
     {
         //Add a small random vector to the targets position.
         float const x = move.wanderJitter * (Util::RandomFloatNTP() * move.wanderRadius);

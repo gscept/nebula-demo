@@ -3,6 +3,7 @@
     "components": {
         "WorldTransform": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
         "ModelResource":  "mdl:craft/craft_speederA.n3",
-        "PhysicsResource": "phys:craft/craft_speederA.actor"
+        "PhysicsResource": "phys:craft/craft_speederA.actor",
+        "PhysicsType":  "Dynamic"
     }
 }

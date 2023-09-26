@@ -131,15 +131,13 @@ GameStateManager::OnActivate()
     //}
     //
     auto gameWorld = Game::GetWorld(WORLD_DEFAULT);
-    for (int i = 0; i < 500; i++)
+    for (int i = 0; i < 00; i++)
     {
         Game::EntityCreateInfo info;
         info.immediate = true;
         info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
         Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
         Game::SetComponent(gameWorld, entity, Game::GetComponentId("WorldTransform"_atm), Math::rotationyawpitchroll(0.01f, 0.01f, 0.01f) * Math::translation({ (Math::rand() - 0.5f) * 20.0f, yOffset + 5.0f + ((float)i * 1.01f), (Math::rand() - 0.5f) * 20.0f}));
-        Game::SetComponent<Util::StringAtom>(gameWorld, entity, GraphicsFeature::ModelResource::ID(), "mdl:craft/craft_speederA.n3");
-        Game::SetComponent<Util::StringAtom>(gameWorld, entity, PhysicsFeature::PhysicsResource::ID(), "phys:craft/craft_speederA.actor");
     }
    
     //
@@ -180,14 +178,13 @@ GameStateManager::OnActivate()
     //    "tex:system/white.dds"
     //);
     
-    for (size_t i = 0; i < 1200; i++)
+    for (size_t i = 0; i < 120; i++)
     {
         Game::EntityCreateInfo info;
         info.immediate = true;
         info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
         Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
         Game::SetComponent(Game::GetWorld(WORLD_DEFAULT), entity, Game::GetComponentId("WorldTransform"_atm), Math::translation({ (Math::rand() - 0.5f) * 30.0f, yOffset + 0.5f, (Math::rand() - 0.5f) * 30.0f }));
-        Game::SetComponent<Util::StringAtom>(gameWorld, entity, GraphicsFeature::ModelResource::ID(), "mdl:craft/craft_speederA.n3");
     }
     
     {
@@ -217,7 +214,6 @@ GameStateManager::OnActivate()
                     Math::translation({ xOffset + (float)x * 13.0f, yOffset, zOffset + (float)y * 13.0f })
                 );
                 Game::SetComponent<Util::StringAtom>(gameWorld, entity, GraphicsFeature::ModelResource::ID(), files[fileIndex]);
-                Game::SetComponent<Util::StringAtom>(gameWorld, entity, PhysicsFeature::PhysicsResource::ID(), "mdl:");
             }
         }
     }
@@ -244,15 +240,14 @@ GameStateManager::OnBeginFrame()
     if (Input::InputServer::Instance()->GetDefaultMouse()->ButtonPressed(Input::MouseButton::Code::LeftButton))
     {
         Math::mat4 camTransform = GraphicsFeature::CameraManager::GetLocalTransform(GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultViewHandle());
-        Math::mat4 invView = Math::inverse(camTransform);
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 2; i++)
         {
             Game::EntityCreateInfo info;
             info.immediate = true;
             info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
             Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
             entities.Enqueue(entity);
-            Game::SetComponent<Math::mat4>(Game::GetWorld(WORLD_DEFAULT), entity, Game::WorldTransform::ID(), Math::translation((invView.position - (invView.z_axis * 3.0f)).vec));
+            Game::SetComponent<Math::mat4>(Game::GetWorld(WORLD_DEFAULT), entity, Game::WorldTransform::ID(), Math::translation((camTransform.position - (camTransform.z_axis * 3.0f)).vec));
         }
     }
 

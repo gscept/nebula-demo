@@ -4,6 +4,7 @@
             "desc": "First person player",
             "components": [
                 "WorldTransform",
+                "PlayerInput",
                 "Camera"
             ]
         },
@@ -30,7 +31,8 @@
             "components": [
                 "WorldTransform",
                 "ModelResource",
-                "PhysicsResource"
+                "PhysicsResource",
+                "PhysicsType"
             ]
         },
         "MovingEntity": {
@@ -38,7 +40,9 @@
             "components": [
                 "WorldTransform",
                 "ModelResource",
-                "Movement"
+                "Movement",
+                "PhysicsResource",
+                "PhysicsType"
             ]
         }
     }

@@ -1,6 +1,8 @@
 {
     "blueprint": "StaticEnvironment",
     "components": {
-        "ModelResource": "mdl:system/placeholder.n3"
+        "ModelResource": "mdl:system/placeholder.n3",
+        "PhysicsResource":  "mdl:",
+        "PhysicsType":  "Static"
     }
 }
