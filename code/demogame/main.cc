@@ -68,6 +68,7 @@ private:
         this->scriptserver = nullptr;
 
 #ifdef NEBULA_EDITOR_ENABLED
+        this->gameServer->RemoveGameFeature(this->editorFeatureUnit);
         this->editorFeatureUnit->Release();
         this->editorFeatureUnit = nullptr;
 #endif
@@ -100,6 +101,6 @@ NebulaMain(const Util::CommandLineArgs& args)
     }
 
     gameApp.Run();
-
+    gameApp.Close();
     Core::SysFunc::Exit(0);
 }

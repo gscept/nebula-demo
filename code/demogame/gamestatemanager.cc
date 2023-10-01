@@ -10,6 +10,8 @@
 #include "graphicsfeature/graphicsfeatureunit.h"
 #include "basegamefeature/components/transform.h"
 #include "physicsfeature/components/physics.h"
+#include "physicsfeature/managers/physicsmanager.h"
+#include "physics/actorcontext.h"
 #include "input/inputserver.h"
 #include "input/keyboard.h"
 #include "dynui/im3d/im3dcontext.h"
@@ -24,6 +26,7 @@
 #include "terrain/terraincontext.h"
 #include "coregraphics/legacy/nvx2streamreader.h"
 #include "coregraphics/primitivegroup.h"
+#include "properties/movement.h"
 
 #include "graphicsfeature/managers/graphicsmanager.h"
 #include "game/gameserver.h"
@@ -136,7 +139,7 @@ GameStateManager::OnActivate()
         Game::EntityCreateInfo info;
         info.immediate = true;
         info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
-        Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
+        Game::Entity entity = Game::CreateEntity(gameWorld, info);
         Game::SetComponent(gameWorld, entity, Game::GetComponentId("WorldTransform"_atm), Math::rotationyawpitchroll(0.01f, 0.01f, 0.01f) * Math::translation({ (Math::rand() - 0.5f) * 20.0f, yOffset + 5.0f + ((float)i * 1.01f), (Math::rand() - 0.5f) * 20.0f}));
     }
    
@@ -183,8 +186,8 @@ GameStateManager::OnActivate()
         Game::EntityCreateInfo info;
         info.immediate = true;
         info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
-        Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
-        Game::SetComponent(Game::GetWorld(WORLD_DEFAULT), entity, Game::GetComponentId("WorldTransform"_atm), Math::translation({ (Math::rand() - 0.5f) * 30.0f, yOffset + 0.5f, (Math::rand() - 0.5f) * 30.0f }));
+        Game::Entity entity = Game::CreateEntity(gameWorld, info);
+        Game::SetComponent(gameWorld, entity, Game::GetComponentId("WorldTransform"_atm), Math::translation({ (Math::rand() - 0.5f) * 30.0f, yOffset + 0.5f, (Math::rand() - 0.5f) * 30.0f }));
     }
     
     {
@@ -218,6 +221,20 @@ GameStateManager::OnActivate()
         }
     }
 
+    Game::ProcessorBuilder("Demo.ShotSpawn"_atm)
+        .On("OnEndFrame")
+        .Func([](Game::World* world, Game::Owner const& entity, Demo::ShotSpawn& data) 
+            {
+                PhysicsFeature::PhysicsActor Actor = Game::GetComponent<PhysicsFeature::PhysicsActor>(world, entity.value);
+                Physics::ActorContext::SetLinearVelocity(Actor.value, data.linearvelocity);
+                Game::Op::DeregisterComponent deregisterOp;
+                deregisterOp.entity = entity.value;
+                deregisterOp.component = Demo::ShotSpawn::ID();
+                Game::AddOp(Game::WorldGetScratchOpBuffer(Game::GetWorld(WORLD_DEFAULT)), deregisterOp);
+                
+            })
+        .Build();
+
     GraphicsFeature::GraphicsFeatureUnit::Instance()->AddRenderUICallback([]()
     {
         
@@ -240,21 +257,32 @@ GameStateManager::OnBeginFrame()
     if (Input::InputServer::Instance()->GetDefaultMouse()->ButtonPressed(Input::MouseButton::Code::LeftButton))
     {
         Math::mat4 camTransform = GraphicsFeature::CameraManager::GetLocalTransform(GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultViewHandle());
-        for (int i = 0; i < 2; i++)
-        {
-            Game::EntityCreateInfo info;
-            info.immediate = true;
-            info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
-            Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
-            entities.Enqueue(entity);
-            Game::SetComponent<Math::mat4>(Game::GetWorld(WORLD_DEFAULT), entity, Game::WorldTransform::ID(), Math::translation((camTransform.position - (camTransform.z_axis * 3.0f)).vec));
-        }
+        Game::EntityCreateInfo info;
+        info.immediate = true;
+        info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
+        Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
+        entities.Enqueue(entity);
+        Game::SetComponent<Math::mat4>(Game::GetWorld(WORLD_DEFAULT), entity, Game::WorldTransform::ID(), Math::translation((camTransform.position - (camTransform.z_axis * (3.0f + Math::rand(-1.0f, 2.0f)))).vec));
+
+        Demo::ShotSpawn Shot;
+        Shot.linearvelocity = (camTransform.z_axis * -(20.0f + Math::rand(-10.0f, 10.0f))).vec;
+        Shot.angularvelocity = Math::vec3(Math::rand(-5.0f, 5.0f), Math::rand(-5.0f, 5.0f), Math::rand(-5.0f, 5.0f));
+        Game::Op::RegisterComponent regOp;
+        regOp.entity = entity;
+        regOp.component = Demo::ShotSpawn::ID();
+        regOp.value = &Shot;
+        Game::AddOp(Game::WorldGetScratchOpBuffer(Game::GetWorld(WORLD_DEFAULT)), regOp);
     }
 
     static int frameIndex = 0;
     if (frameIndex % 10 == 0)
     {
-        while (entities.Size() > 500)
+        int limit = 100;
+        if (Input::InputServer::Instance()->GetDefaultKeyboard()->KeyDown(Input::Key::F2))
+        {
+            limit = 0;
+        }
+        while (entities.Size() > limit)
         {
             Game::DeleteEntity(Game::GetWorld(WORLD_DEFAULT), entities.Dequeue());
         }

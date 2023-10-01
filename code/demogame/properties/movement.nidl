@@ -29,6 +29,10 @@
                 "_type_": "float",
                 "_default_": 0.80
             }
+        },
+        "ShotSpawn": {
+          "linearvelocity": "vec3",
+          "angularvelocity": "vec3"
         }
     }
 }
