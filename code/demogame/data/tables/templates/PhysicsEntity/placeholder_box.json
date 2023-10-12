@@ -1,9 +1,13 @@
 {
-    "blueprint": "PhysicsEntity",
-    "components": {
-        "WorldTransform": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
-        "ModelResource":  "mdl:craft/craft_speederA.n3",
-        "PhysicsResource": "phys:craft/craft_speederA.actor",
-        "PhysicsType":  "Dynamic"
+  "blueprint": "PhysicsEntity",
+  "components": {
+    "WorldTransform": [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ],
+    "Model": {
+      "resource": "mdl:craft/craft_speederA.n3",
+    },
+      "PhysicsActor": {
+        "resource": "phys:craft/craft_speederA.actor",
+        "actorType": "Dynamic"
+      }
     }
 }

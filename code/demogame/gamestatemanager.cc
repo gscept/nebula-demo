@@ -205,7 +205,7 @@ GameStateManager::OnActivate()
         {
             for (int y = 0; y < numWidth; y++)
             {
-                uint fileIndex = Util::FastRandom() % (numFiles + 3);
+                uint fileIndex = Util::FastRandom() % (numFiles);
                 if (fileIndex >= numFiles)
                     continue;
 
@@ -216,7 +216,9 @@ GameStateManager::OnActivate()
                     Math::rotationy(rotation) * 
                     Math::translation({ xOffset + (float)x * 13.0f, yOffset, zOffset + (float)y * 13.0f })
                 );
-                Game::SetComponent<Util::StringAtom>(gameWorld, entity, GraphicsFeature::ModelResource::ID(), files[fileIndex]);
+                GraphicsFeature::Model model = Game::GetComponent<GraphicsFeature::Model>(gameWorld, entity);
+                model.resource = files[fileIndex];
+                Game::SetComponent<GraphicsFeature::Model>(gameWorld, entity, model);
             }
         }
     }
@@ -225,12 +227,12 @@ GameStateManager::OnActivate()
         .On("OnEndFrame")
         .Func([](Game::World* world, Game::Owner const& entity, Demo::ShotSpawn& data) 
             {
-                PhysicsFeature::PhysicsActor Actor = Game::GetComponent<PhysicsFeature::PhysicsActor>(world, entity.value);
-                Physics::ActorContext::SetLinearVelocity(Actor.value, data.linearvelocity);
-                Game::Op::DeregisterComponent deregisterOp;
-                deregisterOp.entity = entity.value;
-                deregisterOp.component = Demo::ShotSpawn::ID();
-                Game::AddOp(Game::WorldGetScratchOpBuffer(Game::GetWorld(WORLD_DEFAULT)), deregisterOp);
+                //PhysicsFeature::PhysicsActor Actor = Game::GetComponent<PhysicsFeature::PhysicsActor>(world, entity.value);
+                //Physics::ActorContext::SetLinearVelocity(Actor.value, data.linearvelocity);
+                //Game::Op::DeregisterComponent deregisterOp;
+                //deregisterOp.entity = entity.value;
+                //deregisterOp.component = Demo::ShotSpawn::ID();
+                //Game::AddOp(Game::WorldGetScratchOpBuffer(Game::GetWorld(WORLD_DEFAULT)), deregisterOp);
                 
             })
         .Build();

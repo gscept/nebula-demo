@@ -13,8 +13,8 @@
             "components": [
                 "Static",
                 "WorldTransform",
-                "ModelResource",
-                "PhysicsResource"
+                "Model",
+                "PhysicsActor"
             ]
         },
         "StaticGroundPlane": {
@@ -22,27 +22,25 @@
             "components": [
                 "Static",
                 "WorldTransform",
-                "ModelResource",
-                "PhysicsResource"
+                "Model",
+                "PhysicsActor"
             ]
         },
         "PhysicsEntity": {
             "desc": "Rigidbody object",
             "components": [
                 "WorldTransform",
-                "ModelResource",
-                "PhysicsResource",
-                "PhysicsType"
+                "Model",
+                "PhysicsActor"
             ]
         },
         "MovingEntity": {
             "desc": "An entity that wanders around randomly",
             "components": [
                 "WorldTransform",
-                "ModelResource",
+                "Model",
                 "Movement",
-                "PhysicsResource",
-                "PhysicsType"
+                "PhysicsActor"
             ]
         }
     }

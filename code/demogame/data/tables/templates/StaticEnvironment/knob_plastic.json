@@ -1,6 +1,8 @@
 {
-    "blueprint": "StaticEnvironment",
-    "components": {
-        "ModelResource": "mdl:dev/knob_plastic_scuffed.n3"
+  "blueprint": "StaticEnvironment",
+  "components": {
+    "Model": {
+      "resource": "mdl:dev/knob_plastic_scuffed.n3"
     }
+  }
 }

@@ -2,8 +2,12 @@
     "blueprint": "StaticGroundPlane",
     "components": {
         "WorldTransform": [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ],
-        "ModelResource": "mdl:dev/ground.n3",
-        "PhysicsResource": "phys:dev/groundplane.actor",
-        "PhysicsType":  "Static"
+        "Model": {
+         "resource": "mdl:dev/ground.n3"
+        },
+        "PhysicsActor": {
+            "resource": "phys:dev/groundplane.actor",
+            "actorType":  "Static"
+        }
     }
 }

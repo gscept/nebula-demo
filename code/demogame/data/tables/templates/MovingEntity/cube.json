@@ -1,8 +1,12 @@
 {
-    "blueprint": "MovingEntity",
-    "components": {
-        "ModelResource": "mdl:craft/craft_speederA.n3",
-        "PhysicsResource": "mdl:",
-        "PhysicsType":  "Kinematic"
+  "blueprint": "MovingEntity",
+  "components": {
+    "Model": {
+      "resource": "mdl:craft/craft_speederA.n3"
+    },
+    "PhysicsActor": {
+      "resource": "mdl:",
+      "actorType": "Kinematic"
     }
+  }
 }

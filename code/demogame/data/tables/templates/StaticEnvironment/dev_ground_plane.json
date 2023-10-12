@@ -1,6 +1,8 @@
 {
-    "blueprint": "StaticEnvironment",
-    "components": {
-        "ModelResource": "mdl:dev/ground.n3"
+  "blueprint": "StaticEnvironment",
+  "components": {
+    "Model": {
+      "resource": "mdl:dev/ground.n3"
     }
+  }
 }

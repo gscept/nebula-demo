@@ -32,7 +32,7 @@ MovementManager::Create()
     Singleton = new MovementManager;
 
     Game::TimeSource const* const time = Game::TimeManager::GetTimeSource(TIMESOURCE_GAMEPLAY);
-    std::function WanderMovementUpdate = [time](Game::World* world, Game::WorldTransform& t, Movement& move, PhysicsFeature::PhysicsType&f) -> void
+    std::function WanderMovementUpdate = [time](Game::World* world, Game::WorldTransform& t, Movement& move) -> void
     {
         //Add a small random vector to the targets position.
         float const x = move.wanderJitter * (Util::RandomFloatNTP() * move.wanderRadius);
