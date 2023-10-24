@@ -3,10 +3,10 @@
     "components": {
         "WorldTransform": [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ],
         "Model": {
-         "resource": "mdl:dev/ground.n3"
+            "resource": "mdl:dev/ground.n3"
         },
         "PhysicsActor": {
-            "resource": "phys:dev/groundplane.actor",
+            "resource": "phys:dev/ground.actor",
             "actorType":  "Static"
         }
     }

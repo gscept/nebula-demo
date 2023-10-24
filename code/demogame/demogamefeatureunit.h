@@ -23,10 +23,13 @@ public:
     DemoGameFeatureUnit();
     ///
     ~DemoGameFeatureUnit();
+
     ///
-    void OnActivate();
+    void OnAttach() override;
     ///
-    void OnDeactivate();
+    void OnActivate() override;
+    ///
+    void OnDeactivate() override;
     ///
     void OnBeginFrame() override;
 };

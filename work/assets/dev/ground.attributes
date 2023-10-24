@@ -2,6 +2,6 @@
 <Nebula version="1">
     <Options exportFlags="4" scale="1.000000" />
     <States>
-        <ModelNode name="root/Plane" material="sur:dev/ground.sur" />
+        <ModelNode name="root/Grid" material="sur:dev/ground.sur" />
     </States>
 </Nebula>

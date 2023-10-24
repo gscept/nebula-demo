@@ -1,8 +1,8 @@
 {
-  "blueprint": "StaticEnvironment",
-  "components": {
-    "Model": {
-      "resource": "mdl:craft/craft_speederA.n3"
+    "blueprint": "StaticEnvironment",
+    "components": {
+        "Model": {
+            "resource": "mdl:system/placeholder.n3"
+        }
     }
-  }
 }

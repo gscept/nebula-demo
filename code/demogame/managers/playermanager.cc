@@ -13,6 +13,7 @@
 #include "input/mouse.h"
 #include "renderutil/mouserayutil.h"
 #include "game/api.h"
+#include "basegamefeature/components/basegamefeature.h"
 
 namespace Demo
 {
@@ -66,10 +67,10 @@ PlayerManager::OnActivate()
     playerCreateInfo.immediate = true;
     Singleton->playerEntity = Game::CreateEntity(world, playerCreateInfo);
 
-    GraphicsFeature::Camera camera = Game::GetComponent<GraphicsFeature::Camera>(world, Singleton->playerEntity, Game::GetComponentId("Camera"_atm));
+    GraphicsFeature::Camera camera = Game::GetComponent<GraphicsFeature::Camera>(world, Singleton->playerEntity);
     camera.aspectRatio = (float)width / (float)height;
     camera.viewHandle = GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultViewHandle();
-    Game::SetComponent<GraphicsFeature::Camera>(world, Singleton->playerEntity, Game::GetComponentId("Camera"_atm), camera);
+    Game::SetComponent<GraphicsFeature::Camera>(world, Singleton->playerEntity, camera);
 
     Singleton->freeCamUtil.Setup({0, 50, -3}, {0,0,-1});
 
@@ -115,9 +116,8 @@ PlayerManager::OnBeginFrame()
 
     Game::World* world = Game::GetWorld(WORLD_DEFAULT);
 
-    //Math::mat4 worldTransform = Game::GetComponent(Singleton->playerEntity, Game::GetComponentId("WorldTransform"_atm));
     if (Game::IsValid(world, Singleton->playerEntity))
-        Game::SetComponent<Math::mat4>(world, Singleton->playerEntity, Game::GetComponentId("WorldTransform"_atm), Math::inverse(Singleton->freeCamUtil.GetTransform()));
+        Game::SetComponent<Game::Transform>(world, Singleton->playerEntity, { .value = Math::inverse(Singleton->freeCamUtil.GetTransform()) });
 }
 
 //------------------------------------------------------------------------------

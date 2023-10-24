@@ -10,6 +10,9 @@
 #include "managers/inputmanager.h"
 #include "managers/movementmanager.h"
 #include "managers/playermanager.h"
+#include "game/api.h"
+#include "properties/input.h"
+#include "properties/movement.h"
 
 namespace Demo
 {
@@ -37,6 +40,17 @@ DemoGameFeatureUnit::~DemoGameFeatureUnit()
 /**
 */
 void
+DemoGameFeatureUnit::OnAttach()
+{
+    Game::RegisterComponent<Demo::PlayerInput>();
+    Game::RegisterComponent<Demo::Movement>();
+    Game::RegisterComponent<Demo::ShotSpawn>();
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
 DemoGameFeatureUnit::OnActivate()
 {
     FeatureUnit::OnActivate();
@@ -58,6 +72,8 @@ DemoGameFeatureUnit::OnBeginFrame()
         Profiling::ProfilingNewFrame();
     #endif
 }
+
+
 
 //------------------------------------------------------------------------------
 /**

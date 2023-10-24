@@ -13,9 +13,9 @@
 #include "util/random.h"
 #include "basegamefeature/managers/timemanager.h"
 #include "game/api.h"
-#include "basegamefeature/components/transform.h"
+#include "basegamefeature/components/basegamefeature.h"
 
-#include "physicsfeature/components/physics.h"
+#include "physicsfeature/components/physicsfeature.h"
 
 namespace Demo
 {
@@ -32,7 +32,7 @@ MovementManager::Create()
     Singleton = new MovementManager;
 
     Game::TimeSource const* const time = Game::TimeManager::GetTimeSource(TIMESOURCE_GAMEPLAY);
-    std::function WanderMovementUpdate = [time](Game::World* world, Game::WorldTransform& t, Movement& move) -> void
+    std::function WanderMovementUpdate = [time](Game::World* world, Game::Owner& entity, Game::Transform& t, Movement& move) -> void
     {
         //Add a small random vector to the targets position.
         float const x = move.wanderJitter * (Util::RandomFloatNTP() * move.wanderRadius);
@@ -40,6 +40,7 @@ MovementManager::Create()
         Math::vec3 const wanderCircle = Math::vec3(x, 0, z);
         move.direction = Math::normalize((move.direction + Math::normalize((wanderCircle + (Math::normalize(move.direction * move.wanderDistance))))));
         t.value.position += (move.direction * move.speed * time->frameTime).vec;
+
     };
 
     Game::ProcessorBuilder("MovementManager.WanderUpdateMovement")

@@ -2,7 +2,7 @@
 <Nebula version="1">
     <Options exportFlags="4" exportMode="0" scale="1.000000" />
     <States>
-        <ModelNode name="root/InnerSphere" material="sur:dev/knob_plastic_scuffed" />
-        <ModelNode name="root/ObjBase" material="sur:dev/knob_plastic_scuffed" />
+        <ModelNode name="root/InnerSphere" material="sur:dev/knob_plastic_scuffed.sur" />
+        <ModelNode name="root/ObjBase" material="sur:dev/knob_plastic_scuffed.sur" />
     </States>
 </Nebula>

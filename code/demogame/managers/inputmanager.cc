@@ -51,7 +51,7 @@ InputManager::OnActivate()
     Ptr<Input::Keyboard> const& keyboard = Input::InputServer::Instance()->GetDefaultKeyboard();
     Ptr<Input::Mouse> const& mouse = Input::InputServer::Instance()->GetDefaultMouse();
 
-    Game::Filter filter = Game::FilterBuilder().Including({ {Game::AccessMode::WRITE,  Game::GetComponentId("PlayerInput"_atm) } }).Build();
+    Game::Filter filter = Game::FilterBuilder().Including({ {Game::AccessMode::WRITE,  Game::GetComponentId<PlayerInput>() } }).Build();
 
     Game::ProcessorCreateInfo processorInfo;
     processorInfo.async = false;

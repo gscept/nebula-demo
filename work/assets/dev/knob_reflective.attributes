@@ -2,7 +2,7 @@
 <Nebula version="1">
     <Options exportFlags="4" exportMode="0" scale="1.000000" />
     <States>
-        <ModelNode name="root/InnerSphere" material="sur:dev/knob_reflective" />
-        <ModelNode name="root/ObjBase" material="sur:dev/knob_reflective" />
+        <ModelNode name="root/InnerSphere" material="sur:dev/knob_reflective.sur" />
+        <ModelNode name="root/ObjBase" material="sur:dev/knob_reflective.sur" />
     </States>
 </Nebula>

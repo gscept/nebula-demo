@@ -28,9 +28,9 @@ fips_dir(.)
         )
 
     fips_dir(properties)
-        nebula_add_nidl(
-            input.nidl
-            movement.nidl
+        nebula_idl_compile(
+            input.json
+            movement.json
         )
 
 fips_deps(foundation application graphicsfeature physicsfeature render resource dynui scripting editor)

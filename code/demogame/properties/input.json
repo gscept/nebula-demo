@@ -3,8 +3,8 @@
     "components": {
         "PlayerInput": {
             "hasFocus": {
-                "_type_": "bool",
-                "_default_": false
+                "type": "bool",
+                "default": false
             },
             "forward": "char",
             "strafe": "char"

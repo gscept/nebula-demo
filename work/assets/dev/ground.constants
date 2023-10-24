@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Nebula version="4">
-    <Model name="dev/ground" bboxcenter="0.000000,0.000000,0.000000,1.000000" bboxextents="1.000000,0.448080,0.893993,0.000000">
+    <Model name="dev/ground" bboxcenter="0.000000,0.000000,0.000000,1.000000" bboxextents="14.121302,0.000002,14.121301,0.000000">
         <ShapeNodes>
-            <ShapeNode name="Plane" path="root/Plane" useLOD="false" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" bboxcenter="0.000000,0.000000,0.000000,1.000000" bboxextents="1.000000,0.448080,0.893993,0.000000" mesh="msh:dev/ground.nvx" mid="0" primitive="0" />
+            <ShapeNode name="Grid" path="root/Grid" useLOD="false" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" bboxcenter="0.000000,0.000000,0.000000,1.000000" bboxextents="14.121302,0.000002,14.121301,0.000000" mesh="msh:dev/ground.nvx" mid="0" primitive="0" />
         </ShapeNodes>
     </Model>
 </Nebula>
