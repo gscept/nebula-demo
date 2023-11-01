@@ -54,6 +54,7 @@ void
 DemoGameFeatureUnit::OnActivate()
 {
     FeatureUnit::OnActivate();
+
     // Setup game state
     this->AttachManager(Demo::GameStateManager::Create());
     this->AttachManager(Demo::InputManager::Create());
@@ -72,8 +73,6 @@ DemoGameFeatureUnit::OnBeginFrame()
         Profiling::ProfilingNewFrame();
     #endif
 }
-
-
 
 //------------------------------------------------------------------------------
 /**

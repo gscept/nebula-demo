@@ -1,0 +1,49 @@
+{
+    "config": {
+        "use": true,
+        "max_height": 128.0,
+        "min_height": 0.0,
+        "world_size_width": 1024.0,
+        "world_size_height": 1024.0,
+        "tile_size_width": 64.0,
+        "tile_size_height": 64.0,
+        "quads_per_tile_width": 16.0,
+        "quads_per_tile_height": 16.0
+    },
+    "instance": {
+        "height": "tex:system/white.dds",
+        "decision": "tex:system/white.dds"
+    },
+    "biomes": [
+        {
+            "parameters": {
+                "slope_threshold": 0.5,
+                "height_threshold": 1024.0,
+                "uv_scale_factor": 64.0,
+                "use_weights": true,
+                "weights": "tex:system/white.dds"
+            },
+            "flat_material": {
+                "albedo": "tex:terrain/grass_diff.dds",
+                "normal": "tex:terrain/grass_normal.dds",
+                "material": "tex:terrain/grass_material.dds"
+            },
+            "slope_material": {
+                "albedo": "tex:system/white.dds",
+                "normal": "tex:system/no_bump.dds",
+                "material": "tex:terrain/default_material.dds"
+            },
+            "height_material": {
+                "albedo": "tex:system/white.dds",
+                "normal": "tex:system/no_bump.dds",
+                "material": "tex:terrain/default_material.dds"
+            },
+            "height_slope_material": {
+                "albedo": "tex:system/white.dds",
+                "normal": "tex:system/no_bump.dds",
+                "material": "tex:terrain/default_material.dds"
+            },
+            "mask": "tex:system/white.dds"
+        }
+    ]
+}
