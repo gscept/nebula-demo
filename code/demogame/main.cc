@@ -19,6 +19,10 @@
 #include "editorfeature/editorfeatureunit.h"
 #endif
 
+#include "nflatbuffer/nebula_flat.h"
+#include "nflatbuffer/flatbufferinterface.h"
+#include "flat/graphicsfeature/terrainschema.h"
+
 ImplementNebulaApplication();
 
 using namespace Core;
@@ -50,6 +54,10 @@ private:
         this->editorFeatureUnit = EditorFeature::EditorFeatureUnit::Create();
         this->gameServer->AttachGameFeature(this->editorFeatureUnit);
 #endif
+
+        Flat::FlatbufferInterface::LoadSchema("data:flatbuffer/graphicsfeature/terrainschema.bfbs"_uri);
+        IO::URI tablePath = "proj:work/data/tables/terrain.json"_uri;
+        CompileFlatbuffer(GraphicsFeature::TerrainSetup, tablePath, "data:tables/graphicsfeature");
     }
     /// cleanup game features
     void CleanupGameFeatures()
