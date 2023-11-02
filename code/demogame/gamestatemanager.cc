@@ -107,31 +107,31 @@ GameStateManager::OnActivate()
         Game::EntityCreateInfo info;
         info.immediate = true;
         info.templateId = Game::GetTemplateId("StaticEnvironment/dev_ground_plane"_atm);
-        Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
-        Game::SetComponent<Game::Transform>(Game::GetWorld(WORLD_DEFAULT), entity, { .value = Math::translation({ 0, yOffset, 0 }) });
+        Game::Entity entity = Game::GetWorld(WORLD_DEFAULT)->CreateEntity(info);
+        Game::GetWorld(WORLD_DEFAULT)->SetComponent<Game::Transform>(entity, { .value = Math::translation({ 0, yOffset, 0 }) });
 
     }
-    {
-        Game::EntityCreateInfo info;
-        info.immediate = true;
-        info.templateId = Game::GetTemplateId("StaticEnvironment/knob_metallic"_atm);
-        Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
-        Game::SetComponent<Game::Transform>(Game::GetWorld(WORLD_DEFAULT), entity, { .value = Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 5 }) });
-    }
-    {
-        Game::EntityCreateInfo info;
-        info.immediate = true;
-        info.templateId = Game::GetTemplateId("StaticEnvironment/knob_plastic"_atm);
-        Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
-        Game::SetComponent<Game::Transform>(Game::GetWorld(WORLD_DEFAULT), entity, { .value = Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 7 }) });
-    }
-    {
-        Game::EntityCreateInfo info;
-        info.immediate = true;
-        info.templateId = Game::GetTemplateId("StaticEnvironment/knob_reflective"_atm);
-        Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
-        Game::SetComponent<Game::Transform>(Game::GetWorld(WORLD_DEFAULT), entity, { .value = Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 9 }) });
-    }
+    //{
+    //    Game::EntityCreateInfo info;
+    //    info.immediate = true;
+    //    info.templateId = Game::GetTemplateId("StaticEnvironment/knob_metallic"_atm);
+    //    Game::Entity entity = Game::GetWorld(WORLD_DEFAULT)->CreateEntity(info);
+    //    Game::GetWorld(WORLD_DEFAULT)->SetComponent<Game::Transform>(entity, { .value = Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 5 }) });
+    //}
+    //{
+    //    Game::EntityCreateInfo info;
+    //    info.immediate = true;
+    //    info.templateId = Game::GetTemplateId("StaticEnvironment/knob_plastic"_atm);
+    //    Game::Entity entity = Game::GetWorld(WORLD_DEFAULT)->CreateEntity(info);
+    //    Game::GetWorld(WORLD_DEFAULT)->SetComponent<Game::Transform>(entity, { .value = Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 7 }) });
+    //}
+    //{
+    //    Game::EntityCreateInfo info;
+    //    info.immediate = true;
+    //    info.templateId = Game::GetTemplateId("StaticEnvironment/knob_reflective"_atm);
+    //    Game::Entity entity = Game::GetWorld(WORLD_DEFAULT)->CreateEntity(info);
+    //    Game::GetWorld(WORLD_DEFAULT)->SetComponent<Game::Transform>(entity, { .value = Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 9 }) });
+    //}
     
     auto gameWorld = Game::GetWorld(WORLD_DEFAULT);
     for (int i = 0; i < 00; i++)
@@ -139,8 +139,8 @@ GameStateManager::OnActivate()
         Game::EntityCreateInfo info;
         info.immediate = true;
         info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
-        Game::Entity entity = Game::CreateEntity(gameWorld, info);
-        Game::SetComponent<Game::Transform>(gameWorld, entity, { .value = Math::rotationyawpitchroll(0.01f, 0.01f, 0.01f) * Math::translation({ (Math::rand() - 0.5f) * 20.0f, yOffset + 5.0f + ((float)i * 1.01f), (Math::rand() - 0.5f) * 20.0f}) });
+        Game::Entity entity = gameWorld->CreateEntity(info);
+        gameWorld->SetComponent<Game::Transform>(entity, { .value = Math::rotationyawpitchroll(0.01f, 0.01f, 0.01f) * Math::translation({ (Math::rand() - 0.5f) * 20.0f, yOffset + 5.0f + ((float)i * 1.01f), (Math::rand() - 0.5f) * 20.0f}) });
     }
    
     //
@@ -186,8 +186,8 @@ GameStateManager::OnActivate()
         Game::EntityCreateInfo info;
         info.immediate = true;
         info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
-        Game::Entity entity = Game::CreateEntity(gameWorld, info);
-        Game::SetComponent<Game::Transform>(gameWorld, entity, { .value = Math::translation({ (Math::rand() - 0.5f) * 30.0f, yOffset + 0.5f, (Math::rand() - 0.5f) * 30.0f }) });
+        Game::Entity entity = gameWorld->CreateEntity(info);
+        gameWorld->SetComponent<Game::Transform>(entity, { .value = Math::translation({ (Math::rand() - 0.5f) * 30.0f, yOffset + 0.5f, (Math::rand() - 0.5f) * 30.0f }) });
     }
     
     //{
@@ -246,7 +246,7 @@ GameStateManager::OnActivate()
     //    }
     //}
 
-    Game::ProcessorBuilder("Demo.ShotSpawn"_atm)
+    Game::ProcessorBuilder(gameWorld, "Demo.ShotSpawn"_atm)
         .On("OnEndFrame")
         .Func([](Game::World* world, Game::Owner const& entity, Demo::ShotSpawn& data) 
             {
@@ -288,15 +288,15 @@ GameStateManager::OnBeginFrame()
             Game::EntityCreateInfo info;
             info.immediate = true;
             info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
-            Game::Entity entity = Game::CreateEntity(gameWorld, info);
-            Game::SetComponent<Game::Transform>(gameWorld, entity, { .value = Math::translation({ (Math::rand() - 0.5f) * 30.0f, 0.5f, (Math::rand() - 0.5f) * 30.0f }) });
+            Game::Entity entity = gameWorld->CreateEntity(info);
+            gameWorld->SetComponent<Game::Transform>(entity, { .value = Math::translation({ (Math::rand() - 0.5f) * 30.0f, 0.5f, (Math::rand() - 0.5f) * 30.0f }) });
             entities.Enqueue(entity);
 
             //Math::mat4 camTransform = GraphicsFeature::CameraManager::GetLocalTransform(GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultViewHandle());
             //Game::EntityCreateInfo info;
             //info.immediate = true;
             //info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
-            //Game::Entity entity = Game::CreateEntity(Game::GetWorld(WORLD_DEFAULT), info);
+            //Game::Entity entity = Game::GetWorld(WORLD_DEFAULT)->CreateEntity(info);
             //entities.Enqueue(entity);
             //Game::SetComponent<Math::mat4>(Game::GetWorld(WORLD_DEFAULT), entity, Game::WorldTransform::ID(), Math::translation((camTransform.position - (camTransform.z_axis * (3.0f + Math::rand(-1.0f, 2.0f)))).vec));
             //
@@ -321,7 +321,7 @@ GameStateManager::OnBeginFrame()
         }
         while (entities.Size() > limit)
         {
-            Game::DeleteEntity(Game::GetWorld(WORLD_DEFAULT), entities.Dequeue());
+            Game::GetWorld(WORLD_DEFAULT)->DeleteEntity(entities.Dequeue());
         }
     }
     frameIndex++;

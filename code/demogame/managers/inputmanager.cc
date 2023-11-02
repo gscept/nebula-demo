@@ -12,6 +12,7 @@
 #include "memdb/table.h"
 #include "memdb/filterset.h"
 #include "memdb/database.h"
+#include "game/processor.h"
 
 namespace Demo
 {
@@ -51,30 +52,17 @@ InputManager::OnActivate()
     Ptr<Input::Keyboard> const& keyboard = Input::InputServer::Instance()->GetDefaultKeyboard();
     Ptr<Input::Mouse> const& mouse = Input::InputServer::Instance()->GetDefaultMouse();
 
-    Game::Filter filter = Game::FilterBuilder().Including({ {Game::AccessMode::WRITE,  Game::GetComponentId<PlayerInput>() } }).Build();
-
-    Game::ProcessorCreateInfo processorInfo;
-    processorInfo.async = false;
-    processorInfo.filter = filter;
-    processorInfo.name = "InputManager.ProcessPlayerInput"_atm;
-    processorInfo.OnBeginFrame = [&](Game::World*, Game::Dataset data)
-    {
-        for (int v = 0; v < data.numViews; v++)
-        {
-            Game::Dataset::EntityTableView const& view = data.views[v];
-            Demo::PlayerInput* pInputs = (Demo::PlayerInput*)view.buffers[0];
-            for (IndexT i = 0; i < view.numInstances; ++i)
+    Game::World* world = Game::GetWorld(WORLD_DEFAULT);
+    Game::ProcessorBuilder(world, "InputManager.ProcessPlayerInput"_atm)
+        .Func([&keyboard, &mouse](Game::World* world, Demo::PlayerInput& playerInput)
             {
-                auto& playerInput = pInputs[i];
                 if (playerInput.hasFocus)
                 {
                     playerInput.forward = (char)keyboard->KeyPressed(Input::Key::Code::W) - (char)keyboard->KeyPressed(Input::Key::Code::S);
                     playerInput.strafe = (char)keyboard->KeyPressed(Input::Key::Code::Right) - (char)keyboard->KeyPressed(Input::Key::Code::Left);
                 }
-            }
-        }
-    };
-    Game::ProcessorHandle pHandle = Game::CreateProcessor(processorInfo);
+            })
+        .Build();
 }
 
 //------------------------------------------------------------------------------

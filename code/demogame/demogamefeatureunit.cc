@@ -13,6 +13,7 @@
 #include "game/api.h"
 #include "properties/input.h"
 #include "properties/movement.h"
+#include "game/world.h"
 
 namespace Demo
 {
@@ -42,9 +43,10 @@ DemoGameFeatureUnit::~DemoGameFeatureUnit()
 void
 DemoGameFeatureUnit::OnAttach()
 {
-    Game::RegisterComponent<Demo::PlayerInput>();
-    Game::RegisterComponent<Demo::Movement>();
-    Game::RegisterComponent<Demo::ShotSpawn>();
+    Game::World* world = Game::GetWorld(WORLD_DEFAULT);
+    world->RegisterType<Demo::PlayerInput>();
+    world->RegisterType<Demo::Movement>();
+    world->RegisterType<Demo::ShotSpawn>();
 }
 
 //------------------------------------------------------------------------------

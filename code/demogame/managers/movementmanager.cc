@@ -14,8 +14,8 @@
 #include "basegamefeature/managers/timemanager.h"
 #include "game/api.h"
 #include "basegamefeature/components/basegamefeature.h"
-
 #include "physicsfeature/components/physicsfeature.h"
+#include "game/processor.h"
 
 namespace Demo
 {
@@ -43,7 +43,8 @@ MovementManager::Create()
 
     };
 
-    Game::ProcessorBuilder("MovementManager.WanderUpdateMovement")
+    Game::World* world = Game::GetWorld(WORLD_DEFAULT);
+    Game::ProcessorBuilder(world, "MovementManager.WanderUpdateMovement")
         .Func(WanderMovementUpdate)
         .On("OnBeginFrame")
         .Build();
