@@ -13,6 +13,7 @@
 #include "game/api.h"
 #include "properties/input.h"
 #include "properties/movement.h"
+#include "properties/spaceship.h"
 #include "game/world.h"
 
 namespace Demo
@@ -47,6 +48,9 @@ DemoGameFeatureUnit::OnAttach()
     world->RegisterType<Demo::PlayerInput>();
     world->RegisterType<Demo::Movement>();
     world->RegisterType<Demo::ShotSpawn>();
+    world->RegisterType<Demo::CameraFollow>();
+    world->RegisterType<Demo::SpaceShip>();
+    world->RegisterType<Demo::SpaceShipMoveParams>();
 }
 
 //------------------------------------------------------------------------------

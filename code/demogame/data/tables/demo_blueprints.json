@@ -1,42 +1,60 @@
 {
-    "blueprints": {
-        "Player": {
-            "desc": "First person player",
-            "components": [
-                "PlayerInput",
-                "Camera"
-            ]
-        },
-        "StaticEnvironment": {
-            "desc": "Static environment object",
-            "components": [
-                "Static",
-                "Model",
-                "PhysicsActor"
-            ]
-        },
-        "StaticGroundPlane": {
-            "desc": "Static ground plane",
-            "components": [
-                "Static",
-                "Model",
-                "PhysicsActor"
-            ]
-        },
-        "PhysicsEntity": {
-            "desc": "Rigidbody object",
-            "components": [
-                "Model",
-                "PhysicsActor"
-            ]
-        },
-        "MovingEntity": {
-            "desc": "An entity that wanders around randomly",
-            "components": [
-                "Model",
-                "Movement",
-                "PhysicsActor"
-            ]
-        }
+  "blueprints": {
+    "Camera": {
+      "desc": "A generic camera",
+      "components": [
+        "Camera"
+      ]
+    },
+    "LightSource": {
+      "components": [
+        "PointLight"
+      ]
+    },
+    "PlayerSpaceShip": {
+      "desc": "A Space ship that is player controllable",
+      "components": [
+        "Model",
+        "PhysicsActor",
+        "PlayerInput",
+        "CameraFollow",
+        "SpaceShip",
+        "SpaceShipMoveParams",
+        "AudioEmitter"
+      ]
+    },
+    "StaticEnvironment": {
+      "desc": "Static environment object",
+      "components": [
+        "Static",
+        "Model",
+        "PhysicsActor"
+      ]
+    },
+    "StaticGroundPlane": {
+      "desc": "Static ground plane",
+      "components": [
+        "Static",
+        "Model",
+        "PhysicsActor"
+      ]
+    },
+    "PhysicsEntity": {
+      "desc": "Rigidbody object",
+      "components": [
+        "Model",
+        "PhysicsActor",
+        "Velocity",
+        "AngularVelocity"
+      ]
+    },
+    "MovingEntity": {
+      "desc": "An entity that wanders around randomly",
+      "components": [
+        "Model",
+        "Movement",
+        "PhysicsActor"
+      ]
     }
+  }
 }

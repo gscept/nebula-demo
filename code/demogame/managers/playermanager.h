@@ -26,6 +26,8 @@ public:
     /// Destroy the singleton
     static void Destroy();
 
+    Game::Entity mainCameraEntity;
+
 private:
     /// constructor
     PlayerManager();
@@ -38,8 +40,6 @@ private:
     static void OnBeginFrame();
     /// called before the world is cleaned up
     static void OnCleanup(Game::World*);
-
-    Game::Entity playerEntity;
 
     RenderUtil::FreeCameraUtil freeCamUtil;
 };

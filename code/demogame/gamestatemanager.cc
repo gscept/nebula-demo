@@ -9,6 +9,9 @@
 #include "visibility/visibilitycontext.h"
 #include "graphicsfeature/graphicsfeatureunit.h"
 #include "basegamefeature/components/basegamefeature.h"
+#include "basegamefeature/components/position.h"
+#include "basegamefeature/components/orientation.h"
+#include "basegamefeature/components/velocity.h"
 #include "physicsfeature/components/physicsfeature.h"
 #include "physicsfeature/managers/physicsmanager.h"
 #include "physics/actorcontext.h"
@@ -91,174 +94,68 @@ GameStateManager::~GameStateManager()
 void
 GameStateManager::OnActivate()
 {
-    float xOffset = -200;
-    float zOffset = -200;
-    float yOffset = 0;
-
-    auto dood = Graphics::CreateEntity();
-    Graphics::RegisterEntity<Models::ModelContext, Visibility::ObservableContext>(dood);
-    Models::ModelContext::Setup(dood, "mdl:system/placeholder.n3", "ExampleScene", [dood]()
-    {
-        Visibility::ObservableContext::Setup(dood, Visibility::VisibilityEntityType::Model);
-    });
-    Models::ModelContext::SetTransform(dood, Math::translation(Math::vec3(0, 0, 5)));
-
-    {
-        Game::EntityCreateInfo info;
-        info.immediate = true;
-        info.templateId = Game::GetTemplateId("StaticEnvironment/dev_ground_plane"_atm);
-        Game::Entity entity = Game::GetWorld(WORLD_DEFAULT)->CreateEntity(info);
-        Game::GetWorld(WORLD_DEFAULT)->SetComponent<Game::Transform>(entity, { .value = Math::translation({ 0, yOffset, 0 }) });
-
-    }
-    //{
-    //    Game::EntityCreateInfo info;
-    //    info.immediate = true;
-    //    info.templateId = Game::GetTemplateId("StaticEnvironment/knob_metallic"_atm);
-    //    Game::Entity entity = Game::GetWorld(WORLD_DEFAULT)->CreateEntity(info);
-    //    Game::GetWorld(WORLD_DEFAULT)->SetComponent<Game::Transform>(entity, { .value = Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 5 }) });
-    //}
-    //{
-    //    Game::EntityCreateInfo info;
-    //    info.immediate = true;
-    //    info.templateId = Game::GetTemplateId("StaticEnvironment/knob_plastic"_atm);
-    //    Game::Entity entity = Game::GetWorld(WORLD_DEFAULT)->CreateEntity(info);
-    //    Game::GetWorld(WORLD_DEFAULT)->SetComponent<Game::Transform>(entity, { .value = Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 7 }) });
-    //}
-    //{
-    //    Game::EntityCreateInfo info;
-    //    info.immediate = true;
-    //    info.templateId = Game::GetTemplateId("StaticEnvironment/knob_reflective"_atm);
-    //    Game::Entity entity = Game::GetWorld(WORLD_DEFAULT)->CreateEntity(info);
-    //    Game::GetWorld(WORLD_DEFAULT)->SetComponent<Game::Transform>(entity, { .value = Math::scaling(5, 5, 5) * Math::translation({ 5, 0, 9 }) });
-    //}
-    
     auto gameWorld = Game::GetWorld(WORLD_DEFAULT);
-    for (int i = 0; i < 00; i++)
+    Game::EntityCreateInfo playerInfo;
+    playerInfo.immediate = true;
+    playerInfo.templateId = Game::GetTemplateId("PlayerSpaceShip/default"_atm);
+    gameWorld->CreateEntity(playerInfo);
+
     {
+        Game::TemplateId asteroidTemplates[] = {
+            Game::GetTemplateId("StaticEnvironment/asteroid_1"_atm),
+            Game::GetTemplateId("StaticEnvironment/asteroid_2"_atm),
+            Game::GetTemplateId("StaticEnvironment/asteroid_3"_atm),
+            Game::GetTemplateId("StaticEnvironment/asteroid_4"_atm),
+            Game::GetTemplateId("StaticEnvironment/asteroid_5"_atm),
+            Game::GetTemplateId("StaticEnvironment/asteroid_6"_atm),
+        };
+        constexpr size_t numTemplateTypes = sizeof(asteroidTemplates) / sizeof(Game::TemplateId);
+    
         Game::EntityCreateInfo info;
         info.immediate = true;
-        info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
-        Game::Entity entity = gameWorld->CreateEntity(info);
-        gameWorld->SetComponent<Game::Transform>(entity, { .value = Math::rotationyawpitchroll(0.01f, 0.01f, 0.01f) * Math::translation({ (Math::rand() - 0.5f) * 20.0f, yOffset + 5.0f + ((float)i * 1.01f), (Math::rand() - 0.5f) * 20.0f}) });
-    }
-   
-    //
-
-    //Graphics::GraphicsEntityId terrain = Graphics::CreateEntity();
-    //Terrain::TerrainContext::RegisterEntity(terrain);
-    //
-    //Terrain::TerrainContext::SetupTerrain(terrain,
-    //    "tex:terrain/dirt_aerial_02_disp_8k_PNG_BC4_1.dds",
-    //    "tex:system/black.dds",
-    //    "tex:terrain/dirt_aerial_02_diff_2k.dds");
-    //
-    //Terrain::BiomeSetupSettings biomeSettings =
-    //{
-    //    0.5f, 900.0f, 64.0f
-    //};
-    //Terrain::TerrainContext::CreateBiome(biomeSettings,
-    //    {
-    //        "tex:terrain/brown_mud_leaves_01_diff_2k_PNG_BC7_1.dds",
-    //        "tex:terrain/brown_mud_leaves_01_nor_2k_PNG_BC5_1.dds",
-    //        "tex:terrain/brown_mud_leaves_01_material_2k_PNG_BC7_1.dds"
-    //    },
-    //    {
-    //        "tex:terrain/dirt_aerial_02_diff_2k_PNG_BC7_1.dds",
-    //        "tex:terrain/dirt_aerial_02_nor_2k_PNG_BC5_1.dds",
-    //        "tex:terrain/dirt_aerial_02_material_2k_PNG_BC7_1.dds"
-    //    },
-    //    {
-    //        "tex:terrain/snow_02_albedo_2k_PNG_BC7_1.dds",
-    //        "tex:terrain/snow_02_nor_2k_PNG_BC5_1.dds",
-    //        "tex:terrain/snow_02_material_2k_PNG_BC7_1.dds"
-    //    },
-    //    {
-    //        "tex:terrain/rock_ground_02_albedo_2k_PNG_BC7_1.dds",
-    //        "tex:terrain/rock_ground_02_nor_2k_PNG_BC5_1.dds",
-    //        "tex:terrain/rock_ground_02_material_2k_PNG_BC7_1.dds"
-    //    },
-    //    "tex:system/white.dds"
-    //);
+        
+        // Setup asteroids near
+        for (int i = 0; i < 100; i++)
+        {
+            info.templateId = asteroidTemplates[Util::FastRandom() % numTemplateTypes];
+            Game::Entity asteroid = gameWorld->CreateEntity(info);
+            
+            float span = 20.0f;
+            Math::vec3 translation = Math::vec3(
+                Util::RandomFloatNTP() * span,
+                Util::RandomFloatNTP() * span,
+                Util::RandomFloatNTP() * span
+            );
+            
+            Math::vec3 rotationAxis = normalize(translation);
+            float rotation = translation.x;
+            Math::quat const orient = Math::rotationquataxis(rotationAxis, rotation);
+            gameWorld->SetComponent<Game::Position>(asteroid, { translation });
+            gameWorld->SetComponent<Game::Orientation>(asteroid, { orient });
+            GraphicsFeature::Model model = gameWorld->GetComponent<GraphicsFeature::Model>(asteroid);
+            int a = 0;
+        }
     
-    for (size_t i = 0; i < 120; i++)
-    {
-        Game::EntityCreateInfo info;
-        info.immediate = true;
-        info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
-        Game::Entity entity = gameWorld->CreateEntity(info);
-        gameWorld->SetComponent<Game::Transform>(entity, { .value = Math::translation({ (Math::rand() - 0.5f) * 30.0f, yOffset + 0.5f, (Math::rand() - 0.5f) * 30.0f }) });
-    }
+        // Setup asteroids far
+        for (int i = 0; i < 50; i++)
+        {
+            info.templateId = asteroidTemplates[Util::FastRandom() % numTemplateTypes];
+            Game::Entity asteroid = gameWorld->CreateEntity(info);
     
-    //{
-    //    Game::TemplateId asteroidTemplates[] = {
-    //        Game::GetTemplateId("StaticEnvironment/asteroid_1"_atm),
-    //        Game::GetTemplateId("StaticEnvironment/asteroid_2"_atm),
-    //        Game::GetTemplateId("StaticEnvironment/asteroid_3"_atm),
-    //        Game::GetTemplateId("StaticEnvironment/asteroid_4"_atm),
-    //        Game::GetTemplateId("StaticEnvironment/asteroid_5"_atm),
-    //        Game::GetTemplateId("StaticEnvironment/asteroid_6"_atm),
-    //    };
-    //    constexpr size_t numTemplateTypes = sizeof(asteroidTemplates) / sizeof(Game::TemplateId);
-    //
-    //    auto gameWorld = Game::GetWorld(WORLD_DEFAULT);
-    //    Game::EntityCreateInfo info;
-    //    info.immediate = true;
-    //    
-    //    // Setup asteroids near
-    //    for (int i = 0; i < 100; i++)
-    //    {
-    //        info.templateId = asteroidTemplates[Util::FastRandom() % numTemplateTypes];
-    //        Game::Entity asteroid = Game::CreateEntity(gameWorld, info);
-    //        
-    //        float span = 20.0f;
-    //        Math::vec3 translation = Math::vec3(
-    //            Util::RandomFloatNTP() * span,
-    //            Util::RandomFloatNTP() * span,
-    //            Util::RandomFloatNTP() * span
-    //        );
-    //        
-    //        Math::vec3 rotationAxis = normalize(translation);
-    //        float rotation = translation.x;
-    //        Math::mat4 transform = Math::scaling(1.0f) * Math::rotationaxis(rotationAxis, rotation) * Math::translation(translation);
-    //        Game::SetComponent<Game::Transform>(gameWorld, asteroid, { .value = transform });
-    //        GraphicsFeature::Model model = Game::GetComponent<GraphicsFeature::Model>(gameWorld, asteroid);
-    //        int a = 0;
-    //    }
-    //
-    //    // Setup asteroids far
-    //    for (int i = 0; i < 50; i++)
-    //    {
-    //        info.templateId = asteroidTemplates[Util::FastRandom() % numTemplateTypes];
-    //        Game::Entity asteroid = Game::CreateEntity(gameWorld, info);
-    //
-    //        float span = 80.0f;
-    //        Math::vec3 translation = Math::vec3(
-    //            Util::RandomFloatNTP() * span,
-    //            Util::RandomFloatNTP() * span,
-    //            Util::RandomFloatNTP() * span
-    //        );
-    //
-    //        Math::vec3 rotationAxis = normalize(translation);
-    //        float rotation = translation.x;
-    //        Math::mat4 transform = Math::scaling(1.0f) * Math::rotationaxis(rotationAxis, rotation) * Math::translation(translation);
-    //        Game::SetComponent<Game::Transform>(gameWorld, asteroid, { .value = transform });
-    //    }
-    //}
-
-    Game::ProcessorBuilder(gameWorld, "Demo.ShotSpawn"_atm)
-        .On("OnEndFrame")
-        .Func([](Game::World* world, Game::Owner const& entity, Demo::ShotSpawn& data) 
-            {
-                //PhysicsFeature::PhysicsActor Actor = Game::GetComponent<PhysicsFeature::PhysicsActor>(world, entity.value);
-                //Physics::ActorContext::SetLinearVelocity(Actor.value, data.linearvelocity);
-                //Game::Op::DeregisterComponent deregisterOp;
-                //deregisterOp.entity = entity.value;
-                //deregisterOp.component = Demo::ShotSpawn::ID();
-                //Game::AddOp(Game::WorldGetScratchOpBuffer(Game::GetWorld(WORLD_DEFAULT)), deregisterOp);
-                
-            })
-        .Build();
+            float span = 80.0f;
+            Math::vec3 translation = Math::vec3(
+                Util::RandomFloatNTP() * span,
+                Util::RandomFloatNTP() * span,
+                Util::RandomFloatNTP() * span
+            );
+    
+            Math::vec3 rotationAxis = normalize(translation);
+            float rotation = translation.x;
+            Math::quat const orient = Math::rotationquataxis(rotationAxis, rotation);
+            gameWorld->SetComponent<Game::Position>(asteroid, { translation });
+            gameWorld->SetComponent<Game::Orientation>(asteroid, { orient });
+        }
+    }
 
     GraphicsFeature::GraphicsFeatureUnit::Instance()->AddRenderUICallback([]()
     {
@@ -278,39 +175,34 @@ GameStateManager::OnBeginFrame()
     {
         Core::SysFunc::Exit(0);
     }
-
-    if (Input::InputServer::Instance()->GetDefaultMouse()->ButtonPressed(Input::MouseButton::Code::LeftButton))
+    
+    
+    if (Input::InputServer::Instance()->GetDefaultMouse()->ButtonPressed(Input::MouseButton::Code::RightButton) &&
+        Input::InputServer::Instance()->GetDefaultMouse()->ButtonPressed(Input::MouseButton::Code::LeftButton))
     {
         auto gameWorld = Game::GetWorld(WORLD_DEFAULT);
-
-        for (size_t i = 0; i < 50; i++)
+        for (size_t i = 0; i < 1; i++)
         {
-            Game::EntityCreateInfo info;
-            info.immediate = true;
-            info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
-            Game::Entity entity = gameWorld->CreateEntity(info);
-            gameWorld->SetComponent<Game::Transform>(entity, { .value = Math::translation({ (Math::rand() - 0.5f) * 30.0f, 0.5f, (Math::rand() - 0.5f) * 30.0f }) });
-            entities.Enqueue(entity);
-
-            //Math::mat4 camTransform = GraphicsFeature::CameraManager::GetLocalTransform(GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultViewHandle());
             //Game::EntityCreateInfo info;
             //info.immediate = true;
-            //info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
-            //Game::Entity entity = Game::GetWorld(WORLD_DEFAULT)->CreateEntity(info);
+            //info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
+            //Game::Entity entity = gameWorld->CreateEntity(info);
+            //gameWorld->SetComponent<Game::Position>(entity, { (Math::rand() - 0.5f) * 30.0f, 0.5f, (Math::rand() - 0.5f) * 30.0f });
             //entities.Enqueue(entity);
-            //Game::SetComponent<Math::mat4>(Game::GetWorld(WORLD_DEFAULT), entity, Game::WorldTransform::ID(), Math::translation((camTransform.position - (camTransform.z_axis * (3.0f + Math::rand(-1.0f, 2.0f)))).vec));
-            //
-            //Demo::ShotSpawn Shot;
-            //Shot.linearvelocity = (camTransform.z_axis * -(20.0f + Math::rand(-10.0f, 10.0f))).vec;
-            //Shot.angularvelocity = Math::vec3(Math::rand(-5.0f, 5.0f), Math::rand(-5.0f, 5.0f), Math::rand(-5.0f, 5.0f));
-            //Game::Op::RegisterComponent regOp;
-            //regOp.entity = entity;
-            //regOp.component = Demo::ShotSpawn::ID();
-            //regOp.value = &Shot;
-            //Game::AddOp(Game::WorldGetScratchOpBuffer(Game::GetWorld(WORLD_DEFAULT)), regOp);
+
+            Math::mat4 camTransform = GraphicsFeature::CameraManager::GetLocalTransform(GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultViewHandle());
+            Game::EntityCreateInfo info;
+            info.immediate = true;
+            info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
+            Game::Entity entity = gameWorld->CreateEntity(info);
+            entities.Enqueue(entity);
+            Math::vec3 pos = (camTransform.position - (camTransform.z_axis * (3.0f + Math::rand(-1.0f, 2.0f)))).vec;
+            gameWorld->SetComponent<Game::Position>(entity, pos);
+            gameWorld->SetComponent<Game::Velocity>(entity, (camTransform.z_axis * -(20.0f + Math::rand(-10.0f, 10.0f))).vec);
+            gameWorld->SetComponent<Game::AngularVelocity>(entity, Math::vec3(Math::rand(-5.0f, 5.0f), Math::rand(-5.0f, 5.0f), Math::rand(-5.0f, 5.0f)));
         }
     }
-
+    
     static int frameIndex = 0;
     if (frameIndex % 10 == 0)
     {
@@ -325,7 +217,6 @@ GameStateManager::OnBeginFrame()
         }
     }
     frameIndex++;
-
 
     //ImGui::Begin("WORLD_DEBUG");
     //Game::WorldRenderDebug(Game::GetWorld(WORLD_DEFAULT));

@@ -14,6 +14,7 @@
 #include "gamestatemanager.h"
 #include "profiling/profiling.h"
 #include "scripting/python/pythonserver.h"
+#include "audiofeature/audiofeatureunit.h"
 
 #ifdef NEBULA_EDITOR_ENABLED
 #include "editorfeature/editorfeatureunit.h"
@@ -44,6 +45,10 @@ private:
         this->physicsFeature = PhysicsFeature::PhysicsFeatureUnit::Create();
         this->gameServer->AttachGameFeature(this->physicsFeature);
 
+        this->audioFeature = AudioFeature::AudioFeatureUnit::Create();
+        this->audioFeature->SetCmdLineArgs(this->GetCmdLineArgs());
+        this->gameServer->AttachGameFeature(this->audioFeature);
+
         this->demoFeatureUnit = Demo::DemoGameFeatureUnit::Create();
         this->gameServer->AttachGameFeature(this->demoFeatureUnit);
 
@@ -66,6 +71,8 @@ private:
         this->gameServer->RemoveGameFeature(this->physicsFeature);
         this->gameServer->RemoveGameFeature(this->graphicsFeature);
         this->gameServer->RemoveGameFeature(this->demoFeatureUnit);
+        this->audioFeature->Release();
+        this->audioFeature = nullptr;
         this->physicsFeature->Release();
         this->physicsFeature = nullptr;
         this->graphicsFeature->Release();
@@ -84,6 +91,7 @@ private:
 
     Ptr<GraphicsFeature::GraphicsFeatureUnit> graphicsFeature;
     Ptr<PhysicsFeature::PhysicsFeatureUnit> physicsFeature;
+    Ptr<AudioFeature::AudioFeatureUnit> audioFeature;
     Ptr<Demo::DemoGameFeatureUnit> demoFeatureUnit;
     Ptr<Scripting::ScriptServer> scriptserver;
 

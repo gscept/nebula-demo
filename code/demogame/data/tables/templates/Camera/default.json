@@ -1,10 +1,6 @@
 {
-    "blueprint": "Player",
+    "blueprint": "Camera",
     "components": {
-        "Transform": [1,0,0,0,0,1,0,0,0,0,1,0,0,5,0,1],
-        "PlayerInput": {
-            "hasFocus": true
-        },
         "Camera": {
             "fieldOfView": 90.0,
             "projectionMode": "PERSPECTIVE",

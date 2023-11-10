@@ -1,0 +1,30 @@
+{
+  "blueprint": "PlayerSpaceShip",
+  "components": {
+    "PlayerInput": {
+      "hasFocus": true
+    },
+    "CameraFollow": {
+      "targetCamLocalOffset": [ 0, 1.0, -4.0 ],
+      "cameraSmoothFactor": 10.0
+    },
+    "SpaceShip": {
+      "accelerationFactor": 1.0,
+      "normalSpeed": 1.0,
+      "boostSpeed": 2.0,
+      "rotationSpeed": 1.8,
+      "rotationSmoothFactor": 10.0
+    },
+    "Model": {
+      "resource": "mdl:space/spaceship.n3"
+    },
+    "PhysicsActor": {
+      "actorType": "Kinematic"
+    },
+    "AudioEmitter": {
+      "clipResource": "audio:space/test.wav",
+      "volume": 1.0,
+      "autoplay": false
+    }
+  }
+}

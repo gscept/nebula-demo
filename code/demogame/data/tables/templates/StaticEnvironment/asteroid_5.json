@@ -1,0 +1,8 @@
+{
+    "blueprint": "StaticEnvironment",
+    "components": {
+        "Model": {
+            "resource": "mdl:space/Asteroid_6.n3"
+        }
+    }
+}

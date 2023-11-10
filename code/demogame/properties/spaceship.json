@@ -1,0 +1,36 @@
+{
+    "namespace": "Demo",
+    "includes": [
+        "math/vec3.h",
+        "math/quat.h"
+    ],
+    "components": {
+      "CameraFollow": {
+        "currentCamOffset": "vec3",
+        "targetCamLocalOffset": "vec3",
+        "cameraSmoothFactor": "float"
+      },
+      "SpaceShip": {
+        "position": "vec3",
+        "orientation": "quat",
+        "linearVelocity": "vec3",
+        "accelerationFactor": "float",
+        "normalSpeed": "float",
+        "boostSpeed": "float",
+        "currentSpeed": "float",
+        "rotationSpeed": "float",
+        "rotationZ": "float",
+        "rotXSmooth": "float",
+        "rotYSmooth": "float",
+        "rotZSmooth": "float",
+        "rotationSmoothFactor": "float"
+      },
+      "SpaceShipMoveParams": {
+        "rotateX": "float",
+        "rotateY": "float",
+        "rotateZ": "float",
+        "accelerate": "bool",
+        "boost": "bool"
+      }
+    }
+}

@@ -5,9 +5,7 @@
             "hasFocus": {
                 "type": "bool",
                 "default": false
-            },
-            "forward": "char",
-            "strafe": "char"
+            }
         }
     }
 }
