@@ -1,0 +1,15 @@
+{
+    "feedback": 0,
+    "shapes" : [
+        {
+            "collider" : {
+                name: "Terrain",
+                type: "HeightField",
+                data_type: "HeightFieldCollider",
+                data: { height_range : 256, target_size_x : 1024, target_size_y : 1024, file : "tex:terrain/default_height.dds" }
+            },
+            "material" : "default",
+            "transform" : { mat4: [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]}
+        }
+    ]
+}

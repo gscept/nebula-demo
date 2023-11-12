@@ -55,6 +55,12 @@
         "Movement",
         "PhysicsActor"
       ]
+    },
+    "OnlyCollider": {
+      "desc": "Physics collider",
+      "components": [
+        "PhysicsActor"
+      ]
     }
   }
 }

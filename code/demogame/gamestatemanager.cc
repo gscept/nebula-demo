@@ -100,6 +100,11 @@ GameStateManager::OnActivate()
     playerInfo.templateId = Game::GetTemplateId("PlayerSpaceShip/default"_atm);
     gameWorld->CreateEntity(playerInfo);
 
+    Game::EntityCreateInfo terrainInfo;
+    terrainInfo.immediate = true;
+    terrainInfo.templateId = Game::GetTemplateId("OnlyCollider/terrain"_atm);
+    Game::Entity terrain = gameWorld->CreateEntity(terrainInfo);
+    
     {
         Game::TemplateId asteroidTemplates[] = {
             Game::GetTemplateId("StaticEnvironment/asteroid_1"_atm),

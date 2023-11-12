@@ -2,9 +2,9 @@
     "blueprint": "PhysicsEntity",
     "components": {
         "Transform": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
-        "ModelResource":  "mdl:craft/craft_speederA.n3",
+        "ModelResource":  "sysmdl:box.n3",
         "PhysicsActor": {
-            "resource" : "phys:craft/craft_speederA.actor",
+            "resource" : "sysphys:box.actor",
             "actorType":  "Dynamic"
         }
     }

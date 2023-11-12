@@ -1,0 +1,10 @@
+{
+    "blueprint": "OnlyCollider",
+    "components": {
+        "WorldTransform": [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ],
+        "PhysicsActor": {
+            "resource": "phys:terrain/terrain.actor",
+            "actorType":  "Static"
+        }
+    }
+}
