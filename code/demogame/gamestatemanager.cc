@@ -105,6 +105,22 @@ GameStateManager::OnActivate()
     terrainInfo.templateId = Game::GetTemplateId("OnlyCollider/terrain"_atm);
     Game::Entity terrain = gameWorld->CreateEntity(terrainInfo);
     
+    for (int i = 0; i < 100; i++)
+    {
+        const float span = 100.0f;
+        Game::EntityCreateInfo playerInfo;
+        playerInfo.immediate = true;
+        playerInfo.templateId = Game::GetTemplateId("AiSpaceShip/default"_atm);
+        Game::Entity entity = gameWorld->CreateEntity(playerInfo);
+        gameWorld->SetComponent<Game::Position>(
+            entity, 
+            Math::vec3(Util::RandomFloatNTP() * span,
+                       Util::RandomFloatNTP() * span,
+                       Util::RandomFloatNTP() * span)
+        );
+
+    }
+
     {
         Game::TemplateId asteroidTemplates[] = {
             Game::GetTemplateId("StaticEnvironment/asteroid_1"_atm),

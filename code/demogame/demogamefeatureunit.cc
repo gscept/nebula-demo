@@ -15,6 +15,7 @@
 #include "properties/movement.h"
 #include "properties/spaceship.h"
 #include "game/world.h"
+#include "managers/aimanager.h"
 
 namespace Demo
 {
@@ -51,6 +52,7 @@ DemoGameFeatureUnit::OnAttach()
     world->RegisterType<Demo::CameraFollow>();
     world->RegisterType<Demo::SpaceShip>();
     world->RegisterType<Demo::SpaceShipMoveParams>();
+    world->RegisterType<Demo::AiControlled>();
 }
 
 //------------------------------------------------------------------------------
@@ -66,6 +68,7 @@ DemoGameFeatureUnit::OnActivate()
     this->AttachManager(Demo::InputManager::Create());
     this->AttachManager(Demo::MovementManager::Create());
     this->AttachManager(Demo::PlayerManager::Create());
+    this->AttachManager(Demo::AiManager::Create());
 }
 
 //------------------------------------------------------------------------------

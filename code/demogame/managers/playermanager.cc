@@ -46,7 +46,7 @@ CameraFollowSpaceShip()
             if (!playerInput.hasFocus)
                 return;
             // update camera view transform
-            vec3 desiredCamPos = ship.position + Math::rotate(orientation, camFollow.targetCamLocalOffset);
+            vec3 desiredCamPos = position + Math::rotate(orientation, camFollow.targetCamLocalOffset);
             camFollow.currentCamOffset = lerp(camFollow.currentCamOffset, desiredCamPos, time->frameTime * camFollow.cameraSmoothFactor);
             mat4 camTransform = inverse(lookatrh(camFollow.currentCamOffset, camFollow.currentCamOffset + orientation.z_axis(), orientation.y_axis()));
 

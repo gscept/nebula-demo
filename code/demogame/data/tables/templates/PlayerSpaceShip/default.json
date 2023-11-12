@@ -16,7 +16,7 @@
       "rotationSmoothFactor": 10.0
     },
     "Model": {
-      "resource": "mdl:space/spaceship.n3"
+      "resource": "mdl:space/Nebula_SpaceShip_GLTF.n3"
     },
     "PhysicsActor": {
       "actorType": "Kinematic"

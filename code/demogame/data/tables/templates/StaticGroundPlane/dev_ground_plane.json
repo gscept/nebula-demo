@@ -1,7 +1,6 @@
 {
     "blueprint": "StaticGroundPlane",
     "components": {
-        "WorldTransform": [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ],
         "Model": {
             "resource": "mdl:dev/ground.n3"
         },

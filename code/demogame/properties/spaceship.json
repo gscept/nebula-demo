@@ -11,7 +11,6 @@
         "cameraSmoothFactor": "float"
       },
       "SpaceShip": {
-        "position": "vec3",
         "orientation": "quat",
         "linearVelocity": "vec3",
         "accelerationFactor": "float",
@@ -31,6 +30,28 @@
         "rotateZ": "float",
         "accelerate": "bool",
         "boost": "bool"
+      },
+      "AiControlled": {
+        "xRotTarget": "float",
+        "yRotTarget": "float",
+        "zRotTarget": "float",
+        "nextSteeringUpdate" "uint64"
+        "wanderWeight": { // How much should the ai wander? the rest is distributed between other behaviours
+          "type": "float",
+          "default": 1.0
+        },
+        "wanderRadius": { // Radius of constraining sphere
+          "type": "float",
+          "default": 0.35
+        },
+        "wanderDistance": { // Distance the wander sphere is projected in front of the entity
+          "type": "float",
+          "default": 2.0
+        },
+        "wanderJitter": { // maximum amount of random displacement that can be added each second.
+          "type": "float",
+          "default": 0.80
+        }
       }
     }
 }

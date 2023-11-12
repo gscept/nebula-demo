@@ -49,7 +49,7 @@ void SimulateSpaceShip()
 
             ship.linearVelocity = lerp(ship.linearVelocity, desiredVelocity, time->frameTime * ship.accelerationFactor);
 
-            ship.position += ship.linearVelocity * time->frameTime * 10.0f;
+            position += ship.linearVelocity * time->frameTime * 10.0f;
 
             ship.rotXSmooth = lerp(ship.rotXSmooth, move.rotateX * ship.rotationSpeed * time->frameTime, time->frameTime * ship.rotationSmoothFactor);
             ship.rotYSmooth = lerp(ship.rotYSmooth, move.rotateY * ship.rotationSpeed * time->frameTime, time->frameTime * ship.rotationSmoothFactor);
@@ -58,9 +58,8 @@ void SimulateSpaceShip()
             quat localOrientation = from_euler(vec3(ship.rotXSmooth, ship.rotYSmooth, ship.rotZSmooth));
             ship.orientation = localOrientation * ship.orientation;
             ship.rotationZ -= ship.rotXSmooth;
-            ship.rotationZ = clamp(ship.rotationZ, -45.0f, 45.0f);
-            position = ship.position;
-            orientation = { ship.orientation };
+            //ship.rotationZ = clamp(ship.rotationZ, -45.0f, 45.0f);
+            orientation = { quat(0.0f, 0.0f, ship.rotationZ, 1.0f) * ship.orientation };
             orientation = { Math::normalize(orientation) };
             ship.rotationZ = lerp(ship.rotationZ, 0.0f, time->frameTime * ship.rotationSmoothFactor);
         };

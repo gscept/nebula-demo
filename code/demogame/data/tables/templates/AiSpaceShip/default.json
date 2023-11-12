@@ -1,0 +1,18 @@
+{
+  "blueprint": "AiSpaceShip",
+  "components": {
+    "SpaceShip": {
+      "accelerationFactor": 1.0,
+      "normalSpeed": 1.0,
+      "boostSpeed": 2.0,
+      "rotationSpeed": 1.8,
+      "rotationSmoothFactor": 10.0
+    },
+    "Model": {
+      "resource": "mdl:space/Nebula_SpaceShip_GLTF.n3"
+    },
+    "PhysicsActor": {
+      "actorType": "Kinematic"
+    }
+  }
+}

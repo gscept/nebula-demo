@@ -19,6 +19,8 @@ fips_dir(.)
 
     fips_dir(managers)
         fips_files(
+			aimanager.h
+			aimanager.cc
             playermanager.h
             playermanager.cc
             inputmanager.h

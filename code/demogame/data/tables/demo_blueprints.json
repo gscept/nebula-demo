@@ -23,6 +23,16 @@
         "AudioEmitter"
       ]
     },
+    "AiSpaceShip": {
+      "desc": "A Space ship that is AI controlled",
+      "components": [
+        "Model",
+        //"PhysicsActor",
+        "SpaceShip",
+        "SpaceShipMoveParams",
+        "AiControlled"
+      ]
+    },
     "StaticEnvironment": {
       "desc": "Static environment object",
       "components": [
