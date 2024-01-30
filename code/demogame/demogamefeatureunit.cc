@@ -78,9 +78,6 @@ void
 DemoGameFeatureUnit::OnBeginFrame()
 {
     FeatureUnit::OnBeginFrame();
-    #if NEBULA_ENABLE_PROFILING
-        Profiling::ProfilingNewFrame();
-    #endif
 }
 
 //------------------------------------------------------------------------------
