@@ -2,24 +2,24 @@
 <N10X>
 	<Workspace>
 		<IncludeFilter>*.c,*.cc,*.cpp,*.c++,*.cp,*.cxx,*.h,*.hh,*.hpp,*.h++,*.hp,*.hxx,*.inl,*.cs,*.rs,*.java,*.jav,*.js,*.jsc,*.jsx,*.json,*.cls,*.py,*.rpy,*.php,*.php3,*.phl,*.phtml,*.rhtml,*.tpl,*.phps,*.lua,*.html,*.html5,*.htm,*.xml,*.xaml,*.css,*.ssi,*.haml,*.yaml,*.bat,*.wbf,*.wbt,*.txt,*.cmake,*.make,*.makefile,*.mak,*.mk,*.sh,*.bash,*.csv,*.asp,*.pl,*.mac,*.ws,*.vbs,*.perl,*.src,*.rss,*.inc,*.f,*.go,*.prl,*.plx,*.rb,*.lsp,*.lpx,*.ps1,*.command,*.cbl,*.cob,*.qs,*.wxs,*.ph,*.msc,*.glsl,*.hlsl,*.fx,*.vert,*.tesc,*.tese,*.geom,*.frag,*.comp,*.pssl,*.scons,*.cu,*.jai,</IncludeFilter>
-		<ExcludeFilter></ExcludeFilter>
+		<ExcludeFilter>*.git,*.vscode,</ExcludeFilter>
 		<SyncFiles>false</SyncFiles>
 		<Recursive>true</Recursive>
 		<ShowEmptyFolders>true</ShowEmptyFolders>
 		<IsVirtual>false</IsVirtual>
 		<IsFolder>false</IsFolder>
-		<BuildCommand></BuildCommand>
+		<BuildCommand>fips make</BuildCommand>
 		<RebuildCommand></RebuildCommand>
 		<BuildFileCommand></BuildFileCommand>
-		<CleanCommand></CleanCommand>
-		<BuildWorkingDirectory></BuildWorkingDirectory>
+		<CleanCommand>fips clean</CleanCommand>
+		<BuildWorkingDirectory>$(WorkspaceDirectory)</BuildWorkingDirectory>
 		<CancelBuild></CancelBuild>
-		<RunCommand></RunCommand>
-		<RunCommandWorkingDirectory></RunCommandWorkingDirectory>
+		<RunCommand>fips run nebula-demo</RunCommand>
+		<RunCommandWorkingDirectory>$(WorkspaceDirectory)</RunCommandWorkingDirectory>
 		<DebugCommand></DebugCommand>
 		<ExePathCommand></ExePathCommand>
 		<DebugSln></DebugSln>
-		<UseVisualStudioEnvBat>false</UseVisualStudioEnvBat>
+		<UseVisualStudioEnvBat>true</UseVisualStudioEnvBat>
 		<Configurations>
 			<Configuration>Debug</Configuration>
 			<Configuration>Release</Configuration>
@@ -59,7 +59,7 @@
 			<Folder>
 				<Path>.git</Path>
 				<IncludeFilter>*.c,*.cc,*.cpp,*.c++,*.cp,*.cxx,*.h,*.hh,*.hpp,*.h++,*.hp,*.hxx,*.inl,*.cs,*.rs,*.java,*.jav,*.js,*.jsc,*.jsx,*.json,*.cls,*.py,*.rpy,*.php,*.php3,*.phl,*.phtml,*.rhtml,*.tpl,*.phps,*.lua,*.html,*.html5,*.htm,*.xml,*.xaml,*.css,*.ssi,*.haml,*.yaml,*.bat,*.wbf,*.wbt,*.txt,*.cmake,*.make,*.makefile,*.mak,*.mk,*.sh,*.bash,*.csv,*.asp,*.pl,*.mac,*.ws,*.vbs,*.perl,*.src,*.rss,*.inc,*.f,*.go,*.prl,*.plx,*.rb,*.lsp,*.lpx,*.ps1,*.command,*.cbl,*.cob,*.qs,*.wxs,*.ph,*.msc,*.glsl,*.hlsl,*.fx,*.vert,*.tesc,*.tese,*.geom,*.frag,*.comp,*.pssl,*.scons,*.cu,*.jai,</IncludeFilter>
-				<ExcludeFilter></ExcludeFilter>
+				<ExcludeFilter>*.git,*.vscode,</ExcludeFilter>
 				<SyncFiles>true</SyncFiles>
 				<Recursive>true</Recursive>
 				<ShowEmptyFolders>true</ShowEmptyFolders>
@@ -69,7 +69,7 @@
 			<Folder>
 				<Path>.vscode</Path>
 				<IncludeFilter>*.c,*.cc,*.cpp,*.c++,*.cp,*.cxx,*.h,*.hh,*.hpp,*.h++,*.hp,*.hxx,*.inl,*.cs,*.rs,*.java,*.jav,*.js,*.jsc,*.jsx,*.json,*.cls,*.py,*.rpy,*.php,*.php3,*.phl,*.phtml,*.rhtml,*.tpl,*.phps,*.lua,*.html,*.html5,*.htm,*.xml,*.xaml,*.css,*.ssi,*.haml,*.yaml,*.bat,*.wbf,*.wbt,*.txt,*.cmake,*.make,*.makefile,*.mak,*.mk,*.sh,*.bash,*.csv,*.asp,*.pl,*.mac,*.ws,*.vbs,*.perl,*.src,*.rss,*.inc,*.f,*.go,*.prl,*.plx,*.rb,*.lsp,*.lpx,*.ps1,*.command,*.cbl,*.cob,*.qs,*.wxs,*.ph,*.msc,*.glsl,*.hlsl,*.fx,*.vert,*.tesc,*.tese,*.geom,*.frag,*.comp,*.pssl,*.scons,*.cu,*.jai,</IncludeFilter>
-				<ExcludeFilter></ExcludeFilter>
+				<ExcludeFilter>*.git,*.vscode,</ExcludeFilter>
 				<SyncFiles>true</SyncFiles>
 				<Recursive>true</Recursive>
 				<ShowEmptyFolders>true</ShowEmptyFolders>
@@ -79,7 +79,7 @@
 			<Folder>
 				<Path>code</Path>
 				<IncludeFilter>*.c,*.cc,*.cpp,*.c++,*.cp,*.cxx,*.h,*.hh,*.hpp,*.h++,*.hp,*.hxx,*.inl,*.cs,*.rs,*.java,*.jav,*.js,*.jsc,*.jsx,*.json,*.cls,*.py,*.rpy,*.php,*.php3,*.phl,*.phtml,*.rhtml,*.tpl,*.phps,*.lua,*.html,*.html5,*.htm,*.xml,*.xaml,*.css,*.ssi,*.haml,*.yaml,*.bat,*.wbf,*.wbt,*.txt,*.cmake,*.make,*.makefile,*.mak,*.mk,*.sh,*.bash,*.csv,*.asp,*.pl,*.mac,*.ws,*.vbs,*.perl,*.src,*.rss,*.inc,*.f,*.go,*.prl,*.plx,*.rb,*.lsp,*.lpx,*.ps1,*.command,*.cbl,*.cob,*.qs,*.wxs,*.ph,*.msc,*.glsl,*.hlsl,*.fx,*.vert,*.tesc,*.tese,*.geom,*.frag,*.comp,*.pssl,*.scons,*.cu,*.jai,</IncludeFilter>
-				<ExcludeFilter></ExcludeFilter>
+				<ExcludeFilter>*.git,*.vscode,</ExcludeFilter>
 				<SyncFiles>true</SyncFiles>
 				<Recursive>true</Recursive>
 				<ShowEmptyFolders>true</ShowEmptyFolders>
@@ -89,7 +89,7 @@
 			<Folder>
 				<Path>export</Path>
 				<IncludeFilter>*.c,*.cc,*.cpp,*.c++,*.cp,*.cxx,*.h,*.hh,*.hpp,*.h++,*.hp,*.hxx,*.inl,*.cs,*.rs,*.java,*.jav,*.js,*.jsc,*.jsx,*.json,*.cls,*.py,*.rpy,*.php,*.php3,*.phl,*.phtml,*.rhtml,*.tpl,*.phps,*.lua,*.html,*.html5,*.htm,*.xml,*.xaml,*.css,*.ssi,*.haml,*.yaml,*.bat,*.wbf,*.wbt,*.txt,*.cmake,*.make,*.makefile,*.mak,*.mk,*.sh,*.bash,*.csv,*.asp,*.pl,*.mac,*.ws,*.vbs,*.perl,*.src,*.rss,*.inc,*.f,*.go,*.prl,*.plx,*.rb,*.lsp,*.lpx,*.ps1,*.command,*.cbl,*.cob,*.qs,*.wxs,*.ph,*.msc,*.glsl,*.hlsl,*.fx,*.vert,*.tesc,*.tese,*.geom,*.frag,*.comp,*.pssl,*.scons,*.cu,*.jai,</IncludeFilter>
-				<ExcludeFilter></ExcludeFilter>
+				<ExcludeFilter>*.git,*.vscode,</ExcludeFilter>
 				<SyncFiles>true</SyncFiles>
 				<Recursive>true</Recursive>
 				<ShowEmptyFolders>true</ShowEmptyFolders>
@@ -99,7 +99,7 @@
 			<Folder>
 				<Path>out</Path>
 				<IncludeFilter>*.c,*.cc,*.cpp,*.c++,*.cp,*.cxx,*.h,*.hh,*.hpp,*.h++,*.hp,*.hxx,*.inl,*.cs,*.rs,*.java,*.jav,*.js,*.jsc,*.jsx,*.json,*.cls,*.py,*.rpy,*.php,*.php3,*.phl,*.phtml,*.rhtml,*.tpl,*.phps,*.lua,*.html,*.html5,*.htm,*.xml,*.xaml,*.css,*.ssi,*.haml,*.yaml,*.bat,*.wbf,*.wbt,*.txt,*.cmake,*.make,*.makefile,*.mak,*.mk,*.sh,*.bash,*.csv,*.asp,*.pl,*.mac,*.ws,*.vbs,*.perl,*.src,*.rss,*.inc,*.f,*.go,*.prl,*.plx,*.rb,*.lsp,*.lpx,*.ps1,*.command,*.cbl,*.cob,*.qs,*.wxs,*.ph,*.msc,*.glsl,*.hlsl,*.fx,*.vert,*.tesc,*.tese,*.geom,*.frag,*.comp,*.pssl,*.scons,*.cu,*.jai,</IncludeFilter>
-				<ExcludeFilter></ExcludeFilter>
+				<ExcludeFilter>*.git,*.vscode,</ExcludeFilter>
 				<SyncFiles>true</SyncFiles>
 				<Recursive>true</Recursive>
 				<ShowEmptyFolders>true</ShowEmptyFolders>
@@ -109,7 +109,7 @@
 			<Folder>
 				<Path>work</Path>
 				<IncludeFilter>*.c,*.cc,*.cpp,*.c++,*.cp,*.cxx,*.h,*.hh,*.hpp,*.h++,*.hp,*.hxx,*.inl,*.cs,*.rs,*.java,*.jav,*.js,*.jsc,*.jsx,*.json,*.cls,*.py,*.rpy,*.php,*.php3,*.phl,*.phtml,*.rhtml,*.tpl,*.phps,*.lua,*.html,*.html5,*.htm,*.xml,*.xaml,*.css,*.ssi,*.haml,*.yaml,*.bat,*.wbf,*.wbt,*.txt,*.cmake,*.make,*.makefile,*.mak,*.mk,*.sh,*.bash,*.csv,*.asp,*.pl,*.mac,*.ws,*.vbs,*.perl,*.src,*.rss,*.inc,*.f,*.go,*.prl,*.plx,*.rb,*.lsp,*.lpx,*.ps1,*.command,*.cbl,*.cob,*.qs,*.wxs,*.ph,*.msc,*.glsl,*.hlsl,*.fx,*.vert,*.tesc,*.tese,*.geom,*.frag,*.comp,*.pssl,*.scons,*.cu,*.jai,</IncludeFilter>
-				<ExcludeFilter></ExcludeFilter>
+				<ExcludeFilter>*.git,*.vscode,</ExcludeFilter>
 				<SyncFiles>true</SyncFiles>
 				<Recursive>true</Recursive>
 				<ShowEmptyFolders>true</ShowEmptyFolders>
@@ -128,6 +128,9 @@
 			<File>
 				<Path>projectinfo.json</Path>
 			</File>
+			<WorkspaceReference>
+				<Path>../nebula/Nebula.10x</Path>
+			</WorkspaceReference>
 		</Children>
 	</Workspace>
 </N10X>
