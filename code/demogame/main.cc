@@ -67,10 +67,10 @@ private:
     /// cleanup game features
     void CleanupGameFeatures()
     {
-        this->gameServer->CleanupWorld(Game::GetWorld(WORLD_DEFAULT));
         this->gameServer->RemoveGameFeature(this->physicsFeature);
         this->gameServer->RemoveGameFeature(this->graphicsFeature);
         this->gameServer->RemoveGameFeature(this->demoFeatureUnit);
+        this->gameServer->RemoveGameFeature(this->audioFeature);
         this->audioFeature->Release();
         this->audioFeature = nullptr;
         this->physicsFeature->Release();
