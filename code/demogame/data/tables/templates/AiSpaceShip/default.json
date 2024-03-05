@@ -9,7 +9,7 @@
       "rotationSmoothFactor": 10.0
     },
     "Model": {
-      "resource": "mdl:space/Nebula_SpaceShip_GLTF.n3",
+      "resource": "mdl:Units/Unit_Archer.n3",
       "raytracing": true
     },
     "PhysicsActor": {
