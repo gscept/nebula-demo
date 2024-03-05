@@ -1,6 +1,7 @@
 {
     "config": {
         "use": true,
+        "raytracing": true,
         "max_height": 256.0,
         "min_height": 0.0,
         "world_size_width": 1024.0,
