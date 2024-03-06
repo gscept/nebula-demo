@@ -40,6 +40,7 @@ private:
 #endif
         this->graphicsFeature = GraphicsFeature::GraphicsFeatureUnit::Create();
         this->graphicsFeature->SetCmdLineArgs(this->GetCmdLineArgs());
+        this->graphicsFeature->SetWindowTitle("Nebula Demo");
         this->gameServer->AttachGameFeature(this->graphicsFeature);
 
         this->physicsFeature = PhysicsFeature::PhysicsFeatureUnit::Create();
