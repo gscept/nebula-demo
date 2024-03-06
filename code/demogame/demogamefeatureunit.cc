@@ -17,6 +17,10 @@
 #include "game/world.h"
 #include "managers/aimanager.h"
 
+#include "nflatbuffer/nebula_flat.h"
+#include "nflatbuffer/flatbufferinterface.h"
+#include "flat/graphicsfeature/terrainschema.h"
+
 namespace Demo
 {
 

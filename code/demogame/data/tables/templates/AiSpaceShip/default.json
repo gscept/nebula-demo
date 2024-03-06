@@ -10,6 +10,8 @@
     },
     "Model": {
       "resource": "mdl:Units/Unit_Archer.n3",
+      "anim": "ani:Units/Unit_Archer.nax",
+      "skeleton": "ske:Units/Unit_Archer.nsk",
       "raytracing": true
     },
     "PhysicsActor": {
