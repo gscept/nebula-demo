@@ -42,7 +42,7 @@
                     {
                         "name": "TeamColorMask",
                         "type": "textureHandle",
-                        "defaultValue": "tex:system/black.dds"
+                        "defaultValue": "tex:system/white.dds"
                     },
                     {
                         "name": "AlbedoMap",
@@ -50,14 +50,38 @@
                         "defaultValue": "systex:placeholder.dds"
                     },
                     {
-                        "name": "SpecularMap",
-                        "type": "textureHandle",
-                        "defaultValue": "tex:system/black.dds"
+                        "name": "MatAlbedoIntensity",
+                        "type": "vec4",
+                        "defaultValue": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "min": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "max": [
+                            10.0,
+                            10.0,
+                            10.0,
+                            1.0
+                        ],
+                        "edit": "color",
+                        "desc": "Material albedo multiplier"
                     },
                     {
-                        "name": "RoughnessMap",
+                        "name": "ParameterMap",
                         "type": "textureHandle",
-                        "defaultValue": "tex:system/white.dds"
+                        "defaultValue": "tex:system/default_material.dds"
+                    },
+                    {
+                        "name": "NormalMap",
+                        "type": "textureHandle",
+                        "defaultValue": "tex:system/nobump.dds"
                     }
                 ]
             },
@@ -102,7 +126,7 @@
                     {
                         "name": "TeamColorMask",
                         "type": "textureHandle",
-                        "defaultValue": "tex:system/black.dds"
+                        "defaultValue": "tex:system/white.dds"
                     },
                     {
                         "name": "AlbedoMap",
@@ -110,14 +134,38 @@
                         "defaultValue": "systex:placeholder.dds"
                     },
                     {
-                        "name": "SpecularMap",
-                        "type": "textureHandle",
-                        "defaultValue": "tex:system/black.dds"
+                        "name": "MatAlbedoIntensity",
+                        "type": "vec4",
+                        "defaultValue": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "min": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "max": [
+                            10.0,
+                            10.0,
+                            10.0,
+                            1.0
+                        ],
+                        "edit": "color",
+                        "desc": "Material albedo multiplier"
                     },
                     {
-                        "name": "RoughnessMap",
+                        "name": "ParameterMap",
                         "type": "textureHandle",
-                        "defaultValue": "tex:system/white.dds"
+                        "defaultValue": "tex:system/default_material.dds"
+                    },
+                    {
+                        "name": "NormalMap",
+                        "type": "textureHandle",
+                        "defaultValue": "tex:system/nobump.dds"
                     }
                 ]
             }
