@@ -45,14 +45,13 @@ DemoGameFeatureUnit::~DemoGameFeatureUnit()
 void
 DemoGameFeatureUnit::OnAttach()
 {
-    Game::World* world = Game::GetWorld(WORLD_DEFAULT);
-    world->RegisterType<Demo::PlayerInput>();
-    world->RegisterType<Demo::Movement>();
-    world->RegisterType<Demo::ShotSpawn>();
-    world->RegisterType<Demo::CameraFollow>();
-    world->RegisterType<Demo::SpaceShip>();
-    world->RegisterType<Demo::SpaceShipMoveParams>();
-    world->RegisterType<Demo::AiControlled>();
+    Game::RegisterType<Demo::PlayerInput>();
+    Game::RegisterType<Demo::Movement>();
+    Game::RegisterType<Demo::ShotSpawn>();
+    Game::RegisterType<Demo::CameraFollow>();
+    Game::RegisterType<Demo::SpaceShip>();
+    Game::RegisterType<Demo::SpaceShipMoveParams>();
+    Game::RegisterType<Demo::AiControlled>();
 }
 
 //------------------------------------------------------------------------------
