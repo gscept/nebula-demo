@@ -16,6 +16,8 @@ fips_dir(.)
         gamestatemanager.h
         gamestatemanager.cc
     )
+    fips_dir(demoshaders)
+        add_shaders(unit.fx)
 
     fips_dir(managers)
         fips_files(

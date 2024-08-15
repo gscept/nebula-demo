@@ -1,9 +1,150 @@
 {
     "Nebula": {
+        "Interfaces": [
+            {
+                "name": "Nota",
+                "values": [
+                    {
+                        "name": "AlbedoMap",
+                        "type": "textureHandle"
+                    },
+                    {
+                        "name": "AlphaSensitivity",
+                        "type": "float"
+                    },
+                    {
+                        "name": "AlphaBlendFactor",
+                        "type": "float"
+                    },
+                    {
+                        "name": "ParameterMap",
+                        "type": "textureHandle"
+                    },
+                    {
+                        "name": "MatAlbedoIntensity",
+                        "type": "vec4"
+                    },
+                    {
+                        "name": "MatSpecularIntensity",
+                        "type": "vec4"
+                    },
+                    {
+                        "name": "NormalMap",
+                        "type": "textureHandle"
+                    },
+                    {
+                        "name": "MatRoughnessIntensity",
+                        "type": "float"
+                    },
+                    {
+                        "name": "MatMetallicIntensity",
+                        "type": "float"
+                    },
+                    {
+                        "name": "TeamColorMask",
+                        "type": "textureHandle"
+                    },
+                    {
+                        "name": "SpecularMap",
+                        "type": "textureHandle"
+                    }
+                ]
+            }
+        ],
         "Templates": [
             {
+                "name": "DefaultNota",
+                "virtual": true,
+                "desc": "Default material for Nota",
+                "interface": "Nota",
+                "variables": [
+                    {
+                        "name": "MatAlbedoIntensity",
+                        "defaultValue": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "min": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "max": [
+                            10.0,
+                            10.0,
+                            10.0,
+                            1.0
+                        ],
+                        "edit": "color",
+                        "desc": "Material albedo multiplier"
+                    },
+                    {
+                        "name": "MatSpecularIntensity",
+                        "defaultValue": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "min": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "max": [
+                            10.0,
+                            10.0,
+                            10.0,
+                            1.0
+                        ],
+                        "edit": "color",
+                        "desc": "Material specular reflectivity index"
+                    },
+                    {
+                        "name": "AlphaSensitivity",
+                        "defaultValue": 1.0
+                    },
+                    {
+                        "name": "AlphaBlendFactor",
+                        "defaultValue": 0.0
+                    },
+                    {
+                        "name": "MatRoughnessIntensity",
+                        "defaultValue": 1.0
+                    },
+                    {
+                        "name": "MatMetallicIntensity",
+                        "defaultValue": 1.0
+                    },
+                    {
+                        "name": "AlbedoMap",
+                        "defaultValue": "systex:placeholder.dds"
+                    },
+                    {
+                        "name": "ParameterMap",
+                        "defaultValue": "systex:default_material.dds"
+                    },
+                    {
+                        "name": "NormalMap",
+                        "defaultValue": "systex:nobump.dds"
+                    },
+                    {
+                        "name": "TeamColorMask",
+                        "defaultValue": "systex:white.dds"
+                    },
+                    {
+                        "name": "SpecularMap",
+                        "defaultValue": "systex:white.dds"
+                    }
+                ]
+            },
+            {
                 "name": "NotACastleStatic",
-                "materialProperties": "BRDF",
+                "inherits": "DefaultNota",
                 "vertexType": "VertexLayoutType::Normal",
                 "desc": "Standard material for static meshes. Affected by lights.",
                 "passes": [
@@ -34,60 +175,14 @@
                     },
                     {
                         "batch": "FlatGeometryLit",
-                        "shader": "system_shaders/unit",
+                        "shader": "demoshaders/unit",
                         "variation": "Static"
-                    }
-                ],
-                "variables": [
-                    {
-                        "name": "TeamColorMask",
-                        "type": "textureHandle",
-                        "defaultValue": "tex:system/white.dds"
-                    },
-                    {
-                        "name": "AlbedoMap",
-                        "type": "textureHandle",
-                        "defaultValue": "systex:placeholder.dds"
-                    },
-                    {
-                        "name": "MatAlbedoIntensity",
-                        "type": "vec4",
-                        "defaultValue": [
-                            1.0,
-                            1.0,
-                            1.0,
-                            1.0
-                        ],
-                        "min": [
-                            0.0,
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "max": [
-                            10.0,
-                            10.0,
-                            10.0,
-                            1.0
-                        ],
-                        "edit": "color",
-                        "desc": "Material albedo multiplier"
-                    },
-                    {
-                        "name": "ParameterMap",
-                        "type": "textureHandle",
-                        "defaultValue": "tex:system/default_material.dds"
-                    },
-                    {
-                        "name": "NormalMap",
-                        "type": "textureHandle",
-                        "defaultValue": "tex:system/nobump.dds"
                     }
                 ]
             },
             {
                 "name": "NotACastleChar",
-                "materialProperties": "BRDF",
+                "inherits": "DefaultNota",
                 "vertexType": "VertexLayoutType::Skin",
                 "desc": "Skinned material which uses a mesh with joint indices and joint weights. Useful for characters. Affected by lights.",
                 "passes": [
@@ -118,54 +213,8 @@
                     },
                     {
                         "batch": "FlatGeometryLit",
-                        "shader": "system_shaders/unit",
+                        "shader": "demoshaders/unit",
                         "variation": "Skinned"
-                    }
-                ],
-                "variables": [
-                    {
-                        "name": "TeamColorMask",
-                        "type": "textureHandle",
-                        "defaultValue": "tex:system/white.dds"
-                    },
-                    {
-                        "name": "AlbedoMap",
-                        "type": "textureHandle",
-                        "defaultValue": "systex:placeholder.dds"
-                    },
-                    {
-                        "name": "MatAlbedoIntensity",
-                        "type": "vec4",
-                        "defaultValue": [
-                            1.0,
-                            1.0,
-                            1.0,
-                            1.0
-                        ],
-                        "min": [
-                            0.0,
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "max": [
-                            10.0,
-                            10.0,
-                            10.0,
-                            1.0
-                        ],
-                        "edit": "color",
-                        "desc": "Material albedo multiplier"
-                    },
-                    {
-                        "name": "ParameterMap",
-                        "type": "textureHandle",
-                        "defaultValue": "tex:system/default_material.dds"
-                    },
-                    {
-                        "name": "NormalMap",
-                        "type": "textureHandle",
-                        "defaultValue": "tex:system/nobump.dds"
                     }
                 ]
             }
