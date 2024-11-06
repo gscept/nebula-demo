@@ -95,18 +95,18 @@ GameStateManager::~GameStateManager()
 void
 GameStateManager::OnActivate()
 {
-    auto gameWorld = Game::GetWorld(WORLD_DEFAULT);
+     auto gameWorld = Game::GetWorld(WORLD_DEFAULT);
     Game::EntityCreateInfo playerInfo;
     playerInfo.immediate = true;
     playerInfo.templateId = Game::GetTemplateId("PlayerSpaceShip/default"_atm);
     gameWorld->CreateEntity(playerInfo);
-
+    
     Game::EntityCreateInfo terrainInfo;
     terrainInfo.immediate = true;
     terrainInfo.templateId = Game::GetTemplateId("OnlyCollider/terrain"_atm);
     Game::Entity terrain = gameWorld->CreateEntity(terrainInfo);
-
-    for (int i = 0; i < 1; i++)
+    
+    for (int i = 0; i < 100; i++)
     {
         const float span = 100.0f;
         Game::EntityCreateInfo playerInfo;

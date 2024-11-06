@@ -106,8 +106,11 @@ PollSpaceShipInput()
                     Game::World* world = Game::GetWorld(WORLD_DEFAULT);
                     if (world->HasInstance(entity))
                     {
-                        //auto const& projectile = world->GetComponent<Demo::Projectile>(entity);
-                        world->DeleteEntity(entity);
+                        if (!world->HasComponent<Demo::PlayerInput>(entity))
+                        {
+                            //auto const& projectile = world->GetComponent<Demo::Projectile>(entity);
+                            //world->DeleteEntity(entity);
+                        }
                     }
                 });
             }

@@ -17,6 +17,7 @@
 #include "properties/projectile.h"
 #include "game/world.h"
 #include "managers/aimanager.h"
+#include "frame/default.h"
 
 namespace Demo
 {
@@ -70,6 +71,18 @@ DemoGameFeatureUnit::OnActivate()
     this->AttachManager(Demo::MovementManager::Create());
     this->AttachManager(Demo::PlayerManager::Create());
     this->AttachManager(Demo::AiManager::Create());
+
+    Graphics::GraphicsServer::Instance()->AddPostViewCall([](IndexT frameIndex, IndexT bufferIndex)
+        {
+            Graphics::GraphicsServer::SwapInfo swapInfo;
+            swapInfo.syncFunc = [](CoreGraphics::CmdBufferId cmdBuf)
+                {
+                    FrameScript_default::Synchronize("Present_Sync", cmdBuf, { { (FrameScript_default::TextureIndex)FrameScript_default::Export_ColorBuffer.index, CoreGraphics::PipelineStage::TransferRead } }, nullptr);
+                };
+            swapInfo.submission = FrameScript_default::Submission_Scene;
+            swapInfo.swapSource = FrameScript_default::Export_ColorBuffer.tex;
+            Graphics::GraphicsServer::Instance()->SetSwapInfo(swapInfo);
+        });
 }
 
 //------------------------------------------------------------------------------
