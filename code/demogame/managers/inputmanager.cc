@@ -19,7 +19,7 @@
 #include "playermanager.h"
 #include "graphicsfeature/graphicsfeatureunit.h"
 #include "physicsfeature/components/physicsfeature.h"
-
+#include "basegamefeature/components/basegamefeature.h"
 #include "audiofeature/components/audiofeature.h"
 
 namespace Demo
@@ -106,10 +106,9 @@ PollSpaceShipInput()
                     Game::World* world = Game::GetWorld(WORLD_DEFAULT);
                     if (world->HasInstance(entity))
                     {
-                        if (!world->HasComponent<Demo::PlayerInput>(entity))
+                        if (!world->HasComponent<Demo::PlayerInput>(entity) && !world->HasComponent<Game::Static>(entity))
                         {
-                            //auto const& projectile = world->GetComponent<Demo::Projectile>(entity);
-                            //world->DeleteEntity(entity);
+                            world->DeleteEntity(entity);
                         }
                     }
                 });
