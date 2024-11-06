@@ -27,7 +27,7 @@
       "desc": "A Space ship that is AI controlled",
       "components": [
         "Model",
-        //"PhysicsActor",
+        "PhysicsActor",
         "SpaceShip",
         "SpaceShipMoveParams",
         "AiControlled"
@@ -66,6 +66,16 @@
         "PhysicsActor"
       ]
     },
+    "Projectiles": {
+      "desc": "Projectile fired by ships",
+      "components": [
+        "Model",
+        "PhysicsActor",
+        "Velocity",
+        "AngularVelocity",
+        "Projectile"
+      ]
+    },      
     "OnlyCollider": {
       "desc": "Physics collider",
       "components": [

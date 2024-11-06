@@ -31,9 +31,11 @@ fips_dir(.)
 
     fips_dir(properties)
         nebula_idl_compile(
+            projectile.json
             input.json
             movement.json
             spaceship.json
+            projectile.json
         )
 
 fips_deps(foundation application graphicsfeature physicsfeature audiofeature render resource dynui scripting editor)

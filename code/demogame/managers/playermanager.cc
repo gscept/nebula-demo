@@ -131,8 +131,10 @@ void
 PlayerManager::OnBeginFrame()
 {
     auto& io = ImGui::GetIO();
+    
     if (!ImGui::GetIO().WantCaptureMouse)
     {
+        /*
         if (Input::InputServer::Instance()->GetDefaultMouse()->ButtonPressed(Input::MouseButton::Code::RightButton))
         {
             Singleton->freeCamUtil.SetForwardsKey(io.KeysDown[Input::Key::W]);
@@ -146,7 +148,10 @@ PlayerManager::OnBeginFrame()
             Singleton->freeCamUtil.SetRotateButton(io.MouseDown[Input::MouseButton::RightButton]);
             Singleton->freeCamUtil.SetMovementSpeed(0.1f);
             Singleton->freeCamUtil.Update();
+            Math::vec4 pos = Singleton->freeCamUtil.GetTransform().position;
+            n_printf("%f %f %f\n", pos.x, pos.y, pos.z);
         }
+        */
     }
     
     Game::World* world = Game::GetWorld(WORLD_DEFAULT);
@@ -157,7 +162,7 @@ PlayerManager::OnBeginFrame()
             auto cam = PlayerManager::Instance()->mainCameraEntity;
             GraphicsFeature::Camera camera = world->GetComponent<GraphicsFeature::Camera>(cam);
             camera.localTransform = Math::inverse(Singleton->freeCamUtil.GetTransform());
-            world->SetComponent(cam, camera);
+            //world->SetComponent(cam, camera);
         }
     }
 }

@@ -1,0 +1,19 @@
+{
+    "namespace": "Demo",
+    "includes": [
+        "math/vec3.h",
+        "util/stringatom.h"
+    ],
+    "components": {
+        "Projectile": {
+            "speed": {
+                "type": "float",
+                "default": 1.0
+            },
+            "hitspawn": { 
+                "type": "Util::StringAtom",
+                "default": "PhysicsEntity/placeholder_box",
+            }
+        },
+    }
+}

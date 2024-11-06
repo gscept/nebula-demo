@@ -34,6 +34,7 @@
 #include "graphicsfeature/managers/graphicsmanager.h"
 #include "game/gameserver.h"
 #include "game/api.h"
+#include "managers/playermanager.h"
 
 #ifdef __WIN32__
 #include <shellapi.h>
@@ -104,8 +105,8 @@ GameStateManager::OnActivate()
     terrainInfo.immediate = true;
     terrainInfo.templateId = Game::GetTemplateId("OnlyCollider/terrain"_atm);
     Game::Entity terrain = gameWorld->CreateEntity(terrainInfo);
-    
-    for (int i = 0; i < 100; i++)
+
+    for (int i = 0; i < 1; i++)
     {
         const float span = 100.0f;
         Game::EntityCreateInfo playerInfo;
@@ -120,7 +121,7 @@ GameStateManager::OnActivate()
         );
 
     }
-
+    
     {
         Game::TemplateId asteroidTemplates[] = {
             Game::GetTemplateId("StaticEnvironment/asteroid_1"_atm),
@@ -133,7 +134,7 @@ GameStateManager::OnActivate()
         constexpr size_t numTemplateTypes = sizeof(asteroidTemplates) / sizeof(Game::TemplateId);
     
         Game::EntityCreateInfo info;
-        info.immediate = true;
+        info.immediate = false;
         
         // Setup asteroids near
         for (int i = 0; i < 100; i++)
@@ -141,7 +142,7 @@ GameStateManager::OnActivate()
             info.templateId = asteroidTemplates[Util::FastRandom() % numTemplateTypes];
             Game::Entity asteroid = gameWorld->CreateEntity(info);
             
-            float span = 20.0f;
+            float span = 200.0f;
             Math::vec3 translation = Math::vec3(
                 Util::RandomFloatNTP() * span,
                 Util::RandomFloatNTP() * span,
@@ -177,11 +178,6 @@ GameStateManager::OnActivate()
             gameWorld->SetComponent<Game::Orientation>(asteroid, { orient });
         }
     }
-
-    GraphicsFeature::GraphicsFeatureUnit::Instance()->AddRenderUICallback([]()
-    {
-        
-    });
 }
 
 Util::Queue<Game::Entity> entities;
@@ -198,30 +194,28 @@ GameStateManager::OnBeginFrame()
     }
     
     
-    if (Input::InputServer::Instance()->GetDefaultMouse()->ButtonPressed(Input::MouseButton::Code::RightButton) &&
-        Input::InputServer::Instance()->GetDefaultMouse()->ButtonPressed(Input::MouseButton::Code::LeftButton))
+    if (Input::InputServer::Instance()->GetDefaultMouse()->ButtonPressed(Input::MouseButton::Code::LeftButton))
     {
+        /*
         auto gameWorld = Game::GetWorld(WORLD_DEFAULT);
         for (size_t i = 0; i < 1; i++)
         {
-            //Game::EntityCreateInfo info;
-            //info.immediate = true;
-            //info.templateId = Game::GetTemplateId("MovingEntity/cube"_atm);
-            //Game::Entity entity = gameWorld->CreateEntity(info);
-            //gameWorld->SetComponent<Game::Position>(entity, { (Math::rand() - 0.5f) * 30.0f, 0.5f, (Math::rand() - 0.5f) * 30.0f });
-            //entities.Enqueue(entity);
+            //auto cam = PlayerManager::Instance()->mainCameraEntity;
+            //GraphicsFeature::Camera camera = gameWorld->GetComponent<GraphicsFeature::Camera>(cam);
+            //Math::mat4 camTransform = camera.localTransform;// gameWorld->GetComponent(cam, camera);
 
-            Math::mat4 camTransform = GraphicsFeature::CameraManager::GetLocalTransform(GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultViewHandle());
+            Math::mat4 camTransform = Math::inverse(GraphicsFeature::CameraManager::GetLocalTransform(GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultViewHandle()));
             Game::EntityCreateInfo info;
-            info.immediate = true;
+            info.immediate = false;
             info.templateId = Game::GetTemplateId("PhysicsEntity/placeholder_box"_atm);
             Game::Entity entity = gameWorld->CreateEntity(info);
             entities.Enqueue(entity);
-            Math::vec3 pos = (camTransform.position - (camTransform.z_axis * (3.0f + Math::rand(-1.0f, 2.0f)))).vec;
+            Math::vec3 pos = (camTransform.position).vec;// -(camTransform.z_axis * (3.0f + Math::rand(-1.0f, 2.0f)))).vec;
             gameWorld->SetComponent<Game::Position>(entity, pos);
             gameWorld->SetComponent<Game::Velocity>(entity, (camTransform.z_axis * -(20.0f + Math::rand(-10.0f, 10.0f))).vec);
             gameWorld->SetComponent<Game::AngularVelocity>(entity, Math::vec3(Math::rand(-5.0f, 5.0f), Math::rand(-5.0f, 5.0f), Math::rand(-5.0f, 5.0f)));
         }
+        */
     }
     
     static int frameIndex = 0;

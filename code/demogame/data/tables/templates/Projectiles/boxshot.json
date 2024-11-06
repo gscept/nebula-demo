@@ -1,0 +1,18 @@
+{
+    "blueprint": "Projectiles",
+    "components": {
+      "Model": {
+        "resource": "mdl:space/Asteroid_1.n3"
+      },
+        "PhysicsActor": {
+            "resource" : "sysphys:box.actor",
+            "actorType":  "Dynamic",
+            "collisionFilter": "1"
+        },
+        "Projectile": {
+          "speed": 50,
+          "hitspawn" : "PhysicsEntity/placeholder_box"
+        }
+
+    }
+}

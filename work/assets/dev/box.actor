@@ -1,15 +1,22 @@
 {
-    "feedback": 0,
-    "shapes" : [
-        {
-            "collider" : {
-                name: "Box",
-                type: "Cube",
-                data_type: "BoxCollider",
-                data: { extents: [0.5,0.5,0.5] }
-            },
-            "material" : "default",
-            "transform" : { mat4: [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]}
-        }
-    ]
+    data_type : "BodySetup",
+    data : {
+        "body" : {
+        "feedback": 0,
+        "shapes" : [
+                {
+                    "collider" : {
+                        name: "Box",
+                        type: "Cube",
+                        data_type: "BoxCollider",
+                        data: { extents: [0.5,0.5,0.5] }
+                    },
+                "material" : "default",
+                "transform" : { "position" : [0,0,0], "orientation" : [0,0,0,1], "scale" : [1,1,1] },        
+                }
+            ],            
+        },
+        "transform" : { "position" : [0,0,0], "orientation" : [0,0,0,1], "scale" : [1,1,1] },
+        "name" : "Box"       
+    }   
 }

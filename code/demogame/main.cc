@@ -52,13 +52,12 @@ private:
         this->demoFeatureUnit = Demo::DemoGameFeatureUnit::Create();
         this->gameServer->AttachGameFeature(this->demoFeatureUnit);
 
-        this->scriptserver = Scripting::PythonServer::Create();
-        this->scriptserver->Open();
-
 #ifdef NEBULA_EDITOR_ENABLED
         this->editorFeatureUnit = EditorFeature::EditorFeatureUnit::Create();
         this->gameServer->AttachGameFeature(this->editorFeatureUnit);
 #endif
+        this->scriptserver = Scripting::PythonServer::Create();
+        this->scriptserver->Open();
 
         Flat::FlatbufferInterface::LoadSchema("data:flatbuffer/graphicsfeature/terrainschema.bfbs"_uri);
         IO::URI tablePath = "proj:work/data/tables/terrain.json"_uri;

@@ -14,6 +14,7 @@
 #include "properties/input.h"
 #include "properties/movement.h"
 #include "properties/spaceship.h"
+#include "properties/projectile.h"
 #include "game/world.h"
 #include "managers/aimanager.h"
 
@@ -52,6 +53,7 @@ DemoGameFeatureUnit::OnAttach()
     Game::RegisterType<Demo::SpaceShip>();
     Game::RegisterType<Demo::SpaceShipMoveParams>();
     Game::RegisterType<Demo::AiControlled>();
+    Game::RegisterType<Demo::Projectile>();
 }
 
 //------------------------------------------------------------------------------

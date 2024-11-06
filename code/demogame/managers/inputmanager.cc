@@ -14,7 +14,11 @@
 #include "memdb/database.h"
 #include "game/processor.h"
 #include "properties/spaceship.h"
+#include "properties/projectile.h"
 #include "game/world.h"
+#include "playermanager.h"
+#include "graphicsfeature/graphicsfeatureunit.h"
+#include "physicsfeature/components/physicsfeature.h"
 
 #include "audiofeature/components/audiofeature.h"
 
@@ -66,8 +70,8 @@ PollSpaceShipInput()
             if (!playerInput.hasFocus)
                 return;
 
-            if (Input::InputServer::Instance()->GetDefaultMouse()->ButtonPressed(Input::MouseButton::Code::RightButton))
-                return;
+            //if (Input::InputServer::Instance()->GetDefaultMouse()->ButtonPressed(Input::MouseButton::Code::RightButton))
+            //    return;
             
             params.accelerate = keyboard->KeyPressed(Input::Key::Code::W);
             params.boost = keyboard->KeyPressed(Input::Key::Code::LeftShift);
@@ -81,6 +85,31 @@ PollSpaceShipInput()
                 {
                     world->AddComponent<AudioFeature::PlayAudioEvent>(entity);
                 }
+            }
+            if (Input::InputServer::Instance()->GetDefaultMouse()->ButtonDown(Input::MouseButton::Code::LeftButton))
+            {
+                Game::EntityCreateInfo info;
+                info.immediate = false;
+                info.templateId = Game::GetTemplateId("Projectiles/boxshot"_atm);
+                Game::Entity pentity = world->CreateEntity(info);
+                Math::vec3 pos = world->GetComponent<Game::Position>(entity);
+                auto orient = world->GetComponent<Game::Orientation>(entity);
+                Math::vec3 forward = Math::rotate(orient, Math::vec3(0.0f, 0.0f, 1.0f));
+                auto const& projectile = world->GetComponent<Demo::Projectile>(pentity);
+                float speed = projectile.speed;
+                pos += (forward * (5.0f + Math::rand(-1.0f, 2.0f))).vec;
+                world->SetComponent<Game::Position>(pentity, pos);
+                world->SetComponent<Game::Velocity>(pentity, (forward * (speed + Math::rand(-10.0f, 10.0f))).vec);
+                world->SetComponent<Game::AngularVelocity>(pentity, Math::vec3(Math::rand(-5.0f, 5.0f), Math::rand(-5.0f, 5.0f), Math::rand(-5.0f, 5.0f)));
+                __RegisterMsg(PhysicsFeature::ContactEventMessage, [](Game::Entity entity, const Physics::ContactEvent& event)
+                {
+                    Game::World* world = Game::GetWorld(WORLD_DEFAULT);
+                    if (world->HasInstance(entity))
+                    {
+                        //auto const& projectile = world->GetComponent<Demo::Projectile>(entity);
+                        world->DeleteEntity(entity);
+                    }
+                });
             }
         };
 
