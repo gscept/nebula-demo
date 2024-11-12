@@ -24,12 +24,13 @@
 namespace Demo
 {
 
+__ImplementClass(Demo::MovementManager, 'DMvM', Game::Manager);
 __ImplementSingleton(MovementManager)
 
 void SimulateSpaceShip()
 {
     using namespace Math;
-    Game::TimeSource const* const time = Game::TimeManager::GetTimeSource(TIMESOURCE_GAMEPLAY);
+    Game::TimeSource const* const time = Game::Time::GetTimeSource(TIMESOURCE_GAMEPLAY);
     std::function SimulateSpaceShip = [time](Game::World* world, Game::Entity& entity, Game::Position& position, Game::Orientation& orientation, SpaceShip& ship, SpaceShipMoveParams const& move) -> void
         {
             if (move.accelerate)
@@ -75,13 +76,28 @@ void SimulateSpaceShip()
 //------------------------------------------------------------------------------
 /**
 */
-Game::ManagerAPI
-MovementManager::Create()
+MovementManager::MovementManager()
 {
-    n_assert(!MovementManager::HasInstance());
-    Singleton = new MovementManager;
+    __ConstructSingleton
+}
 
-    Game::TimeSource const* const time = Game::TimeManager::GetTimeSource(TIMESOURCE_GAMEPLAY);
+//------------------------------------------------------------------------------
+/**
+*/
+MovementManager::~MovementManager()
+{
+    __DestructSingleton
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
+MovementManager::OnActivate()
+{
+    Game::Manager::OnActivate();
+
+    Game::TimeSource const* const time = Game::Time::GetTimeSource(TIMESOURCE_GAMEPLAY);
     std::function WanderMovementUpdate = [time](Game::World* world, Game::Entity& entity, Game::Position& pos, Movement& move) -> void
     {
         //Add a small random vector to the targets position.
@@ -90,7 +106,6 @@ MovementManager::Create()
         Math::vec3 const wanderCircle = Math::vec3(x, 0, z);
         move.direction = Math::normalize((move.direction + Math::normalize((wanderCircle + (Math::normalize(move.direction * move.wanderDistance))))));
         pos += (move.direction * move.speed * time->frameTime);
-
     };
 
     Game::World* world = Game::GetWorld(WORLD_DEFAULT);
@@ -101,94 +116,15 @@ MovementManager::Create()
         .Build();
 
     SimulateSpaceShip();
-
-    Game::ManagerAPI api;
-    api.OnActivate = &MovementManager::OnActivate;
-    api.OnBeginFrame = &MovementManager::OnBeginFrame;
-    api.OnFrame = &MovementManager::OnFrame;
-    return api;
 }
 
 //------------------------------------------------------------------------------
 /**
 */
 void
-MovementManager::Destroy()
+MovementManager::OnDeactivate()
 {
-    n_assert(MovementManager::HasInstance());
-    delete Singleton;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-void
-MovementManager::OnActivate()
-{
-   
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-void
-MovementManager::OnBeginFrame()
-{
-   
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-void
-HandlePlayerInput()
-{
-    //Game::FilterSet playerfilter(
-    //    {
-    //        Game::GetComponentId("Owner"_atm),
-    //        Game::GetComponentId("PlayerInput"_atm)
-    //    }
-    //);
-    //
-    //Game::Dataset data = Game::Query(playerfilter);
-    //
-    //for (auto& tbl : data.tables)
-    //{
-    //    Game::Entity* owners = (Game::Entity*)tbl.buffers[0];
-    //    PlayerInput* pInputs = (PlayerInput*)tbl.buffers[1];
-    //   
-    //    Game::CategoryId const cid = Game::GetEntityMapping(owners[0]).category;
-    //
-    //    for (int i = 0; i < tbl.numInstances; i++)
-    //    {
-    //        
-    //    }
-    //}
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-void
-MovementManager::OnFrame()
-{
-    // empty
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-MovementManager::MovementManager()
-{
-    // empty
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-MovementManager::~MovementManager()
-{
-    // empty
+    Game::Manager::OnDeactivate();
 }
 
 } // namespace Game

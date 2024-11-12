@@ -15,31 +15,8 @@
 namespace Demo
 {
 
+__ImplementClass(Demo::AiManager, 'DAiM', Game::Manager);
 __ImplementSingleton(AiManager)
-
-//------------------------------------------------------------------------------
-/**
-*/
-Game::ManagerAPI
-AiManager::Create()
-{
-    n_assert(!AiManager::HasInstance());
-    Singleton = new AiManager;
-
-    Game::ManagerAPI api;
-    api.OnActivate = &AiManager::OnActivate;
-    return api;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-void
-AiManager::Destroy()
-{
-    n_assert(AiManager::HasInstance());
-    delete Singleton;
-}
 
 //------------------------------------------------------------------------------
 /**
@@ -47,7 +24,7 @@ AiManager::Destroy()
 void
 SteeringBehaviour()
 {
-    Game::TimeSource* time = Game::TimeManager::GetTimeSource(TIMESOURCE_GAMEPLAY);
+    Game::TimeSource* time = Game::Time::GetTimeSource(TIMESOURCE_GAMEPLAY);
 
     auto func = [time](Game::World* world, Game::Entity const& entity, Game::Position const& position, SpaceShip const& ship, SpaceShipMoveParams& params, AiControlled& ai) {
         params.accelerate = true;
@@ -72,7 +49,7 @@ SteeringBehaviour()
             position.y > 100.0f || position.y < -100.0f ||
             position.z > 100.0f || position.z < -100.0f)
         {
-            if (Math::dot(ship.orientation.z_axis(), -Math::normalize(position)) < 0.4f )
+            if (Math::dot(ship.orientation.z_axis(), -Math::normalize(position)) < 0.4f)
             {
                 ai.xRotTarget = 1.0f;
                 ai.yRotTarget = 0.0f;
@@ -84,7 +61,7 @@ SteeringBehaviour()
                 ai.yRotTarget = 0.0f;
                 ai.zRotTarget = 0.0f;
             }
-            
+
             ai.nextSteeringUpdate = time->ticks + 1000;
         }
 
@@ -110,7 +87,7 @@ SteeringBehaviour()
                 ai.zRotTarget = Math::clamp(rotMovement.x * 0.5f, -1.0f, 1.0f);
             }
         }
-    };
+        };
 
     Game::World* world = Game::GetWorld(WORLD_DEFAULT);
     Game::ProcessorBuilder(world, "AiManager.SteeringBehaviour")
@@ -123,18 +100,9 @@ SteeringBehaviour()
 //------------------------------------------------------------------------------
 /**
 */
-void
-AiManager::OnActivate()
-{
-    SteeringBehaviour();
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
 AiManager::AiManager()
 {
-    // empty
+    __ConstructSingleton
 }
 
 //------------------------------------------------------------------------------
@@ -142,9 +110,27 @@ AiManager::AiManager()
 */
 AiManager::~AiManager()
 {
-    // empty
+    __DestructSingleton
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+void
+AiManager::OnActivate()
+{
+    Game::Manager::OnActivate();
+    SteeringBehaviour();
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
+AiManager::OnDeactivate()
+{
+    Game::Manager::OnDeactivate();
+}
 
 } // namespace Game
 

@@ -24,6 +24,7 @@
 namespace Demo
 {
 
+__ImplementClass(Demo::PlayerManager, 'DPlM', Game::Manager);
 __ImplementSingleton(PlayerManager)
 
 //------------------------------------------------------------------------------
@@ -33,7 +34,7 @@ void
 CameraFollowSpaceShip()
 {
     using namespace Math;
-    Game::TimeSource const* const time = Game::TimeManager::GetTimeSource(TIMESOURCE_GAMEPLAY);
+    Game::TimeSource const* const time = Game::Time::GetTimeSource(TIMESOURCE_GAMEPLAY);
     std::function UpdateCamera = [time](
         Game::World* world,
         PlayerInput const& playerInput,
@@ -70,27 +71,17 @@ CameraFollowSpaceShip()
 //------------------------------------------------------------------------------
 /**
 */
-Game::ManagerAPI
-PlayerManager::Create()
+PlayerManager::PlayerManager()
 {
-    n_assert(!PlayerManager::HasInstance());
-    Singleton = new PlayerManager;
-
-Game::ManagerAPI api;
-    api.OnActivate = &PlayerManager::OnActivate;
-    api.OnBeginFrame = &PlayerManager::OnBeginFrame;
-    api.OnCleanup = &PlayerManager::OnCleanup;
-    return api;
+    __ConstructSingleton
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-void
-PlayerManager::Destroy()
+PlayerManager::~PlayerManager()
 {
-    n_assert(PlayerManager::HasInstance());
-    delete Singleton;
+    __DestructSingleton
 }
 
 //------------------------------------------------------------------------------
@@ -99,6 +90,7 @@ PlayerManager::Destroy()
 void
 PlayerManager::OnActivate()
 {
+    Game::Manager::OnActivate();
     auto view = GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultView();
     auto stage = GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultStage();
 
@@ -112,14 +104,14 @@ PlayerManager::OnActivate()
     Game::EntityCreateInfo playerCreateInfo;
     playerCreateInfo.templateId = Game::GetTemplateId("Camera/default"_atm);
     playerCreateInfo.immediate = true;
-    Singleton->mainCameraEntity = world->CreateEntity(playerCreateInfo);
+    this->mainCameraEntity = world->CreateEntity(playerCreateInfo);
 
-    GraphicsFeature::Camera camera = world->GetComponent<GraphicsFeature::Camera>(Singleton->mainCameraEntity);
+    GraphicsFeature::Camera camera = world->GetComponent<GraphicsFeature::Camera>(this->mainCameraEntity);
     camera.aspectRatio = (float)width / (float)height;
     camera.viewHandle = GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultViewHandle();
-    world->SetComponent<GraphicsFeature::Camera>(Singleton->mainCameraEntity, camera);
+    world->SetComponent<GraphicsFeature::Camera>(this->mainCameraEntity, camera);
 
-    Singleton->freeCamUtil.Setup({0, 50, -3}, {0,0,-1});
+    this->freeCamUtil.Setup({0, 50, -3}, {0,0,-1});
 
     CameraFollowSpaceShip();
 }
@@ -128,35 +120,25 @@ PlayerManager::OnActivate()
 /**
 */
 void
+PlayerManager::OnDeactivate()
+{
+    Game::Manager::OnDeactivate();
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
 PlayerManager::OnBeginFrame()
 {
-    auto& io = ImGui::GetIO();
-    if (!ImGui::GetIO().WantCaptureMouse)
-    {
-        if (Input::InputServer::Instance()->GetDefaultMouse()->ButtonPressed(Input::MouseButton::Code::RightButton))
-        {
-            Singleton->freeCamUtil.SetForwardsKey(io.KeysDown[Input::Key::W]);
-            Singleton->freeCamUtil.SetBackwardsKey(io.KeysDown[Input::Key::S]);
-            Singleton->freeCamUtil.SetRightStrafeKey(io.KeysDown[Input::Key::D]);
-            Singleton->freeCamUtil.SetLeftStrafeKey(io.KeysDown[Input::Key::A]);
-            Singleton->freeCamUtil.SetUpKey(io.KeysDown[Input::Key::Q]);
-            Singleton->freeCamUtil.SetDownKey(io.KeysDown[Input::Key::E]);
-            Singleton->freeCamUtil.SetMouseMovement({ -io.MouseDelta.x, -io.MouseDelta.y });
-            Singleton->freeCamUtil.SetAccelerateButton(io.KeyShift);
-            Singleton->freeCamUtil.SetRotateButton(io.MouseDown[Input::MouseButton::RightButton]);
-            Singleton->freeCamUtil.SetMovementSpeed(0.1f);
-            Singleton->freeCamUtil.Update();
-        }
-    }
-    
     Game::World* world = Game::GetWorld(WORLD_DEFAULT);
     if (Input::InputServer::Instance()->GetDefaultMouse()->ButtonPressed(Input::MouseButton::Code::RightButton))
     {
-        if (world->IsValid(Singleton->mainCameraEntity))
+        if (world->IsValid(this->mainCameraEntity))
         {
             auto cam = PlayerManager::Instance()->mainCameraEntity;
             GraphicsFeature::Camera camera = world->GetComponent<GraphicsFeature::Camera>(cam);
-            camera.localTransform = Math::inverse(Singleton->freeCamUtil.GetTransform());
+            camera.localTransform = Math::inverse(this->freeCamUtil.GetTransform());
             world->SetComponent(cam, camera);
         }
     }
@@ -168,23 +150,7 @@ PlayerManager::OnBeginFrame()
 void
 PlayerManager::OnCleanup(Game::World*)
 {
-    Singleton->mainCameraEntity = Game::Entity::Invalid();
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-PlayerManager::PlayerManager()
-{
-    // empty
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-PlayerManager::~PlayerManager()
-{
-    // empty
+    this->mainCameraEntity = Game::Entity::Invalid();
 }
 
 } // namespace Game

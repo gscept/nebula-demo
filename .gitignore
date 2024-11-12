@@ -10,3 +10,5 @@ export_win32/*
 export/*
 CMakeUserPresets.json
 imgui.ini
+
+intermediate/*
