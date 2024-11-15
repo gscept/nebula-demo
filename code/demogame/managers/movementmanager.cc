@@ -20,6 +20,7 @@
 #include "physicsfeature/components/physicsfeature.h"
 #include "game/processor.h"
 #include "properties/spaceship.h"
+#include "game/world.h"
 
 namespace Demo
 {
