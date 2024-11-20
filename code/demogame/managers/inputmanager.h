@@ -13,24 +13,16 @@
 namespace Demo
 {
 
-class InputManager
+class InputManager : public Game::Manager
 {
+	__DeclareClass(InputManager)
 	__DeclareSingleton(InputManager);
 public:
-	/// Create the singleton
-	static Game::ManagerAPI Create();
-
-	/// Destroy the singleton
-	static void Destroy();
-
-private:
-	/// constructor
 	InputManager();
-	/// destructor
-	~InputManager();
+	virtual ~InputManager();
 
-	/// called when attached to game server.
-	static void OnActivate();
+	void OnActivate() override;
+	void OnDeactivate() override;;
 };
 
 } // namespace Demo

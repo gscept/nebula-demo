@@ -16,31 +16,20 @@
 namespace Demo
 {
 
-class PlayerManager
+class PlayerManager : public Game::Manager
 {
-    __DeclareSingleton(PlayerManager);
+    __DeclareClass(PlayerManager)
+    __DeclareSingleton(PlayerManager)
 public:
-    /// Create the singleton
-    static Game::ManagerAPI Create();
+    PlayerManager();
+    virtual ~PlayerManager();
 
-    /// Destroy the singleton
-    static void Destroy();
+    void OnActivate() override;
+    void OnDeactivate() override;
+    void OnBeginFrame() override;
+    void OnCleanup(Game::World*) override;
 
     Game::Entity mainCameraEntity;
-
-private:
-    /// constructor
-    PlayerManager();
-    /// destructor
-    ~PlayerManager();
-
-    /// called when attached to game server.
-    static void OnActivate();
-    /// called once before every rendered frame
-    static void OnBeginFrame();
-    /// called before the world is cleaned up
-    static void OnCleanup(Game::World*);
-
     RenderUtil::FreeCameraUtil freeCamUtil;
 };
 

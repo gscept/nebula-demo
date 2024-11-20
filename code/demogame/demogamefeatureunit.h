@@ -17,7 +17,7 @@ namespace Demo
 class DemoGameFeatureUnit : public Game::FeatureUnit
 {
     __DeclareClass(DemoGameFeatureUnit)
-        __DeclareSingleton(DemoGameFeatureUnit)
+    __DeclareSingleton(DemoGameFeatureUnit)
 public:
     ///
     DemoGameFeatureUnit();

@@ -21,31 +21,8 @@
 namespace Demo
 {
 
+__ImplementClass(Demo::InputManager, 'DInM', Game::Manager);
 __ImplementSingleton(InputManager)
-
-//------------------------------------------------------------------------------
-/**
-*/
-Game::ManagerAPI
-InputManager::Create()
-{
-    n_assert(!InputManager::HasInstance());
-    Singleton = new InputManager;
-
-    Game::ManagerAPI api;
-    api.OnActivate = &InputManager::OnActivate;
-    return api;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-void
-InputManager::Destroy()
-{
-    n_assert(InputManager::HasInstance());
-    delete Singleton;
-}
 
 //------------------------------------------------------------------------------
 /**
@@ -95,6 +72,22 @@ PollSpaceShipInput()
 //------------------------------------------------------------------------------
 /**
 */
+InputManager::InputManager()
+{
+    __ConstructSingleton
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+InputManager::~InputManager()
+{
+    __DestructSingleton
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 void
 InputManager::OnActivate()
 {
@@ -104,17 +97,10 @@ InputManager::OnActivate()
 //------------------------------------------------------------------------------
 /**
 */
-InputManager::InputManager()
+void
+InputManager::OnDeactivate()
 {
-    // empty
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-InputManager::~InputManager()
-{
-    // empty
+    Game::Manager::OnDeactivate();
 }
 
 

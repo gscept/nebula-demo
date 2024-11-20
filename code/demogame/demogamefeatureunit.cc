@@ -45,13 +45,13 @@ DemoGameFeatureUnit::~DemoGameFeatureUnit()
 void
 DemoGameFeatureUnit::OnAttach()
 {
-    Game::RegisterType<Demo::PlayerInput>();
-    Game::RegisterType<Demo::Movement>();
-    Game::RegisterType<Demo::ShotSpawn>();
-    Game::RegisterType<Demo::CameraFollow>();
-    Game::RegisterType<Demo::SpaceShip>();
-    Game::RegisterType<Demo::SpaceShipMoveParams>();
-    Game::RegisterType<Demo::AiControlled>();
+    this->RegisterComponentType<Demo::PlayerInput>();
+    this->RegisterComponentType<Demo::Movement>();
+    this->RegisterComponentType<Demo::ShotSpawn>();
+    this->RegisterComponentType<Demo::CameraFollow>();
+    this->RegisterComponentType<Demo::SpaceShip>();
+    this->RegisterComponentType<Demo::SpaceShipMoveParams>();
+    this->RegisterComponentType<Demo::AiControlled>();
 }
 
 //------------------------------------------------------------------------------

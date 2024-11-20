@@ -25,28 +25,18 @@
 namespace Demo
 {
 
-class GameStateManager
+class GameStateManager : public Game::Manager
 {
-    __DeclareSingleton(GameStateManager);
+    __DeclareClass(GameStateManager)
+    __DeclareSingleton(GameStateManager)
 public:
-    /// Create the singleton
-    static Game::ManagerAPI Create();
-
-    /// Destroy the singleton
-    static void Destroy();
-
-private:
-    /// constructor
     GameStateManager();
-    /// destructor
-    ~GameStateManager();
+    virtual ~GameStateManager();
 
-    /// called when attached to game server.
-    static void OnActivate();
-    /// called once before every rendered frame
-    static void OnBeginFrame();
-    /// called once every frame
-    static void OnFrame();
+    void OnActivate() override;
+    void OnDeactivate() override;
+    void OnBeginFrame() override;
+    void OnFrame() override;
 };
 
 } // namespace Demo

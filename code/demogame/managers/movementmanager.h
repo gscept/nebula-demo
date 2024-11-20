@@ -13,28 +13,16 @@
 namespace Demo
 {
 
-class MovementManager
+class MovementManager : public Game::Manager
 {
-	__DeclareSingleton(MovementManager);
+	__DeclareClass(MovementManager)
+	__DeclareSingleton(MovementManager)
 public:
-	/// Create the singleton
-	static Game::ManagerAPI Create();
-
-	/// Destroy the singleton
-	static void Destroy();
-
-private:
-	/// constructor
 	MovementManager();
-	/// destructor
-	~MovementManager();
+	virtual ~MovementManager();
 
-	/// called when attached to game server.
-	static void OnActivate();
-    /// called once before every rendered frame
-    static void OnBeginFrame();
-	/// called once every frame
-	static void OnFrame();
+	void OnActivate() override;
+	void OnDeactivate() override;
 };
 
 } // namespace Game
