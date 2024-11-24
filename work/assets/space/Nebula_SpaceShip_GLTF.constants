@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Nebula version="4">
+    <Model name="space/Nebula_SpaceShip_GLTF" bboxcenter="0.000000,0.202657,0.532479,1.000000" bboxextents="1.484027,0.541215,1.166564,0.000000">
+        <ShapeNodes>
+            <ShapeNode name="cables_low:0" path="root/cables_low:0" useLOD="false" position="0.000000,0.000000,0.000000,1.000000" rotation="0.000000,0.000000,0.000000,1.000000" scale="1.000000,1.000000,1.000000,0.000000" bboxcenter="0.000000,0.202657,0.532479,1.000000" bboxextents="1.484027,0.541215,1.166564,0.000000" mesh="msh:space/Nebula_SpaceShip_GLTF.nvx" mid="0" primitive="0" />
+        </ShapeNodes>
+    </Model>
+</Nebula>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Nebula version="1">
+    <Options exportFlags="4" scale="1.000000" />
+    <States>
+        <ModelNode name="root/cables_low:0" material="sur:space/Nebula_SpaceShip_GLTF/Mat_Ship.sur" />
+    </States>
+</Nebula>
