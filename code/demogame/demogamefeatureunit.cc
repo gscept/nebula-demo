@@ -80,7 +80,7 @@ DemoGameFeatureUnit::OnActivate()
             Graphics::GraphicsServer::SwapInfo swapInfo;
             swapInfo.syncFunc = [](CoreGraphics::CmdBufferId cmdBuf)
             {
-                FrameScript_default::Synchronize("Present_Sync", cmdBuf, { { (FrameScript_default::TextureIndex)FrameScript_default::Export_ColorBuffer.index, CoreGraphics::PipelineStage::TransferRead } }, nullptr);
+                FrameScript_default::Synchronize("Present_Sync", cmdBuf, CoreGraphics::GraphicsQueueType, { { (FrameScript_default::TextureIndex)FrameScript_default::Export_ColorBuffer.index, CoreGraphics::PipelineStage::TransferRead } }, nullptr);
             };
             swapInfo.submission = FrameScript_default::Submission_Scene;
             swapInfo.swapSource = FrameScript_default::Export_ColorBuffer.tex;
