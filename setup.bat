@@ -8,12 +8,6 @@ IF ERRORLEVEL 1 (
     pause
     EXIT /B 1
 )
-where /q pip
-IF ERRORLEVEL 1 ( 
-    ECHO No PIP found, cant install required dependencies
-    pause
-    EXIT /B 1
-)
 echo Getting initial dependencies
 call fips set config win64-vstudio-debug
 call fips fetch
@@ -22,8 +16,6 @@ call fips nebula set work %~dp0
 call fips nebula set toolkit %~dp0\..\nebula
 call fips physx build vc17 debug
 call fips anyfx setup
-call pip install py7zr
-call fips ultralight
 echo Generating solution
 call fips gen
 setlocal
