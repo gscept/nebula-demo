@@ -8,5 +8,5 @@ include(${FIPS_ROOT_DIR}/cmake/fips.cmake)
 
 project(nebula-demo)
 fips_setup()
-
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT nebula-demo )
 add_subdirectory(code)
