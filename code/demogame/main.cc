@@ -59,10 +59,8 @@ private:
         this->editorFeatureUnit = EditorFeature::EditorFeatureUnit::Create();
         this->gameServer->AttachGameFeature(this->editorFeatureUnit);
 #endif
-
-        Flat::FlatbufferInterface::LoadSchema("data:flatbuffer/graphicsfeature/terrainschema.bfbs"_uri);
         IO::URI tablePath = "proj:work/data/tables/terrain.json"_uri;
-        CompileFlatbuffer(GraphicsFeature::TerrainSetup, tablePath, "data:tables/graphicsfeature");
+        CompileFlatbuffer(GraphicsFeature::TerrainSetup, tablePath, "tbl:graphicsfeature");
     }
     /// cleanup game features
     void CleanupGameFeatures()
