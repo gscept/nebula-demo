@@ -22,7 +22,7 @@
 
 #include "nflatbuffer/nebula_flat.h"
 #include "nflatbuffer/flatbufferinterface.h"
-#include "flat/graphicsfeature/terrainschema.h"
+#include "flat/application/levelsettings.h"
 
 ImplementNebulaApplication();
 
@@ -59,8 +59,8 @@ private:
         this->editorFeatureUnit = EditorFeature::EditorFeatureUnit::Create();
         this->gameServer->AttachGameFeature(this->editorFeatureUnit);
 #endif
-        IO::URI tablePath = "proj:work/data/tables/terrain.json"_uri;
-        CompileFlatbuffer(GraphicsFeature::TerrainSetup, tablePath, "tbl:graphicsfeature");
+        IO::URI tablePath = "proj:work/data/tables/base_level.json"_uri;
+        CompileFlatbuffer(App::LevelSettings, tablePath, "tbl:app");
     }
     /// cleanup game features
     void CleanupGameFeatures()
