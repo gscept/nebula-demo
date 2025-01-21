@@ -22,7 +22,7 @@
 
 #include "nflatbuffer/nebula_flat.h"
 #include "nflatbuffer/flatbufferinterface.h"
-#include "flat/application/levelsettings.h"
+#include "flat/options/levelsettings.h"
 
 ImplementNebulaApplication();
 
