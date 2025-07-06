@@ -69,20 +69,14 @@ private:
         this->gameServer->RemoveGameFeature(this->graphicsFeature);
         this->gameServer->RemoveGameFeature(this->demoFeatureUnit);
         this->gameServer->RemoveGameFeature(this->audioFeature);
-        this->audioFeature->Release();
         this->audioFeature = nullptr;
-        this->physicsFeature->Release();
         this->physicsFeature = nullptr;
-        this->graphicsFeature->Release();
         this->graphicsFeature = nullptr;
-        this->demoFeatureUnit->Release();
         this->demoFeatureUnit = nullptr;
-        this->scriptserver->Release();
         this->scriptserver = nullptr;
 
 #ifdef NEBULA_EDITOR_ENABLED
         this->gameServer->RemoveGameFeature(this->editorFeatureUnit);
-        this->editorFeatureUnit->Release();
         this->editorFeatureUnit = nullptr;
 #endif
     }
