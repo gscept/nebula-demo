@@ -88,10 +88,10 @@ GameStateManager::OnDeactivate()
 void
 GameStateManager::OnBeginFrame()
 {
-    if (Input::InputServer::Instance()->GetDefaultKeyboard()->KeyPressed(Input::Key::Escape))
-    {
-        Core::SysFunc::Exit(0);
-    }
+    //if (Input::InputServer::Instance()->GetDefaultKeyboard()->KeyPressed(Input::Key::Escape))
+    //{
+    //    Core::SysFunc::Exit(0);
+    //}
 }
 
 //------------------------------------------------------------------------------

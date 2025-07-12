@@ -36,6 +36,6 @@ fips_dir(.)
             spaceship.json
         )
 
-fips_deps(foundation application graphicsfeature physicsfeature audiofeature render resource dynui scripting editor)
+fips_deps(foundation application graphicsfeature physicsfeature audiofeature render resource dynui scripting editor multiplayer)
 target_include_directories(nebula-demo PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 nebula_end_app()

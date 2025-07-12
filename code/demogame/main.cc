@@ -9,6 +9,7 @@
 #include "basegamefeature/basegamefeatureunit.h"
 #include "graphicsfeature/graphicsfeatureunit.h"
 #include "physicsfeature/physicsfeatureunit.h"
+#include "multiplayer/multiplayerfeatureunit.h"
 #include "appgame/gameapplication.h"
 #include "demogamefeatureunit.h"
 #include "gamestatemanager.h"
@@ -38,26 +39,30 @@ private:
 #if NEBULA_ENABLE_PROFILING
         Profiling::ProfilingRegisterThread();
 #endif
-        this->graphicsFeature = GraphicsFeature::GraphicsFeatureUnit::Create();
-        this->graphicsFeature->SetCmdLineArgs(this->GetCmdLineArgs());
-        this->gameServer->AttachGameFeature(this->graphicsFeature);
+        //this->graphicsFeature = GraphicsFeature::GraphicsFeatureUnit::Create();
+        //this->graphicsFeature->SetCmdLineArgs(this->GetCmdLineArgs());
+        //this->gameServer->AttachGameFeature(this->graphicsFeature);
 
-        this->physicsFeature = PhysicsFeature::PhysicsFeatureUnit::Create();
-        this->gameServer->AttachGameFeature(this->physicsFeature);
+        //this->physicsFeature = PhysicsFeature::PhysicsFeatureUnit::Create();
+        //this->gameServer->AttachGameFeature(this->physicsFeature);
 
         this->audioFeature = AudioFeature::AudioFeatureUnit::Create();
         this->audioFeature->SetCmdLineArgs(this->GetCmdLineArgs());
         this->gameServer->AttachGameFeature(this->audioFeature);
 
-        this->demoFeatureUnit = Demo::DemoGameFeatureUnit::Create();
-        this->gameServer->AttachGameFeature(this->demoFeatureUnit);
+        this->multiplayerFeature = Multiplayer::MultiplayerFeatureUnit::Create();
+        this->multiplayerFeature->SetCmdLineArgs(this->GetCmdLineArgs());
+        this->gameServer->AttachGameFeature(this->multiplayerFeature);
 
-        this->scriptserver = Scripting::PythonServer::Create();
-        this->scriptserver->Open();
+        //this->demoFeatureUnit = Demo::DemoGameFeatureUnit::Create();
+        //this->gameServer->AttachGameFeature(this->demoFeatureUnit);
+
+        //this->scriptserver = Scripting::PythonServer::Create();
+        //this->scriptserver->Open();
 
 #ifdef NEBULA_EDITOR_ENABLED
-        this->editorFeatureUnit = EditorFeature::EditorFeatureUnit::Create();
-        this->gameServer->AttachGameFeature(this->editorFeatureUnit);
+        //this->editorFeatureUnit = EditorFeature::EditorFeatureUnit::Create();
+        //this->gameServer->AttachGameFeature(this->editorFeatureUnit);
 #endif
         IO::URI tablePath = "proj:work/data/tables/base_level.json"_uri;
         CompileFlatbuffer(App::LevelSettings, tablePath, "tbl:app");
@@ -90,6 +95,7 @@ private:
     Ptr<GraphicsFeature::GraphicsFeatureUnit> graphicsFeature;
     Ptr<PhysicsFeature::PhysicsFeatureUnit> physicsFeature;
     Ptr<AudioFeature::AudioFeatureUnit> audioFeature;
+    Ptr<Multiplayer::MultiplayerFeatureUnit> multiplayerFeature;
     Ptr<Demo::DemoGameFeatureUnit> demoFeatureUnit;
     Ptr<Scripting::ScriptServer> scriptserver;
 

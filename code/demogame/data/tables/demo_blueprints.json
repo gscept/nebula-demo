@@ -27,7 +27,7 @@
       "desc": "A Space ship that is AI controlled",
       "components": [
         "Model",
-        //"PhysicsActor",
+        "PhysicsActor",
         "SpaceShip",
         "SpaceShipMoveParams",
         "AiControlled"
