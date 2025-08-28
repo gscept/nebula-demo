@@ -3,6 +3,9 @@
     "components": {
         "Model": {
             "resource": "mdl:system/placeholder.n3"
+        },
+        "PhysicsActor": {
+            "resource": "phys:system/placeholder.actor"
         }
     }
 }

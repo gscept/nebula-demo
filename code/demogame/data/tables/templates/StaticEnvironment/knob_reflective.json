@@ -3,6 +3,9 @@
     "components": {
         "Model": {
             "resource": "mdl:dev/knob_reflective.n3"
+        },
+        "PhysicsActor": {
+            "resource": "phys:dev/knob_reflective.actor"
         }
     }
 }

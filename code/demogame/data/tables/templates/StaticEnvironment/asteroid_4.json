@@ -3,6 +3,9 @@
     "components": {
         "Model": {
             "resource": "mdl:space/Asteroid_4.n3"
+        },
+        "PhysicsActor": {
+            "resource": "phys:space/Asteroid_4.actor"
         }
     }
 }

@@ -5,7 +5,7 @@
             "resource": "mdl:craft/craft_speederA.n3"
         },
         "PhysicsActor": {
-            "resource": "mdl:",
+            "resource": "phys:craft/craft_speederA.actor",
             "actorType": "Kinematic"
         }
     }

@@ -13,7 +13,8 @@
       "raytracing": true
     },
     "PhysicsActor": {
-      "actorType": "Kinematic"
+      "actorType": "Kinematic",
+      "resource": "phys:space/Nebula_SpaceShip_GLTF.n3"
     }
   }
 }

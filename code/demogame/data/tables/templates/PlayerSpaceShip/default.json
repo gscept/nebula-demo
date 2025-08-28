@@ -19,7 +19,8 @@
       "resource": "mdl:space/Nebula_SpaceShip_GLTF.n3"
     },
     "PhysicsActor": {
-      "actorType": "Kinematic"
+      "actorType": "Kinematic",
+      "resource": "phys:space/Nebula_SpaceShip_GLTF.actor"
     },
     "AudioEmitter": {
       "clipResource": "audio:space/test.wav",
