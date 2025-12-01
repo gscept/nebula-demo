@@ -16,6 +16,7 @@ call fips nebula set work %~dp0
 call fips nebula set toolkit %~dp0\..\nebula
 call fips physx build vc17 debug
 call fips anyfx setup
+call fips gpulang setup
 echo Generating solution
 call fips gen
 setlocal
