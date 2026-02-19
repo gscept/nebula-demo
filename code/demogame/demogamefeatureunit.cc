@@ -18,6 +18,7 @@
 #include "managers/aimanager.h"
 #include "appgame/gameapplication.h"
 #include "frame/default.h"
+#include "coregraphics/swapchain.h"
 
 namespace Demo
 {
@@ -77,14 +78,21 @@ DemoGameFeatureUnit::OnActivate()
     {
         Graphics::GraphicsServer::Instance()->AddPostViewCall([](IndexT frameIndex, IndexT bufferIndex)
         {
-            Graphics::GraphicsServer::SwapInfo swapInfo;
-            swapInfo.syncFunc = [](CoreGraphics::CmdBufferId cmdBuf)
+            const auto& windows = Graphics::GraphicsServer::Instance()->GetWindows();
+            for (const auto& window : windows)
             {
-                FrameScript_default::Synchronize("Present_Sync", cmdBuf, CoreGraphics::GraphicsQueueType, { { (FrameScript_default::TextureIndex)FrameScript_default::Export_ColorBuffer.index, CoreGraphics::PipelineStage::TransferRead } }, nullptr);
-            };
-            swapInfo.submission = FrameScript_default::Submission_Scene;
-            swapInfo.swapSource = FrameScript_default::Export_ColorBuffer.tex;
-            Graphics::GraphicsServer::Instance()->SetSwapInfo(swapInfo);
+                CoreGraphics::DisplayMode mode = CoreGraphics::WindowGetDisplayMode(window);
+                CoreGraphics::SwapchainId swapchain = CoreGraphics::WindowGetSwapchain(window);
+
+                CoreGraphics::SwapInfo swapInfo;
+                swapInfo.syncFunc = [](CoreGraphics::CmdBufferId cmdBuf)
+                {
+                    FrameScript_default::Synchronize("Present_Sync", cmdBuf, CoreGraphics::GraphicsQueueType, { { (FrameScript_default::TextureIndex)FrameScript_default::Export_ColorBuffer.index, CoreGraphics::PipelineStage::TransferRead } }, nullptr);
+                };
+                swapInfo.submission = FrameScript_default::Submission_Scene;
+                swapInfo.swapSource = FrameScript_default::Export_ColorBuffer.tex;
+                CoreGraphics::SwapchainSetSwapInfo(swapchain, swapInfo);
+            }
        });
     }
 }
