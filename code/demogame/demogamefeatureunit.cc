@@ -84,14 +84,34 @@ DemoGameFeatureUnit::OnActivate()
                 CoreGraphics::DisplayMode mode = CoreGraphics::WindowGetDisplayMode(window);
                 CoreGraphics::SwapchainId swapchain = CoreGraphics::WindowGetSwapchain(window);
 
-                CoreGraphics::SwapInfo swapInfo;
-                swapInfo.syncFunc = [](CoreGraphics::CmdBufferId cmdBuf)
-                {
-                    FrameScript_default::Synchronize("Present_Sync", cmdBuf, CoreGraphics::GraphicsQueueType, { { (FrameScript_default::TextureIndex)FrameScript_default::Export_ColorBuffer.index, CoreGraphics::PipelineStage::TransferRead } }, nullptr);
-                };
-                swapInfo.submission = FrameScript_default::Submission_Scene;
-                swapInfo.swapSource = FrameScript_default::Export_ColorBuffer.tex;
-                CoreGraphics::SwapchainSetSwapInfo(swapchain, swapInfo);
+                CoreGraphics::SwapchainSwap(swapchain);
+                CoreGraphics::QueueType queue = CoreGraphics::SwapchainGetQueueType(swapchain);
+
+                // Allocate command buffer to run swap
+                CoreGraphics::CmdBufferId cmdBuf = CoreGraphics::SwapchainAllocateCmds(swapchain);
+                CoreGraphics::CmdBufferBeginInfo beginInfo;
+                beginInfo.submitDuringPass = false;
+                beginInfo.resubmittable = false;
+                beginInfo.submitOnce = true;
+                CoreGraphics::CmdBeginRecord(cmdBuf, beginInfo);
+                CoreGraphics::CmdBeginMarker(cmdBuf, NEBULA_MARKER_TURQOISE, "Swap");
+
+                FrameScript_default::Synchronize("Present_Sync", cmdBuf, CoreGraphics::GraphicsQueueType, { { (FrameScript_default::TextureIndex)FrameScript_default::Export_ColorBuffer.index, CoreGraphics::PipelineStage::TransferRead } }, nullptr);
+                CoreGraphics::SwapchainCopy(swapchain, cmdBuf, FrameScript_default::Export_ColorBuffer.tex);
+
+                CoreGraphics::CmdEndMarker(cmdBuf);
+                CoreGraphics::CmdFinishQueries(cmdBuf);
+                CoreGraphics::CmdEndRecord(cmdBuf);
+                auto submission = CoreGraphics::SubmitCommandBuffers(
+                    { cmdBuf }
+                    , queue
+                    , { FrameScript_default::Submission_Scene }
+#if NEBULA_GRAPHICS_DEBUG
+                    , "Swap"
+#endif
+
+                );
+                CoreGraphics::DeferredDestroyCmdBuffer(cmdBuf);
             }
        });
     }
