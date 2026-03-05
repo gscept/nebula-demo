@@ -76,7 +76,7 @@ DemoGameFeatureUnit::OnActivate()
     if (!App::GameApplication::IsEditorEnabled())
 #endif
     {
-        Graphics::GraphicsServer::Instance()->AddEndFrameCall([](IndexT frameIndex, IndexT bufferIndex)
+        Graphics::GraphicsServer::Instance()->AddPostViewCall([](IndexT frameIndex, IndexT bufferIndex)
         {
             const auto& windows = Graphics::GraphicsServer::Instance()->GetWindows();
             for (const auto& window : windows)
