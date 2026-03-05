@@ -92,7 +92,6 @@ PlayerManager::OnActivate()
 {
     Game::Manager::OnActivate();
     auto view = GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultView();
-    auto stage = GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultStage();
 
     auto const displayMode = CoreGraphics::WindowGetDisplayMode(CoreGraphics::MainWindow);
     SizeT width = displayMode.GetWidth();
