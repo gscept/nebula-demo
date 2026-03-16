@@ -49,7 +49,7 @@ CameraFollowSpaceShip()
             // update camera view transform
             vec3 desiredCamPos = position + Math::rotate(orientation, camFollow.targetCamLocalOffset);
             camFollow.currentCamOffset = lerp(camFollow.currentCamOffset, desiredCamPos, time->frameTime * camFollow.cameraSmoothFactor);
-            mat4 camTransform = inverse(lookatrh(camFollow.currentCamOffset, camFollow.currentCamOffset + orientation.z_axis(), orientation.y_axis()));
+            mat4 camTransform = inverse(lookat(camFollow.currentCamOffset, camFollow.currentCamOffset + orientation.z_axis(), orientation.y_axis()));
 
             if (world->IsValid(PlayerManager::Instance()->mainCameraEntity))
             {
