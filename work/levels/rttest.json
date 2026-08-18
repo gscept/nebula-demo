@@ -1,0 +1,376 @@
+{
+	"level" : {
+		"version" : 100,
+		"entities" : {
+			"0e5acfc9-072e-4005-9be2-b87e98e8bec8" : {
+				"name" : "dev_ground_plane",
+				"components" : {
+					"Position" : [ 0, 0, 0 ],
+					"Orientation" : [ 0, 0, 0, 1 ],
+					"Scale" : [ 1, 1, 1 ],
+					"Static" : { },
+					"Model" : {
+						"resource" : "mdl:dev/ground.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					},
+					"PhysicsActor" : {
+						"actorId" : 0,
+						"resource" : "mdl:",
+						"actorType" : 0
+					}
+				}
+			},
+			"a6e5ddf9-bd98-416b-a026-fafbb4ca76b5" : {
+				"name" : "dev_ground_plane",
+				"components" : {
+					"Position" : [ -0.029636, 0, -6.333034 ],
+					"Orientation" : [ 0.707107, 0, 0, 0.707107 ],
+					"Scale" : [ 1, 0.999999, 0.999999 ],
+					"Static" : { },
+					"Model" : {
+						"resource" : "mdl:dev/ground.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					},
+					"PhysicsActor" : {
+						"actorId" : 0,
+						"resource" : "mdl:",
+						"actorType" : 0
+					}
+				}
+			},
+			"5f0c063e-5a44-40b1-8244-991d9780c719" : {
+				"name" : "dev_ground_plane",
+				"components" : {
+					"Position" : [ 11.954903, -1.000000e-06, 6.035793 ],
+					"Orientation" : [ 0, 0, 0.707107, 0.707107 ],
+					"Scale" : [ 1, 1, 1 ],
+					"Static" : { },
+					"Model" : {
+						"resource" : "mdl:dev/ground.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					},
+					"PhysicsActor" : {
+						"actorId" : 0,
+						"resource" : "mdl:",
+						"actorType" : 0
+					}
+				}
+			},
+			"0cb87473-dbf1-4063-b250-44b7a023191a" : {
+				"name" : "dev_ground_plane",
+				"components" : {
+					"Position" : [ -1.827025, 13.369644, 0 ],
+					"Orientation" : [ 0, 0, 1, 4.371139e-08 ],
+					"Scale" : [ 1, 1, 1 ],
+					"Static" : { },
+					"Model" : {
+						"resource" : "mdl:dev/ground.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					},
+					"PhysicsActor" : {
+						"actorId" : 0,
+						"resource" : "mdl:",
+						"actorType" : 0
+					}
+				}
+			},
+			"8ac9ec68-b0cc-49af-a116-791825b14b6b" : {
+				"name" : "dev_ground_plane",
+				"components" : {
+					"Position" : [ -14, 0, 5.500000 ],
+					"Orientation" : [ 0, 0, -0.707107, 0.707107 ],
+					"Scale" : [ 1, 1, 1 ],
+					"Static" : { },
+					"Model" : {
+						"resource" : "mdl:dev/ground.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					},
+					"PhysicsActor" : {
+						"actorId" : 0,
+						"resource" : "mdl:",
+						"actorType" : 0
+					}
+				}
+			},
+			"9bce2b11-48fb-48de-b444-843f5290d810" : {
+				"name" : "dev_ground_plane",
+				"components" : {
+					"Position" : [ -2, 0, 14 ],
+					"Orientation" : [ -0.707107, 0, 0, 0.707107 ],
+					"Scale" : [ 1, 0.999999, 0.999999 ],
+					"Static" : { },
+					"Model" : {
+						"resource" : "mdl:dev/ground.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					},
+					"PhysicsActor" : {
+						"actorId" : 0,
+						"resource" : "mdl:",
+						"actorType" : 0
+					}
+				}
+			},
+			"8676892b-6001-4604-af6b-3d6b31fcf067" : {
+				"name" : "dev_ground_plane",
+				"components" : {
+					"Position" : [ 186.842422, 22.204544, 0 ],
+					"Orientation" : [ 0, 0, 0.707107, 0.707107 ],
+					"Scale" : [ 16.409388, 16.409388, 16.409388 ],
+					"Static" : { },
+					"Model" : {
+						"resource" : "mdl:dev/ground.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					},
+					"PhysicsActor" : {
+						"actorId" : 0,
+						"resource" : "mdl:",
+						"actorType" : 0
+					}
+				}
+			},
+			"98b1168f-686b-4cce-8943-626aba85940d" : {
+				"name" : "dev_ground_plane",
+				"components" : {
+					"Position" : [ 0, -109.193573, 0 ],
+					"Orientation" : [ 0, 0, 1, 2.980232e-08 ],
+					"Scale" : [ 11.262099, 11.262099, 11.262100 ],
+					"Static" : { },
+					"Model" : {
+						"resource" : "mdl:dev/ground.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					},
+					"PhysicsActor" : {
+						"actorId" : 0,
+						"resource" : "mdl:",
+						"actorType" : 0
+					}
+				}
+			},
+			"22dccb9e-65bf-4710-a4e2-84bdb21bfc39" : {
+				"name" : "dev_ground_plane",
+				"components" : {
+					"Position" : [ 0, 0, -104.005844 ],
+					"Orientation" : [ -0.739834, 0, 0, 0.672789 ],
+					"Scale" : [ 41.232853, 41.232876, 41.232876 ],
+					"Static" : { },
+					"Model" : {
+						"resource" : "mdl:dev/ground.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					},
+					"PhysicsActor" : {
+						"actorId" : 0,
+						"resource" : "mdl:",
+						"actorType" : 0
+					}
+				}
+			},
+			"45ba143d-eff1-4ac0-9913-0bf6a9921c6e" : {
+				"name" : "dev_ground_plane",
+				"components" : {
+					"Position" : [ 0, 0, 137.993942 ],
+					"Orientation" : [ 0.707107, 0, 0, 0.707107 ],
+					"Scale" : [ 25, 25.000130, 25.000130 ],
+					"Static" : { },
+					"Model" : {
+						"resource" : "mdl:dev/ground.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					},
+					"PhysicsActor" : {
+						"actorId" : 0,
+						"resource" : "mdl:",
+						"actorType" : 0
+					}
+				}
+			},
+			"2edbadf5-2c34-43e7-ad58-a2df77cbf94b" : {
+				"name" : "dev_ground_plane",
+				"components" : {
+					"Position" : [ 50.500000, 0, 0 ],
+					"Orientation" : [ 0, 0, -0.707107, 0.707107 ],
+					"Scale" : [ 14.605290, 14.605290, 14.605302 ],
+					"Static" : { },
+					"Model" : {
+						"resource" : "mdl:dev/ground.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					},
+					"PhysicsActor" : {
+						"actorId" : 0,
+						"resource" : "mdl:",
+						"actorType" : 0
+					}
+				}
+			},
+			"c6ea3c05-2587-44ee-b476-73927290770f" : {
+				"name" : "dev_ground_plane",
+				"components" : {
+					"Position" : [ 0, 0, 0 ],
+					"Orientation" : [ 0, 0, 0, 1 ],
+					"Scale" : [ 1, 1, 1 ],
+					"Static" : { },
+					"Model" : {
+						"resource" : "mdl:dev/ground.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					},
+					"PhysicsActor" : {
+						"actorId" : 0,
+						"resource" : "mdl:",
+						"actorType" : 0
+					}
+				}
+			},
+			"0d775f57-1be2-4f5d-a17c-e983b848d56f" : {
+				"name" : "LightSource",
+				"components" : {
+					"Position" : [ -1.467573, 9.221061, -5.092834 ],
+					"Orientation" : [ 0, 0, 0, 1 ],
+					"Scale" : [ 1, 1, 1 ],
+					"PointLight" : {
+						"graphicsEntityId" : 0,
+						"color" : [ 1, 0, 1, 1 ],
+						"intensity" : 1000,
+						"range" : 5,
+						"castShadows" : false
+					}
+				}
+			},
+			"c3a081c8-aaa2-4306-ad8a-920f6170f9f6" : {
+				"name" : "Empty",
+				"components" : {
+					"Position" : [ 9.888840, 6.164891, -0.301103 ],
+					"Orientation" : [ 0, 0, 0, 1 ],
+					"Scale" : [ 1, 1, 1 ],
+					"AreaLight" : {
+						"graphicsEntityId" : 0,
+						"shape" : 1,
+						"color" : [ 1, 1, 1, 1 ],
+						"intensity" : 1000,
+						"range" : 8,
+						"twoSided" : false,
+						"castShadows" : false,
+						"renderMesh" : false
+					}
+				}
+			},
+			"a69c218d-75ba-40b0-92ea-a497a7e51c67" : {
+				"name" : "Empty",
+				"components" : {
+					"Position" : [ -0.790422, 6.811460, 3.751025 ],
+					"Orientation" : [ 0, 0, 0, 1 ],
+					"Scale" : [ 26.837246, 14.865050, 21.448654 ],
+					"DDGIVolume" : {
+						"graphicsEntityId" : 0,
+						"numProbesX" : 8,
+						"numProbesY" : 8,
+						"numProbesZ" : 8,
+						"numRaysPerProbe" : 188,
+						"relocate" : false,
+						"scrolling" : false,
+						"updateBudget" : 1,
+						"classify" : false,
+						"irradianceScale" : 1,
+						"normalBias" : 0.100000,
+						"viewBias" : 0.100000,
+						"distanceExponent" : 50,
+						"hysteresis" : 0.970000,
+						"borderBlendCutoff" : 0,
+						"borderBlend" : 0
+					}
+				}
+			},
+			"4d1b5497-b6fa-4665-ba40-bae9a1cb2a62" : {
+				"name" : "default",
+				"components" : {
+					"Position" : [ -2.397882, 4.308763, -29.206001 ],
+					"Orientation" : [ 0, 0, 0, 1 ],
+					"Scale" : [ 8.195940, 8.195940, 8.195940 ],
+					"Model" : {
+						"resource" : "mdl:space/Nebula_SpaceShip_GLTF.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					},
+					"PhysicsActor" : {
+						"actorId" : 0,
+						"resource" : "mdl:",
+						"actorType" : 1
+					},
+					"PlayerInput" : {
+						"hasFocus" : true
+					},
+					"CameraFollow" : {
+						"currentCamOffset" : [ 0, 0, 0 ],
+						"targetCamLocalOffset" : [ 0, 1, -4 ],
+						"cameraSmoothFactor" : 10
+					},
+					"SpaceShip" : {
+						"orientation" : [ 0, 0, 0, 1 ],
+						"linearVelocity" : [ 0, 0, 0 ],
+						"accelerationFactor" : 1,
+						"normalSpeed" : 1,
+						"boostSpeed" : 2,
+						"currentSpeed" : 0,
+						"rotationSpeed" : 1.800000,
+						"rotationZ" : 0,
+						"rotXSmooth" : 0,
+						"rotYSmooth" : 0,
+						"rotZSmooth" : 0,
+						"rotationSmoothFactor" : 10
+					},
+					"SpaceShipMoveParams" : {
+						"rotateX" : 0,
+						"rotateY" : 0,
+						"rotateZ" : 0,
+						"accelerate" : false,
+						"boost" : false
+					},
+					"AudioEmitter" : {
+						"clipResource" : "audio:space/test.wav",
+						"clipId" : 0,
+						"volume" : 1,
+						"autoplay" : false,
+						"pan" : 0,
+						"loop" : false,
+						"clock" : 0
+					}
+				}
+			}
+		}
+	}
+}

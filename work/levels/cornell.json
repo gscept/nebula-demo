@@ -1,0 +1,63 @@
+{
+	"level" : {
+		"version" : 100,
+		"entities" : {
+			"58f25947-db0f-47de-b47a-74f6b40ae424" : {
+				"name" : "Empty",
+				"components" : {
+					"Position" : [ 0, 0, 0 ],
+					"Orientation" : [ 0, 0, 0, 1 ],
+					"Scale" : [ 1, 1, 1 ],
+					"Model" : {
+						"resource" : "H:/nebula/nebula-demo/export/models/glbtests/cornell_box.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					}
+				}
+			},
+			"ccac0477-1196-459e-b0c4-682704fcb385" : {
+				"name" : "Empty",
+				"components" : {
+					"Position" : [ 0, 1.012319, 0 ],
+					"Orientation" : [ 0, 0, 0, 1 ],
+					"Scale" : [ 1.025484, 1.016702, 1.256731 ],
+					"DDGIVolume" : {
+						"graphicsEntityId" : 0,
+						"numProbesX" : 8,
+						"numProbesY" : 8,
+						"numProbesZ" : 8,
+						"numRaysPerProbe" : 188,
+						"relocate" : true,
+						"scrolling" : false,
+						"updateBudget" : 1,
+						"classify" : false,
+						"irradianceScale" : 1,
+						"normalBias" : 0.100000,
+						"viewBias" : 0.100000,
+						"distanceExponent" : 50,
+						"hysteresis" : 0.900000,
+						"borderBlendCutoff" : 0,
+						"borderBlend" : 0
+					}
+				}
+			},
+			"c15b2c1c-61f9-4bd8-9311-ac5cf0c7ff19" : {
+				"name" : "LightSource",
+				"components" : {
+					"Position" : [ -0.154650, 1.369557, -0.725962 ],
+					"Orientation" : [ 0, 0, 0, 1 ],
+					"Scale" : [ 1, 1, 1 ],
+					"PointLight" : {
+						"graphicsEntityId" : 0,
+						"color" : [ 1, 1, 1, 1 ],
+						"intensity" : 22,
+						"range" : 5,
+						"castShadows" : false
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <Nebula>
     <Surface template="Static">
-        <Param name="AlbedoMap" value="tex:system/white" />
-        <Param name="ParameterMap" value="tex:dev/reflective_param" />
-        <Param name="NormalMap" value="tex:system/nobump" />
-        <Param name="MatAlbedoIntensity" value="1.000000,1.000000,1.000000,1.000000" />
-        <Param name="MatSpecularIntensity" value="1.000000,1.000000,1.000000,1.000000" />
-        <Param name="MatMetalnessIntensity" value="1.000000" />
-        <Param name="MatRoughnessIntensity" value="1.000000" />
-    </Surface>
-</Nebula>
+        <Params>
+            <AlbedoMap value="tex:system/white" />
+            <ParameterMap value="tex:dev/reflective_param" />
+            <NormalMap value="tex:system/nobump" />
+            <MatAlbedoIntensity value="1.000000,1.000000,1.000000,1.000000" />
+            <MatSpecularIntensity value="1.000000,1.000000,1.000000,1.000000" />
+            <MatMetalnessIntensity value="1.000000" />
+            <MatRoughnessIntensity value="1.000000" />
+            </Params>
+        </Surface>
+    </Nebula>

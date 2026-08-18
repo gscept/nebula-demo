@@ -1,5 +1,6 @@
 {
   "gi_settings": {
-    "update_budget": 1.0
+    "update_budget": 1.0,
+    "update_frequency": 0.05
   }
 }
