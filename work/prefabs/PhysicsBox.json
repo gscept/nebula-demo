@@ -1,0 +1,21 @@
+{
+	"level" : {
+		"version" : 100,
+		"entities" : {
+			"0eae60ee-9f8c-4287-9991-7f0db8dc8e1c" : {
+				"name" : "PhysicsBox",
+				"components" : {
+					"Model": {
+						"resource": "sysmdl:box.n3"
+					},
+					"PhysicsActor": {
+						"resource" : "sysphys:box.actor",
+						"actorType":  "Dynamic"
+					},
+					"Velocity": {},
+					"AngularVelocity": {}
+				}
+			}
+		}
+	}
+}

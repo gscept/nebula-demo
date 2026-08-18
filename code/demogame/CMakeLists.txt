@@ -1,14 +1,6 @@
 nebula_begin_app(nebula-demo windowed)
 
 fips_dir(.)
-    add_blueprint(
-        data/tables/demo_blueprints.json
-    )
-
-    add_template_dir(
-        data/tables/templates
-    )
-    
     fips_files(
         main.cc
         demogamefeatureunit.h
@@ -36,6 +28,6 @@ fips_dir(.)
             spaceship.json
         )
 
-fips_deps(foundation application graphicsfeature physicsfeature audiofeature render resource dynui scripting editor)
+fips_deps(foundation application graphicsfeature physicsfeature audiofeature render resource dynui editor)
 target_include_directories(nebula-demo PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 nebula_end_app()

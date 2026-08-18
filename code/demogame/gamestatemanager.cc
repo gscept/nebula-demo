@@ -4,37 +4,9 @@
 //------------------------------------------------------------------------------
 #include "application/stdneb.h"
 #include "gamestatemanager.h"
-#include "models/modelcontext.h"
-#include "graphics/graphicsentity.h"
-#include "visibility/visibilitycontext.h"
-#include "graphicsfeature/graphicsfeatureunit.h"
-#include "basegamefeature/components/basegamefeature.h"
-#include "basegamefeature/components/position.h"
-#include "basegamefeature/components/orientation.h"
-#include "basegamefeature/components/velocity.h"
-#include "physicsfeature/components/physicsfeature.h"
-#include "physicsfeature/managers/physicsmanager.h"
-#include "physics/actorcontext.h"
 #include "input/inputserver.h"
 #include "input/keyboard.h"
-#include "dynui/im3d/im3dcontext.h"
-#include "imgui.h"
-#include "util/random.h"
-#include "characters/charactercontext.h"
-#include "models/nodes/shaderstatenode.h"
-#include "dynui/im3d/im3d.h"
-#include "lighting/lightcontext.h"
-#include "decals/decalcontext.h"
-#include "resources/resourceserver.h"
-#include "terrain/terraincontext.h"
-#include "coregraphics/legacy/nvx2streamreader.h"
-#include "coregraphics/primitivegroup.h"
-#include "properties/movement.h"
-#include "basegamefeature/level.h"
 
-#include "graphicsfeature/managers/graphicsmanager.h"
-#include "game/gameserver.h"
-#include "game/api.h"
 
 #ifdef __WIN32__
 #include <shellapi.h>
@@ -88,10 +60,7 @@ GameStateManager::OnDeactivate()
 void
 GameStateManager::OnBeginFrame()
 {
-    if (Input::InputServer::Instance()->GetDefaultKeyboard()->KeyPressed(Input::Key::Escape))
-    {
-        Core::SysFunc::Exit(0);
-    }
+    Game::Manager::OnBeginFrame();
 }
 
 //------------------------------------------------------------------------------
