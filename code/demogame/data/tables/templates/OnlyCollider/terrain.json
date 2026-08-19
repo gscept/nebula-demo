@@ -1,9 +1,0 @@
-{
-    "blueprint": "OnlyCollider",
-    "components": {
-        "PhysicsActor": {
-            "resource": "phys:terrain/terrain.actor",
-            "actorType":  "Static"
-        }
-    }
-}

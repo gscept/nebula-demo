@@ -91,7 +91,6 @@ void
 PlayerManager::OnActivate()
 {
     Game::Manager::OnActivate();
-    auto view = GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultView();
 
     auto const displayMode = CoreGraphics::WindowGetDisplayMode(CoreGraphics::MainWindow);
     SizeT width = displayMode.GetWidth();
@@ -99,16 +98,12 @@ PlayerManager::OnActivate()
 
     Game::World* world = Game::GetWorld(WORLD_DEFAULT);
 
-    Game::EntityCreateInfo playerCreateInfo;
-    playerCreateInfo.templateId = Game::GetTemplateId("Camera/default"_atm);
-    playerCreateInfo.immediate = true;
-    this->mainCameraEntity = world->CreateEntity(playerCreateInfo);
-
-    GraphicsFeature::Camera camera = world->GetComponent<GraphicsFeature::Camera>(this->mainCameraEntity);
-    camera.aspectRatio = (float)width / (float)height;
-    camera.viewHandle = GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultViewHandle();
-    world->SetComponent<GraphicsFeature::Camera>(this->mainCameraEntity, camera);
-
+    this->mainCameraEntity = world->CreateEntity();
+    GraphicsFeature::Camera* camera = world->AddComponent<GraphicsFeature::Camera>(this->mainCameraEntity);
+    
+    camera->aspectRatio = (float)width / (float)height;
+    camera->viewHandle = GraphicsFeature::GraphicsFeatureUnit::Instance()->GetDefaultViewHandle();
+    
     this->freeCamUtil.Setup({0, 50, -3}, {0,0,-1});
 
     CameraFollowSpaceShip();

@@ -1,0 +1,20 @@
+{
+	"level" : {
+		"version" : 100,
+		"entities" : {
+			"0eae60ee-9f8c-4287-9991-7f0db8dc8e1c" : {
+				"name" : "MovingEntity",
+				"components" : {
+					"Model": {
+						"resource": "mdl:craft/craft_speederA.n3"
+					},
+					"PhysicsActor": {
+						"resource": "phys:craft/craft_speederA.actor",
+						"actorType": "Kinematic"
+					},
+					"Movement": {}
+				}
+			}
+		}
+	}
+}
