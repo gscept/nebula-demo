@@ -1,16 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <Nebula>
     <Surface template="Static">
         <Params>
             <AlbedoMap value="tex:dev/iron_rusty_albedo" />
             <ParameterMap value="tex:dev/iron_rusty_material" />
             <NormalMap value="tex:dev/iron_rusty_normal" />
-            <MatAlbedoIntensity value="1.170000,1.000000,1.000000,1.000000" />
+            <MatAlbedoIntensity value="1.000000,1.000000,1.000000,1.000000" />
             <MatSpecularIntensity value="1.000000,1.000000,1.000000,1.000000" />
+            <MatMetalnessIntensity value="1.000000" />
             <MatRoughnessIntensity value="1.000000" />
-            <MatMetallicIntensity value="0.000000" />
-            <AlphaSensitivity value="1.000000" />
-            <AlphaBlendFactor value="0.000000" />
-        </Params>
-    </Surface>
-</Nebula>
+            </Params>
+        </Surface>
+    </Nebula>

@@ -1,0 +1,52 @@
+{
+	"level" : {
+		"version" : 100,
+		"entities" : {
+			"cc0e7719-2963-4252-81e7-bb5e1a908490" : {
+				"name" : "Empty",
+				"components" : {
+					"Position" : [ 0, 0, 0 ],
+					"Orientation" : [ 0, 0, 0, 1 ],
+					"Scale" : [ 1, 1, 1 ],
+					"Model" : {
+						"resource" : "H:/nebula/nebula-demo/export/models/glbtests/NormalTangentMirrorTest.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					}
+				}
+			},
+			"11f95cf6-1dec-4246-9de8-527d418265b5" : {
+				"name" : "Empty",
+				"components" : {
+					"Position" : [ 2.469910, 0, 0 ],
+					"Orientation" : [ 0, 0, 0, 1 ],
+					"Scale" : [ 1, 1, 1 ],
+					"Model" : {
+						"resource" : "H:/nebula/nebula-demo/export/models/space/Nebula_SpaceShip_GLTF.n3",
+						"graphicsEntityId" : 0,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					}
+				}
+			},
+			"0e8b6e33-7159-4b41-b40b-b8bd9a8a53f7" : {
+				"name" : "LightSource",
+				"components" : {
+					"Position" : [ -0.727623, 1.891027, 1.168264 ],
+					"Orientation" : [ 0, 0, 0, 1 ],
+					"Scale" : [ 1, 1, 1 ],
+					"PointLight" : {
+						"graphicsEntityId" : 0,
+						"color" : [ 1, 1, 1, 1 ],
+						"intensity" : 121,
+						"range" : 151,
+						"castShadows" : false
+					}
+				}
+			}
+		}
+	}
+}

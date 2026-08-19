@@ -8,24 +8,8 @@
       ],
       "IntermediateDir":   "proj:intermediate",
       "DestDir":           "proj:export",
-      "AssetSources" :
-      [
-         {
-         "Name":           "Project",
-         "Value":          "proj:work"
-         }
-      ],
-      "TextureDestDir":    "DestDir:textures",
-      "TextureAttrTable":  "IntermediateDir:TextureAttrs",
-
-      "AudioDestDir":      "DestDir:audio",
-      "AudioSources":
-      [
-         {
-         "Name":           "Project",
-         "Value":          "proj:work/audio"
-         }
-      ],
+      "AssetSourceRoot":   "proj:work/source",
+      "AssetWorkRoot":     "proj:work/assets",
       "ShaderLanguage":    "SPIRV",
       "ShaderDest":        "DestDir:shaders",
       "ShaderSources" :

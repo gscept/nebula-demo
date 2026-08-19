@@ -1,0 +1,30 @@
+{
+	"level" : {
+		"version" : 100,
+		"entities" : {
+			"54889d22-7815-461d-a354-d53634cef2a3" : {
+				"name" : "Empty",
+				"components" : {
+					"Position" : [ 0, 0, 0 ],
+					"Orientation" : [ 0, 0, 0, 1 ],
+					"Scale" : [ 1, 1, 1 ],
+					"Terrain" : {
+						"graphicsEntityId" : 8,
+						"minHeight" : 0,
+						"maxHeight" : 128,
+						"worldSizeX" : 1024,
+						"worldSizeZ" : 1024,
+						"tileWidth" : 64,
+						"tileHeight" : 64,
+						"quadsPerTileX" : 16,
+						"quadsPerTileZ" : 16,
+						"heightMap" : "H:/nebula/nebula-demo/export/textures/level_1146571844/54889d22-7815-461d-a354-d53634cef2a3_height.dds",
+						"decisionMap" : "systex:white.dds",
+						"enableRaytracing" : false,
+						"biomes" : [ ]
+					}
+				}
+			}
+		}
+	}
+}

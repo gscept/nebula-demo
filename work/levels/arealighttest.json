@@ -1,0 +1,42 @@
+{
+	"level" : {
+		"version" : 100,
+		"entities" : {
+			"f5ad5581-9064-4be6-964c-594ee75b1024" : {
+				"name" : "Empty",
+				"template" : "Empty",
+				"components" : {
+					"Position" : [ 0, 0, 0 ],
+					"Orientation" : [ 0, 0, 0, 1 ],
+					"Scale" : [ 1, 1, 1 ],
+					"Model" : {
+						"resource" : "H:/nebula/nebula-demo/export/models/darkfantasy/SM_Carpet_01.n3",
+						"graphicsEntityId" : 4294967295,
+						"raytracing" : true,
+						"anim" : "",
+						"skeleton" : ""
+					}
+				}
+			},
+			"7bb5e1da-692d-4d92-8274-b6984c4fb692" : {
+				"name" : "Empty",
+				"template" : "Empty",
+				"components" : {
+					"Position" : [ 0, 0.296717, 0 ],
+					"Orientation" : [ -0.158442, 0, 0, 0.987368 ],
+					"Scale" : [ 1, 1, 1 ],
+					"AreaLight" : {
+						"graphicsEntityId" : 4294967295,
+						"shape" : 0,
+						"color" : [ 1, 1, 1, 1 ],
+						"intensity" : 50,
+						"range" : 8,
+						"twoSided" : false,
+						"castShadows" : false,
+						"renderMesh" : false
+					}
+				}
+			}
+		}
+	}
+}
